@@ -8,6 +8,7 @@ import { TextReveal } from "@/components/text-reveal";
 import { CtaCalendar, Pilot, PricingTeaser, ServicesList } from "@/components/sections";
 import { CaseStudyTeaser, DemoSection } from "@/components/trust";
 import { guides } from "@/lib/guides";
+import { InlineAuditCta } from "@/components/audit";
 
 const beforeYouDecide = [
   { href: "/ai-receptionist-vs-hiring", label: "AI receptionist vs hiring" },
@@ -30,7 +31,9 @@ export default function Home() {
       <DemoSection />
       <ServicesList />
       <Workflow />
+      <InlineAuditCta title="See what this would look like for your business." ctx={{ from: "home-workflow" }} />
       <IndustrySlider />
+      <InlineAuditCta title="Your industry, your rules. We’ll map your first workflow." ctx={{ from: "home-industries" }} />
       <RoiCalculator />
       <CaseStudyTeaser />
       <Pilot />

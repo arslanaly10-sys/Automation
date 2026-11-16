@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CalendarCheckIcon, CheckIcon } from "@phosphor-icons/react/dist/ssr";
+import { CheckIcon } from "@phosphor-icons/react/dist/ssr";
 import { commitments, pilot, plans, services, tools } from "@/lib/content";
-import { bookHref, bookingReady, site } from "@/lib/site";
+import { auditHref, site } from "@/lib/site";
+import { AuditButton, AuditPromise } from "./audit";
 import { ServiceIcon } from "./icons";
 import { Mark } from "./brand";
 import { GuaranteeBand } from "./trust";
@@ -57,6 +58,10 @@ export function ServicesList() {
               </Link>
             </li>
           ))}
+          <li className="pt-8">
+            <AuditButton ctx={{ from: "home-services" }} />
+            <AuditPromise tone="light" className="mt-4" />
+          </li>
         </ul>
       </div>
     </section>
@@ -141,7 +146,7 @@ export function PlanCards() {
               <li key={f} className="flex gap-3"><CheckIcon aria-hidden="true" size={18} weight="bold" className="mt-1 shrink-0 text-crimson" />{f}</li>
             ))}
           </ul>
-          <Link href="/contact" className={`btn mt-10 ${p.featured ? "btn-primary" : "btn-ink"}`}>Book a strategy call</Link>
+          <AuditButton ctx={{ plan: p.name }} className={`btn mt-10 ${p.featured ? "btn-primary" : "btn-ink"}`} />
         </div>
       ))}
     </div>
@@ -166,7 +171,7 @@ export function PricingTeaser() {
 /* ---------- CTA styles ---------- */
 
 /** Dark card with a week of open slots. */
-export function CtaCalendar({ title = "Book a 30-minute strategy call", body = "We’ll map one workflow live on the call and tell you honestly whether automation is worth it for you. If it isn’t, we’ll say so." }) {
+export function CtaCalendar({ title = "Get your free 30-minute audit", body = "We’ll map one workflow live on the call, then send you a written plan. If automation isn’t worth it for you, we’ll say so." }) {
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   const slots = [[1, 3], [0, 2, 4], [1], [0, 3, 4], [2]];
   const times = ["9:00", "10:30", "1:00", "2:30", "4:00"];
@@ -178,11 +183,11 @@ export function CtaCalendar({ title = "Book a 30-minute strategy call", body = "
             <h2 className="display text-[clamp(2.2rem,4vw,3.4rem)]">{title}</h2>
             <p className="mt-5 max-w-[46ch] text-white/70">{body}</p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <a href={bookHref} {...(bookingReady ? { target: "_blank", rel: "noopener" } : {})} className="btn btn-primary"><CalendarCheckIcon aria-hidden="true" size={18} weight="bold" />Pick a time</a>
-              <Link href="/contact" className="btn btn-ghost text-white">Send a message instead</Link>
+              <AuditButton ctx={{ from: "calendar-card" }} />
             </div>
+            <AuditPromise className="mt-6" />
           </div>
-          <a href={bookHref} {...(bookingReady ? { target: "_blank", rel: "noopener" } : {})} className="lift grid grid-cols-5 gap-2 rounded-[22px] border border-white/12 bg-white/[.04] p-5" aria-hidden="true" tabIndex={-1}>
+          <a href={auditHref({ from: "calendar-card" })} className="lift grid grid-cols-5 gap-2 rounded-[22px] border border-white/12 bg-white/[.04] p-5" aria-hidden="true" tabIndex={-1}>
             {days.map((d, di) => (
               <div key={d} className="flex flex-col gap-2">
                 <p className="pb-1 text-center text-xs text-white/55">{d}</p>
@@ -211,9 +216,10 @@ export function CtaBanner({ title = "Find the first workflow worth automating.",
         <div className="md:col-span-4 md:col-start-9 md:self-end">
           <p className="text-white/85">{body}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/contact" className="btn btn-light">Book a strategy call</Link>
+            <AuditButton ctx={{ from: "banner" }} className="btn btn-light" />
             <Link href="/pricing" className="btn btn-ghost text-white">See pricing</Link>
           </div>
+          <AuditPromise className="mt-5 [&_svg]:!text-white" />
         </div>
       </div>
     </section>
@@ -232,7 +238,7 @@ export function CtaSplit({ image, alt, title, body }: { image: string; alt: stri
           <h2 className="display text-[clamp(2rem,3.6vw,3rem)]">{title}</h2>
           <p className="mt-4 text-muted">{body}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/contact" className="btn btn-primary">Book a strategy call</Link>
+            <AuditButton ctx={{ from: "split" }} />
             <a href={`mailto:${site.email}`} className="btn btn-ghost">Email us</a>
           </div>
         </div>

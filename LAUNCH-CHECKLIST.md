@@ -7,9 +7,11 @@ Tick items off as they're done.
 
 - [ ] **Real email address** (you)
   Replace `hello@infotech.example` in `src/lib/site.ts` → `email`.
+- [ ] **Reply within five minutes in working hours** (you): the site promises a reply within one working day; you sell speed,
+  so beat it. Turn on a Formspree auto-reply (paid plan) or forward submissions to your own automation.
 - [ ] **Booking link** (you)
   Paste your Calendly or Cal.com link into `src/lib/site.ts` → `bookingUrl`.
-  Every "Book a strategy call" button switches from the contact page to booking automatically.
+  Every "Get your free audit" button already goes to `/contact`; once the link is set, that page shows your calendar inline.
 - [ ] **Custom domain** (you, then Claude)
   1. Buy or connect the domain in Vercel: Project → Settings → Domains.
   2. Update `src/lib/site.ts` → `siteUrl` (used by the sitemap, share previews and search data).

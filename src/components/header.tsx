@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { ListIcon, XIcon } from "@phosphor-icons/react";
 import { Wordmark } from "./brand";
 import { ThemeToggle } from "./theme-toggle";
-import { bookHref, bookingReady, nav as baseNav, site } from "@/lib/site";
+import { audit, auditHref, nav as baseNav, site } from "@/lib/site";
 import { caseStudies } from "@/lib/content";
 
 const nav = caseStudies.length ? [...baseNav, { href: "/case-studies", label: "Case studies" }] : baseNav;
@@ -54,8 +54,11 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <Link href={bookHref} {...(bookingReady ? { target: "_blank", rel: "noopener" } : {})} className="btn btn-primary hidden sm:inline-flex">
-            Book a strategy call
+          <Link href={auditHref({ from: "header" })} className="btn btn-primary hidden sm:inline-flex" data-cta="audit">
+            {audit.cta}
+          </Link>
+          <Link href={auditHref({ from: "header" })} className="btn btn-primary min-h-11 px-4 sm:hidden" data-cta="audit">
+            {audit.ctaShort}
           </Link>
           <button
             className="grid size-11 place-items-center rounded-full border border-current/25 lg:hidden"
@@ -80,8 +83,8 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Link href={bookHref} {...(bookingReady ? { target: "_blank", rel: "noopener" } : {})} className="btn btn-primary mt-auto w-full">
-            Book a strategy call
+          <Link href={auditHref({ from: "menu" })} className="btn btn-primary mt-auto w-full" data-cta="audit">
+            {audit.cta}
           </Link>
         </nav>
       </div>

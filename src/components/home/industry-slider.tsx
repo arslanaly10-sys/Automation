@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
@@ -14,7 +14,7 @@ export function IndustrySlider() {
   const section = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const mm = gsap.matchMedia();
     mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
       const el = track.current!;
@@ -30,6 +30,7 @@ export function IndustrySlider() {
   }, []);
 
   return (
+    <div>
     <section ref={section} className="overflow-hidden bg-black py-24 text-white lg:flex lg:h-screen lg:flex-col lg:justify-center lg:pt-16 lg:pb-0">
       <div className="wrap mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <h2 className="display max-w-[18ch] text-[clamp(2.2rem,4.2vw,3.6rem)]">Built for businesses where every call counts.</h2>
@@ -60,5 +61,6 @@ export function IndustrySlider() {
         ))}
       </div>
     </section>
+    </div>
   );
 }

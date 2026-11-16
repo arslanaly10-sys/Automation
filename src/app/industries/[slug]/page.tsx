@@ -7,6 +7,7 @@ import { industries } from "@/lib/content";
 import { ChatPlayer } from "@/components/chat";
 import { CtaSplit, PageHero } from "@/components/sections";
 import { Faq } from "@/components/faq";
+import { AuditButton } from "@/components/audit";
 import { ToolChip } from "@/components/tool-logo";
 import { JsonLd, faqLd } from "@/components/json-ld";
 
@@ -31,7 +32,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
     <>
       <PageHero title={ind.headline} intro={ind.intro} image={ind.image} imageAlt={ind.imageAlt}>
         <div className="flex flex-wrap gap-3">
-          <Link href="/contact" className="btn btn-primary">Book a strategy call</Link>
+          <AuditButton ctx={{ industry: ind.slug }} />
           <Link href="#workflows" className="btn btn-ghost text-white">See the workflows</Link>
         </div>
         <p className="mt-6 text-sm text-white/60">{ind.examples}</p>

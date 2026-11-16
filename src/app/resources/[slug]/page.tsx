@@ -6,6 +6,7 @@ import { guides } from "@/lib/guides";
 import { site } from "@/lib/site";
 import { CtaBanner, PageHero } from "@/components/sections";
 import { JsonLd } from "@/components/json-ld";
+import { GuideTools } from "@/components/guide-tools";
 
 export function generateStaticParams() {
   return guides.map((g) => ({ slug: g.slug }));
@@ -36,7 +37,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       </PageHero>
       <article className="bg-bg py-16 md:py-24">
         <div className="wrap grid gap-12 lg:grid-cols-12">
-          <nav aria-label="In this guide" className="lg:col-span-3">
+          <nav aria-label="In this guide" className="no-print lg:col-span-3">
             <div className="lg:sticky lg:top-28">
               <p className="mb-3 text-sm text-muted">In this guide</p>
               <ol className="flex flex-col gap-2 text-[15px]">
@@ -72,6 +73,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                   return <p key={i} className="mt-6 flex gap-3 rounded-2xl border border-line bg-surface p-5 text-[15px] text-muted"><InfoIcon aria-hidden="true" size={20} className="mt-0.5 shrink-0 text-crimson" /><span>{b.text}</span></p>;
               }
             })}
+            <GuideTools title={g.title} />
           </div>
         </div>
       </article>

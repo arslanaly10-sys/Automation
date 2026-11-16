@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CheckCircleIcon, ChatCircleTextIcon, EnvelopeSimpleIcon, PhoneXIcon, WhatsappLogoIcon } from "@phosphor-icons/react";
@@ -14,7 +14,7 @@ export function Workflow() {
   const right = useRef<SVGPathElement>(null);
   const [active, setActive] = useState(0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const mm = gsap.matchMedia();
     mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
       const st = ScrollTrigger.create({
@@ -36,6 +36,7 @@ export function Workflow() {
   }, []);
 
   return (
+    <div>
     <section ref={section} id="how-it-works" className="relative overflow-hidden bg-surface lg:h-screen">
       <div className="wrap grid h-full items-center gap-14 py-24 lg:grid-cols-12 lg:py-0">
         <div className="lg:col-span-5">
@@ -81,6 +82,7 @@ export function Workflow() {
         </ol>
       </div>
     </section>
+    </div>
   );
 }
 

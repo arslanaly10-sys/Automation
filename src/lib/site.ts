@@ -73,8 +73,23 @@ export const companyReady = Boolean(trust.company.legalName);
 /** True once bookingUrl has been replaced with a real link. */
 export const bookingReady = !site.bookingUrl.includes("your-infotech-link");
 
-/** Where "Book a strategy call" buttons go: the booking page when it is set, the contact page until then. */
-export const bookHref = bookingReady ? site.bookingUrl : "/contact";
+/**
+ * The free audit is the one offer every booking button makes.
+ * Buttons always go to /contact, carrying context. Once bookingUrl is real, /contact shows the calendar inline,
+ * so visitors book without leaving the site; until then it shows the request form.
+ */
+export const audit = {
+  cta: "Get your free audit",
+  ctaShort: "Free audit",
+  promise: ["30 minutes", "No sales pitch", "A written plan, whether or not you hire us"],
+} as const;
+
+export type AuditContext = { plan?: string; industry?: string; from?: string; loss?: string };
+
+export function auditHref(ctx: AuditContext = {}) {
+  const q = new URLSearchParams(Object.entries(ctx).filter(([, v]) => v) as [string, string][]).toString();
+  return `/contact${q ? `?${q}` : ""}`;
+}
 
 export const nav = [
   { href: "/services", label: "Services" },

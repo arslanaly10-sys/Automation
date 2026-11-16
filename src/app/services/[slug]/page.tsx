@@ -4,7 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRightIcon, CheckIcon } from "@phosphor-icons/react/dist/ssr";
 import { industries, serviceDetails, services } from "@/lib/content";
-import { bookHref, bookingReady, site } from "@/lib/site";
+import { site } from "@/lib/site";
+import { AuditButton } from "@/components/audit";
 import { ChatPlayer } from "@/components/chat";
 import { LogCard } from "@/components/log-card";
 import { ServiceIcon } from "@/components/icons";
@@ -48,7 +49,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const fits = detail.fit.map((slug) => industries.find((i) => i.slug === slug)!).filter(Boolean);
   const index = services.findIndex((s) => s.slug === service.slug);
   const related = [1, 2, 3].map((n) => services[(index + n) % services.length]);
-  const external = bookingReady ? { target: "_blank", rel: "noopener" } : {};
 
   const serviceLd = {
     "@context": "https://schema.org",
@@ -73,7 +73,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     <>
       <PageHero title={detail.headline} intro={service.body} image={detail.image} imageAlt={detail.imageAlt}>
         <div className="flex flex-wrap gap-3">
-          <Link href={bookHref} {...external} className="btn btn-primary">Book a strategy call</Link>
+          <AuditButton ctx={{ from: service.slug }} />
           <Link href="#how-it-works" className="btn btn-ghost text-white">See how it works</Link>
         </div>
         <nav aria-label="Breadcrumb" className="mt-8 text-sm text-white/60">

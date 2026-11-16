@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useId, useMemo, useState } from "react";
 import { track } from "@vercel/analytics";
-import { site } from "@/lib/site";
+import { auditHref, site } from "@/lib/site";
 import { formspreeReady, openMailto, submitToFormspree } from "@/lib/formspree";
 
 const currencies = [
@@ -60,9 +60,15 @@ export function RoiCalculator() {
             </div>
           </div>
           <p className="mt-6 text-sm text-muted">
-            That’s about {Math.round(monthlyJobs)} jobs a month. Our Growth plan is $997 a month.{" "}
-            <Link href="/contact" className="font-semibold text-ink underline underline-offset-4">Walk through your numbers with us</Link>
+            That’s about {Math.round(monthlyJobs)} jobs a month. Our Growth plan is $997 a month.
           </p>
+          <Link
+            href={auditHref({ from: "calculator", loss: fmt(monthly) })}
+            className="btn btn-primary mt-6 w-full sm:w-auto"
+            data-cta="audit"
+          >
+            Get a free audit to recover {fmt(monthly)} a month
+          </Link>
         </div>
 
         <EstimateCapture

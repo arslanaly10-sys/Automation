@@ -10,7 +10,9 @@ Next.js 15 (App Router) + Tailwind CSS v4 marketing site for INFOTECH, an AI aut
 - `src/components/brand.tsx`: wordmark (traced from the logo) and the diamond mark.
 - `public/images/`: Unsplash photos (Unsplash License; credit line is in the footer).
 
-- Booking buttons use `bookHref` from `site.ts`: the contact page until `bookingUrl` is real, then the booking page.
+- The offer is a **free audit** (`audit` in `site.ts`). Every booking button is `<AuditButton>` (`src/components/audit.tsx`) and goes to `/contact` with context (`auditHref({ plan, industry, from, loss })`). Once `bookingUrl` is real, `/contact` shows the calendar inline; until then it shows the request form. Successful requests go to `/thanks`.
+- Phones get a sticky booking bar (`mobile-audit-bar.tsx`) and a "Free audit" button in the top bar. Enquiries carry the visitor's first landing page, referrer and UTM tags (`attribution.tsx`).
+- GSAP-pinned sections sit inside a React-owned wrapper and clean up in `useLayoutEffect`; without both, navigating away from the homepage crashes the next page.
 - `src/lib/formspree.ts`: shared Formspree submit + mailto fallback, used by the contact form and the calculator's estimate capture.
 - `src/components/analytics.tsx`: Vercel Web Analytics plus "Booking click", "CTA click", "Contact form sent" and "Estimate requested" events.
 - `src/components/json-ld.tsx`: schema.org data (Organization, WebSite, FAQPage, Service list, pricing offers).

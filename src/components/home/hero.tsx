@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChatPlayer } from "@/components/chat";
+import { AuditButton, AuditPromise } from "@/components/audit";
 
 const script = [
   { from: "customer" as const, text: "Hi, our air conditioning just stopped and the house is getting really hot." },
@@ -35,11 +36,12 @@ export function HomeHero() {
             INFOTECH builds AI systems that answer calls and messages, book appointments and follow up with every lead. They connect to the tools your business already runs on.
           </p>
           <div className="msg-in mt-9 flex flex-wrap gap-3" style={{ animationDelay: "280ms" }}>
-            <Link href="/contact" className="btn btn-primary">Book a strategy call</Link>
+            <AuditButton ctx={{ from: "hero" }} />
             <Link href="#how-it-works" className="btn btn-ghost text-white">See how it works</Link>
           </div>
-          <p className="msg-in mt-8 text-sm text-white/60" style={{ animationDelay: "380ms" }}>
-            First workflow live in about four weeks. Plans from $497 a month.
+          <AuditPromise className="msg-in mt-6" />
+          <p className="msg-in mt-6 text-sm text-white/60" style={{ animationDelay: "380ms" }}>
+            Live in 30 days, or your setup fee back. Plans from $497 a month.
           </p>
         </div>
 

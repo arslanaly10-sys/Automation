@@ -8,6 +8,7 @@ import { CtaBanner, PageHero, ToolsMarquee } from "@/components/sections";
 import { Workflow } from "@/components/home/workflow";
 import { JsonLd, servicesLd } from "@/components/json-ld";
 import { ProductMockups } from "@/components/product-mockups";
+import { AuditButton } from "@/components/audit";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -23,7 +24,7 @@ export default function ServicesPage() {
         image="/images/team-desks.jpg"
         imageAlt="Two people working at desks with large monitors in a bright office"
       >
-        <Link href="/contact" className="btn btn-primary">Book a strategy call</Link>
+        <AuditButton ctx={{ from: "services" }} />
       </PageHero>
 
       <section className="bg-bg py-20 md:py-28">

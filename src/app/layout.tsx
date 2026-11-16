@@ -6,6 +6,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { site } from "@/lib/site";
 import { Analytics } from "@/components/analytics";
+import { MobileAuditBar } from "@/components/mobile-audit-bar";
+import { CaptureAttribution } from "@/components/attribution";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { JsonLd, organizationLd } from "@/components/json-ld";
 
@@ -39,7 +41,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <main id="main">{children}</main>
           <Footer />
+          <MobileAuditBar />
         </Providers>
+        <CaptureAttribution />
         <Analytics />
         <SpeedInsights />
         <JsonLd data={organizationLd} />

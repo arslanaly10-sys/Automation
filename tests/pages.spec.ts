@@ -40,12 +40,57 @@ test("unknown pages return 404", async ({ page }) => {
   expect(res?.status()).toBe(404);
 });
 
-test("forms send to Formspree when an ID is set, or fall back to email", async ({ page }) => {
+test("audit request form sends, then shows next steps", async ({ page }) => {
   await page.route("https://formspree.io/**", (r) => r.fulfill({ status: 200, contentType: "application/json", body: "{}" }));
-  await page.goto("/contact");
+  await page.goto("/contact?plan=Growth");
+  await expect(page.getByText("You’re asking about the Growth plan.")).toBeVisible();
+  await page.getByText("Missed calls", { exact: true }).click();
   await page.fill("input[name=name]", "Test");
   await page.fill("input[name=email]", "test@example.com");
-  await page.fill("textarea[name=message]", "Smoke test");
   await page.click("form button[type=submit]");
-  await expect(page.getByRole("status").first()).toContainText(/got it|email app/i);
+  // With a Formspree ID the visitor lands on /thanks; without one, their email app opens instead.
+  await expect(async () => {
+    const onThanks = page.url().includes("/thanks");
+    const fallback = await page.getByText(/email app should have opened/i).count();
+    expect(onThanks || fallback > 0).toBe(true);
+  }).toPass({ timeout: 5000 });
+});
+
+test("calculator carries the visitor's figure into the audit request", async ({ page }) => {
+  await page.goto("/");
+  const cta = page.locator("a", { hasText: /Get a free audit to recover/ });
+  await cta.scrollIntoViewIfNeeded();
+  const label = (await cta.textContent()) ?? "";
+  const figure = label.match(/\$[\d,]+/)?.[0];
+  await cta.click();
+  await page.waitForURL(/\/contact\?/);
+  await expect(page.getByText(`${figure} a month`)).toBeVisible();
+});
+
+test("phones always have a way to book", async ({ page, isMobile }) => {
+  test.skip(!isMobile, "phone-only behaviour");
+  await page.goto("/");
+  await expect(page.locator("header a[data-cta=audit]:visible")).toHaveCount(1);
+  await page.evaluate(() => window.scrollTo(0, window.innerHeight * 2));
+  await expect(page.locator("[data-mobile-audit-bar] a[data-cta=audit]")).toBeInViewport();
+});
+
+test("moving from the homepage to other pages keeps them working", async ({ page, isMobile }) => {
+  test.skip(isMobile, "pinned scroll sections only run on desktop");
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  for (const label of ["Pricing", "Services", "Resources"]) {
+    await page.goto("/");
+    // Scroll through the pinned sections first so their scroll effects are active.
+    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight / 2));
+    await page.waitForTimeout(300);
+    await page.locator("header nav[aria-label=Main] a", { hasText: label }).click();
+    await page.waitForURL(`**/${label.toLowerCase()}`);
+    await expect(page.locator("h1")).toHaveCount(1);
+  }
+  await page.goto("/");
+  await page.locator("a", { hasText: /Get a free audit to recover/ }).click();
+  await page.waitForURL(/\/contact\?/);
+  await expect(page.locator("form")).toHaveCount(1);
+  expect(errors).toEqual([]);
 });

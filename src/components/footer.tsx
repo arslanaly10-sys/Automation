@@ -45,7 +45,7 @@ export function Footer() {
         <p>Photography from Unsplash, used under the Unsplash License. Product names and logos are trademarks of their owners.</p>
       </div>
 
-      <div className="wrap pb-6 text-crimson" aria-hidden="true">
+      <div className="wrap pb-28 text-crimson lg:pb-6" aria-hidden="true">
         <Wordmark className="block h-auto w-full" title="" />
       </div>
     </footer>

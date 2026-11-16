@@ -154,3 +154,16 @@ body {
   .reveal-word { color: inherit; }
   .marquee-track { animation: none; }
 }
+
+/* Print: guides print as clean documents */
+@media print {
+  header, footer, .no-print, [data-cta], .fixed { display: none !important; }
+  body { background: #fff !important; color: #000 !important; font-size: 12pt; }
+  section { background: #fff !important; color: #000 !important; padding: 0 !important; }
+  main section:first-child { padding: 0 0 12pt !important; }
+  main section:first-child img, main section:first-child .absolute { display: none !important; }
+  main section:first-child h1, main section:first-child p, main section:first-child a { color: #000 !important; }
+  article { padding: 0 !important; }
+  a { color: #000 !important; text-decoration: underline; }
+  main > section:not(:first-child):not(article) { display: none !important; }
+}
