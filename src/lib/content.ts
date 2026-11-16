@@ -445,7 +445,7 @@ export const faqs = [
   },
   {
     q: "What does it cost beyond the monthly fee?",
-    a: "There’s a one-time setup fee, quoted after the audit, plus usage such as phone minutes and SMS, which we pass through at cost. There are no hidden extras.",
+    a: "There’s a one-time setup fee of $500 to $2,000, depending on how many systems we connect, fixed in writing after the audit. Usage such as phone minutes and SMS is passed through at cost. There are no hidden extras.",
   },
   {
     q: "Which languages and countries do you support?",

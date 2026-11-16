@@ -24,7 +24,7 @@ export const site = {
 
   // Commercial terms shown on the pricing page. Edit to match your contracts.
   terms: {
-    setup: "One-time setup is quoted after your workflow audit. It depends on how many systems we connect.",
+    setup: "One-time setup from $500 to $2,000, depending on how many systems we connect. You get a fixed quote after your workflow audit.",
     usage: "Phone minutes, SMS and AI usage are billed at cost, with no markup.",
     contract: "Month-to-month after launch. Cancel with 30 days’ notice.",
   },

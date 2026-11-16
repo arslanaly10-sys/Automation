@@ -8,7 +8,7 @@ import { JsonLd, faqLd, pricingLd } from "@/components/json-ld";
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description: "Monthly plans from $497. Setup quoted after a workflow audit. Usage billed at cost. Month-to-month after launch.",
+  description: "Monthly plans from $497. One-time setup from $500 to $2,000. Usage billed at cost. Month-to-month after launch.",
 };
 
 const pricingFaqs = faqs.filter((f) => /cost|own|long|start|replace/i.test(f.q));
