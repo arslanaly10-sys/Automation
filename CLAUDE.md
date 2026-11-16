@@ -47,4 +47,4 @@ BASE_URL=https://infotech-website-sandy.vercel.app npm test   # same tests again
 
 GitHub Actions (`.github/workflows/checks.yml`) runs lint, type check, build and the tests on every push and pull request.
 
-Skills for this project are in `.claude/skills/` (see its README). What is left before launch is tracked in `LAUNCH-CHECKLIST.md`.
+Skills for this project are in `.claude/skills/` (see its README), including Impeccable (`/impeccable audit`, `/impeccable critique`, `/impeccable polish` and more) and its design-check hooks in `.claude/settings.json`. What is left before launch is tracked in `LAUNCH-CHECKLIST.md`.

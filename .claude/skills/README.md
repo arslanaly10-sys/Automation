@@ -14,9 +14,11 @@ Installed for the INFOTECH website build. Each folder is a Claude Code skill.
 | 9 | /graphify | `graphify/` | Anthropic skills |
 | 10 | frontend-design | `frontend-design/` | Anthropic frontend-design plugin |
 | 11 | ui-ux-pro-max | `ui-ux-pro-max/`, `design-system/`, `ui-styling/`, `brand/`, `design/`, `banner-design/`, `slides/` | github.com/nextlevelbuilder/ui-ux-pro-max-skill |
+| 12 | impeccable | `impeccable/` (skill), `.claude/agents/impeccable-*.md`, hooks in `.claude/settings.json` | github.com/pbakaus/impeccable (Apache 2.0), installed with `npx impeccable install --project --providers=claude` |
 
 Notes
 - The `12-principles-of-animation` skill no longer exists in raphaelsalaja's repo. Its current `motion` skill (installed as `rs-motion`) covers the same ground.
 - raphaelsalaja's skills are prefixed `rs-` because two names (`prototype`) clash with emilkowalski's.
 - `design-taste-frontend` ships a Stop hook that runs its finish gate when a `.taste-skill/` build folder exists. It does nothing otherwise.
 - Licences: MIT, except playwright-cli (Apache 2.0). Each upstream LICENSE is kept alongside its skill.
+- Impeccable adds three hooks (in `.claude/settings.json`, shared with everyone who clones the repo): a quick design check after each Edit/Write on UI files, a deeper pass when a turn ends, and a session-start step. Each does nothing if the skill's script is missing. Its engine is downloaded to `~/.impeccable` on first use, which needs network access to impeccable.style. Update with `npx impeccable update`.
