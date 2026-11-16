@@ -1,11 +1,8 @@
 "use client";
 import { useLayoutEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CheckCircleIcon, ChatCircleTextIcon, EnvelopeSimpleIcon, PhoneXIcon, WhatsappLogoIcon } from "@phosphor-icons/react";
 import { steps } from "@/lib/content";
-
-gsap.registerPlugin(ScrollTrigger);
+import { whenPinnable } from "@/lib/load-gsap";
 
 /** "How it works": pinned on desktop, the four steps advance with scroll while the logo's chevrons close in on the diamond. */
 export function Workflow() {
@@ -14,9 +11,9 @@ export function Workflow() {
   const right = useRef<SVGPathElement>(null);
   const [active, setActive] = useState(0);
 
-  useLayoutEffect(() => {
-    const mm = gsap.matchMedia();
-    mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
+  useLayoutEffect(
+    () =>
+      whenPinnable(({ gsap, ScrollTrigger }) => {
       const st = ScrollTrigger.create({
         trigger: section.current,
         start: "top top",
@@ -30,10 +27,13 @@ export function Workflow() {
           gsap.set(right.current, { x: -x });
         },
       });
-      return () => st.kill();
-    });
-    return () => mm.revert();
-  }, []);
+      return () => {
+        st.kill(true);
+        gsap.set([left.current, right.current], { clearProps: "transform" });
+      };
+      }),
+    [],
+  );
 
   return (
     <div>

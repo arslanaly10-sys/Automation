@@ -1,11 +1,11 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
-
-/** A large statement whose words light up one by one as it scrolls through the viewport. */
+/**
+ * A large statement whose words light up one by one as it scrolls through the viewport.
+ * Plain scroll listener (no GSAP): lighting starts when the top reaches 78% of the viewport
+ * and finishes when the bottom reaches 45%.
+ */
 export function TextReveal({ text, className = "" }: { text: string; className?: string }) {
   const ref = useRef<HTMLParagraphElement>(null);
 
@@ -17,16 +17,30 @@ export function TextReveal({ text, className = "" }: { text: string; className?:
       words.forEach((w) => w.classList.add("on"));
       return;
     }
-    const st = ScrollTrigger.create({
-      trigger: el,
-      start: "top 78%",
-      end: "bottom 45%",
-      onUpdate: (self) => {
-        const n = Math.round(self.progress * words.length);
-        words.forEach((w, i) => w.classList.toggle("on", i < n));
-      },
-    });
-    return () => st.kill();
+    let lit = -1;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const r = el.getBoundingClientRect();
+      const start = window.innerHeight * 0.78;
+      const end = window.innerHeight * 0.45;
+      const progress = Math.min(1, Math.max(0, (start - r.top) / (r.height + start - end)));
+      const n = Math.round(progress * words.length);
+      if (n === lit) return;
+      lit = n;
+      words.forEach((w, i) => w.classList.toggle("on", i < n));
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (

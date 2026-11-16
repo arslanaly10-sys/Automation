@@ -2,21 +2,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
 import { industries } from "@/lib/content";
-
-gsap.registerPlugin(ScrollTrigger);
+import { whenPinnable } from "@/lib/load-gsap";
 
 /** Industries move sideways as the page scrolls down (desktop). On touch it is a native swipe row. */
 export function IndustrySlider() {
   const section = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
-    const mm = gsap.matchMedia();
-    mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
+  useLayoutEffect(
+    () =>
+      whenPinnable(({ gsap }) => {
       const el = track.current!;
       const distance = () => el.scrollWidth - window.innerWidth + 64;
       const tween = gsap.to(el, {
@@ -24,10 +21,14 @@ export function IndustrySlider() {
         ease: "none",
         scrollTrigger: { trigger: section.current, start: "top top", end: () => `+=${distance()}`, pin: true, scrub: 0.6, invalidateOnRefresh: true },
       });
-      return () => { tween.scrollTrigger?.kill(); tween.kill(); };
-    });
-    return () => mm.revert();
-  }, []);
+      return () => {
+        tween.scrollTrigger?.kill(true);
+        tween.kill();
+        gsap.set(el, { clearProps: "transform" });
+      };
+      }),
+    [],
+  );
 
   return (
     <div>
