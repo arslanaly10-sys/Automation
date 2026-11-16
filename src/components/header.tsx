@@ -69,7 +69,7 @@ export function Header() {
       <div
         id="mobile-menu"
         hidden={!open}
-        className="fixed inset-x-0 top-18 bottom-0 bg-black text-white lg:hidden"
+        className="fixed inset-x-0 top-18 bottom-0 overflow-y-auto overscroll-contain bg-black text-white lg:hidden"
       >
         <nav className="wrap flex h-full flex-col gap-2 pt-8 pb-10" aria-label="Mobile">
           {[{ href: "/", label: "Home" }, ...nav, { href: "/contact", label: "Contact" }].map((item) => (

@@ -17,7 +17,7 @@ export const site = {
   // PLACEHOLDER: replace with your real inbox
   email: "hello@infotech.example",
   // PLACEHOLDER: replace with your production domain
-  siteUrl: "https://infotech-website.vercel.app",
+  siteUrl: "https://infotech-website-arslan-b69a.vercel.app",
 
   // Commercial terms shown on the pricing page. Edit to match your contracts.
   terms: {

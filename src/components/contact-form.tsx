@@ -28,7 +28,7 @@ export function ContactForm() {
   return (
     <form onSubmit={onSubmit} className="grid gap-5 rounded-[26px] border border-line bg-surface p-6 md:grid-cols-2 md:p-9">
       <label className="grid gap-2 text-sm">Your name<input name="name" required autoComplete="name" className={field} /></label>
-      <label className="grid gap-2 text-sm">Work email<input name="email" type="email" required autoComplete="email" className={field} /></label>
+      <label className="grid gap-2 text-sm">Work email<input name="email" type="email" required autoComplete="email" spellCheck={false} className={field} /></label>
       <label className="grid gap-2 text-sm">Business name<input name="business" autoComplete="organization" className={field} /></label>
       <label className="grid gap-2 text-sm">Country<input name="country" autoComplete="country-name" className={field} /></label>
       <label className="grid gap-2 text-sm md:col-span-2">Industry

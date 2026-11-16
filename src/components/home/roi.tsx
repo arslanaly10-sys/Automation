@@ -40,7 +40,7 @@ export function RoiCalculator() {
             <Slider label="Average value of a job or booking" value={value} min={25} max={5000} step={25} onChange={setValue} display={fmt(value)} />
             <label className="flex items-center justify-between gap-4 text-sm">
               <span className="text-muted">Currency</span>
-              <select value={cur} onChange={(e) => setCur(e.target.value)} className="rounded-full border border-line bg-bg px-4 py-2">
+              <select value={cur} onChange={(e) => setCur(e.target.value)} className="rounded-full border border-line bg-bg px-4 py-2 text-ink">
                 {currencies.map((c) => <option key={c.code} value={c.code}>{c.code}</option>)}
               </select>
             </label>
