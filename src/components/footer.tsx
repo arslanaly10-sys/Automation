@@ -16,7 +16,7 @@ export function Footer() {
 
         <FooterCol title="Services" className="md:col-span-3 md:col-start-6">
           {services.slice(0, 6).map((s) => (
-            <Link key={s.slug} href={`/services#${s.slug}`} className="link-draw">{s.name.replace(" for calls, chat and text", "")}</Link>
+            <Link key={s.slug} href={`/services/${s.slug}`} className="link-draw">{s.name.replace(" for calls, chat and text", "")}</Link>
           ))}
         </FooterCol>
         <FooterCol title="Industries" className="md:col-span-2">

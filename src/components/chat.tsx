@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { ArrowCounterClockwiseIcon, CalendarCheckIcon, PhoneIncomingIcon } from "@phosphor-icons/react";
+import { ArrowCounterClockwiseIcon, CalendarCheckIcon, ChatCircleTextIcon, PhoneIncomingIcon } from "@phosphor-icons/react";
 
 export type Msg = { from: "customer" | "ai"; text: string };
 
@@ -10,6 +10,7 @@ export function ChatPlayer({
   outcome,
   header = "Incoming call",
   meta = "9:12 pm",
+  caption,
   autoplay = true,
   tone = "dark",
 }: {
@@ -17,6 +18,7 @@ export function ChatPlayer({
   outcome: string;
   header?: string;
   meta?: string;
+  caption?: string;
   autoplay?: boolean;
   tone?: "dark" | "light";
 }) {
@@ -24,10 +26,20 @@ export function ChatPlayer({
   const [typing, setTyping] = useState(false);
   const [run, setRun] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
+  const root = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
   const done = shown >= messages.length;
 
   useEffect(() => {
-    if (!autoplay) return;
+    const el = root.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); io.disconnect(); } }, { threshold: 0.35 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!autoplay || !visible) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setShown(messages.length);
       return;
@@ -44,7 +56,7 @@ export function ChatPlayer({
       t += 650;
     });
     return () => { cancelled = true; timers.forEach(clearTimeout); };
-  }, [autoplay, messages, run]);
+  }, [autoplay, visible, messages, run]);
 
   useEffect(() => {
     ref.current?.scrollTo({ top: ref.current.scrollHeight, behavior: "smooth" });
@@ -55,6 +67,7 @@ export function ChatPlayer({
 
   return (
     <div
+      ref={root}
       className={`overflow-hidden rounded-[22px] border shadow-[0_30px_80px_-20px_rgba(0,0,0,.55)] ${
         dark ? "border-white/12 bg-[#0d0d10]/90 text-white backdrop-blur-xl" : "border-line bg-bg text-ink"
       }`}
@@ -62,11 +75,11 @@ export function ChatPlayer({
       <div className={`flex items-center justify-between gap-3 border-b px-5 py-4 ${dark ? "border-white/10" : "border-line"}`}>
         <div className="flex items-center gap-3">
           <span className="grid size-9 place-items-center rounded-full bg-crimson text-white">
-            <PhoneIncomingIcon aria-hidden="true" size={18} weight="fill" />
+            {/call/i.test(header) ? <PhoneIncomingIcon aria-hidden="true" size={18} weight="fill" /> : <ChatCircleTextIcon aria-hidden="true" size={18} weight="fill" />}
           </span>
           <div className="leading-tight">
             <p className="text-sm font-semibold">{header}</p>
-            <p className={`text-xs ${dark ? "text-white/55" : "text-muted"}`}>{meta}, answered by your AI receptionist</p>
+            <p className={`text-xs ${dark ? "text-white/55" : "text-muted"}`}>{caption ?? `${meta}, answered by your AI receptionist`}</p>
           </div>
         </div>
         {autoplay && done && (

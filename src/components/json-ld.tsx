@@ -41,7 +41,7 @@ export const servicesLd = {
       "@type": "Service",
       name: s.name,
       description: s.short,
-      url: `${site.siteUrl}/services#${s.slug}`,
+      url: `${site.siteUrl}/services/${s.slug}`,
       provider: { "@id": `${site.siteUrl}/#org` },
       areaServed: "Worldwide",
     },

@@ -4,7 +4,8 @@ Next.js 15 (App Router) + Tailwind CSS v4 marketing site for INFOTECH, an AI aut
 
 ## Where things live
 - `src/lib/site.ts`: name, booking link, email, domain, commercial terms. **Placeholders must be replaced before launch.** The contact form posts to Formspree using `NEXT_PUBLIC_FORMSPREE_ID` and falls back to mailto when it's unset.
-- `src/lib/content.ts`: all copy (services, industries, steps, pricing, FAQs). Edit words here, not in components.
+- `src/lib/content.ts`: all copy (services, industries, steps, pricing, FAQs, and `serviceDetails` for the `/services/[slug]` pages). Edit words here, not in components.
+- Reviews copy must never filter who is asked for a review (review gating breaks Google and FTC rules).
 - `src/app/globals.css`: brand tokens (light and `.dark`). Custom classes sit in `@layer components` so Tailwind utilities can override them. Keep it that way.
 - `src/components/brand.tsx`: wordmark (traced from the logo) and the diamond mark.
 - `public/images/`: Unsplash photos (Unsplash License; credit line is in the footer).

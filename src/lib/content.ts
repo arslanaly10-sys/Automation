@@ -70,13 +70,13 @@ export const services: Service[] = [
     slug: "reviews",
     icon: "star",
     name: "Reviews and referrals",
-    short: "Asks for reviews at the right moment, and sends complaints to a manager before they go public.",
+    short: "Asks every customer for a review at the right moment, and alerts a manager the moment something went wrong.",
     body:
-      "Once a job is done, customers get a short check-in. Happy customers are invited to leave a review or refer a friend. Anyone who isn’t happy is routed to a manager within minutes, while there is still time to put it right.",
+      "Once a job is done, every customer gets a short check-in and an invitation to leave a review. Nobody is filtered out, because review platforms don’t allow it. If someone says something went wrong, a manager hears about it within minutes, while there is still time to put it right.",
     includes: [
       "Post-job check-in by text or email",
-      "Review requests to the platforms that matter to you",
-      "Unhappy replies escalated to a manager",
+      "Review requests to every customer, on the platforms that matter to you",
+      "Problem replies flagged to a manager within minutes",
       "Referral prompts for your best customers",
     ],
   },
@@ -290,7 +290,7 @@ export const industries: Industry[] = [
       { title: "Bookings and reservations", body: "Booked into your calendar or reservation system, with deposits where you use them." },
       { title: "Reminders and waitlist fill", body: "Cancellations offered straight to people on the waitlist." },
       { title: "Membership and FAQ handling", body: "Opening hours, pricing, classes and policies answered instantly." },
-      { title: "Win-back and reviews", body: "A timely nudge for lapsed regulars and a review request after a great visit." },
+      { title: "Win-back and reviews", body: "A timely nudge for lapsed regulars and a review request after every visit." },
     ],
     conversation: [
       { from: "customer", text: "Any chance of a cut and colour on Saturday?" },
@@ -456,3 +456,250 @@ export const faqs = [
     a: "Yes, and we recommend it. Starting with one workflow makes it easy to measure, easy to trust, and easy to expand once you can see it working.",
   },
 ];
+
+
+/* ---------- Service detail pages (/services/[slug]) ---------- */
+
+export type ServiceSample =
+  | { kind: "chat"; header: string; caption: string; messages: { from: "customer" | "ai"; text: string }[]; outcome: string }
+  | { kind: "log"; title: string; items: { label: string; value: string }[]; note: string };
+
+export type ServiceDetail = {
+  headline: string;
+  image: string;
+  imageAlt: string;
+  steps: { title: string; body: string }[];
+  fit: string[];
+  faqs: { q: string; a: string }[];
+  sample: ServiceSample;
+};
+
+export const serviceDetails: Record<string, ServiceDetail> = {
+  "ai-reception": {
+    headline: "An AI receptionist that answers every call, chat and text",
+    image: "/images/front-desk-pos.jpg",
+    imageAlt: "A customer paying at a front-desk card terminal",
+    steps: [
+      { title: "It answers in seconds", body: "Calls, website chat, SMS and WhatsApp are picked up straight away, day or night, with a greeting in your business’s name." },
+      { title: "It asks your questions", body: "What they need, where they are, how urgent it is. The script is written with you and approved before launch." },
+      { title: "It books, routes or hands over", body: "Routine requests are booked or logged. Anything sensitive, unclear or upset goes to a person with a written summary." },
+    ],
+    fit: ["home-services", "dental-medspa", "automotive"],
+    faqs: [
+      { q: "Can callers tell it’s an AI?", a: "Yes. Callers are told at the start that they’re speaking with a virtual assistant. It’s more honest, and in a growing number of places it’s a legal requirement." },
+      { q: "Can it transfer to a real person?", a: "Yes, on the rules you choose: on request, for complaints, for urgent jobs or during set hours. It can transfer live or create a call-back task with the full transcript." },
+      { q: "Do we keep our phone number?", a: "Usually. Most setups forward your existing number, or just the calls nobody picks up, to the receptionist. We confirm what your phone provider supports during the audit." },
+    ],
+    sample: {
+      kind: "chat",
+      header: "Incoming call",
+      caption: "Example: a new client calls a med spa",
+      messages: [
+        { from: "customer", text: "Hi, I’d like to book a consultation for laser hair removal." },
+        { from: "ai", text: "Happy to help. Have you visited us before, or would this be your first appointment?" },
+        { from: "customer", text: "First time." },
+        { from: "ai", text: "Welcome. First consultations take 30 minutes. I have Wednesday at 5:15 pm or Saturday at 10 am. Which suits you?" },
+        { from: "customer", text: "Saturday." },
+        { from: "ai", text: "Booked for Saturday at 10 am. I’ve texted you the address and a short form to fill in beforehand." },
+      ],
+      outcome: "Booked: consultation, Saturday 10 am. Intake form sent.",
+    },
+  },
+  "lead-follow-up": {
+    headline: "Every lead gets a reply within a minute, and follow-up until it’s settled",
+    image: "/images/realestate-keys.jpg",
+    imageAlt: "House keys resting beside a small model home",
+    steps: [
+      { title: "Every source in one place", body: "Web forms, ad leads, directory enquiries and missed calls land in one pipeline, each with its source attached." },
+      { title: "A fast first reply", body: "The lead hears back within a minute by text or email, with a useful question rather than a generic “thanks for your enquiry”." },
+      { title: "Follow-up that knows when to stop", body: "A short sequence over days or weeks, which stops the moment they reply, book or ask not to be contacted." },
+    ],
+    fit: ["real-estate", "home-services", "professional-services"],
+    faqs: [
+      { q: "Won’t follow-up annoy people?", a: "Not when it’s short and stops at the right time. Sequences are a few messages, spaced out and written in your voice, and every message makes it easy to opt out." },
+      { q: "Which lead sources can you connect?", a: "Website forms, Facebook and Google lead ads, most directory and portal emails, and your phone line for missed calls. If a source can send an email or a webhook, it can usually be connected." },
+      { q: "What about texting rules?", a: "Messaging rules vary by country. In the US, for example, business texting needs registered numbers and the customer’s consent. We set this up properly during onboarding." },
+    ],
+    sample: {
+      kind: "chat",
+      header: "Missed call",
+      caption: "Example: text-back after a missed call",
+      messages: [
+        { from: "ai", text: "Hi, sorry we missed your call at Harbour Plumbing. What can we help with?" },
+        { from: "customer", text: "Need a quote for a bathroom refit." },
+        { from: "ai", text: "Great. Roughly what size is the bathroom, and are you keeping the same layout?" },
+        { from: "customer", text: "Small, same layout." },
+        { from: "ai", text: "Thanks. Our estimator can visit Thursday at 3 pm or Friday at 9 am. Would either work?" },
+      ],
+      outcome: "Estimate visit requested. Lead tagged: bathroom refit, missed call.",
+    },
+  },
+  scheduling: {
+    headline: "Booking, reminders and rescheduling, without the phone calls",
+    image: "/images/dental-clinic.jpg",
+    imageAlt: "A bright, modern dental treatment room",
+    steps: [
+      { title: "Real availability, your rules", body: "Customers see slots that respect job length, travel time, staff skills and the gaps you need between appointments." },
+      { title: "Confirmations and reminders", body: "Sent at the times that suit your business, with a simple way to confirm or change." },
+      { title: "Gaps get filled", body: "Cancellations are offered to the waitlist, and anyone who misses an appointment gets a polite message offering a new time." },
+    ],
+    fit: ["dental-medspa", "consumer-services", "automotive"],
+    faqs: [
+      { q: "Do we have to change booking software?", a: "Usually not. We work with your current calendar or booking system where it allows it. If it doesn’t, we’ll explain the options before you commit." },
+      { q: "Can customers reschedule themselves?", a: "Yes, by replying to a text or using a link, within the rules you set, such as no changes within 24 hours of the appointment." },
+      { q: "Can it take deposits?", a: "Where your booking or payment system supports deposits, we can add a payment link to the booking flow." },
+    ],
+    sample: {
+      kind: "chat",
+      header: "Appointment reminder",
+      caption: "Example: a reminder turns into a reschedule",
+      messages: [
+        { from: "ai", text: "Hi Sam, a reminder of your appointment tomorrow at 2:30 pm. Reply C to confirm or R to reschedule." },
+        { from: "customer", text: "R, something came up" },
+        { from: "ai", text: "No problem. I can offer Thursday at 11 am or Friday at 4 pm. Which works?" },
+        { from: "customer", text: "Friday" },
+        { from: "ai", text: "Done. You’re booked for Friday at 4 pm. See you then." },
+      ],
+      outcome: "Rescheduled to Friday 4 pm. Original slot offered to the waitlist.",
+    },
+  },
+  reactivation: {
+    headline: "Bring back the customers you already have",
+    image: "/images/gym.jpg",
+    imageAlt: "Rows of dumbbells in a bright, empty gym",
+    steps: [
+      { title: "Find who’s due", body: "We look through your customer records for overdue services, open quotes and members who’ve stopped coming." },
+      { title: "Reach out in your voice", body: "Short, personal messages with a clear reason to come back and an easy way to book." },
+      { title: "Report what it brought in", body: "Every campaign is measured in bookings and revenue, so you can see whether it was worth it." },
+    ],
+    fit: ["home-services", "automotive", "consumer-services"],
+    faqs: [
+      { q: "Is it allowed to message past customers?", a: "It depends on where you operate and how the contact details were collected. We check consent and opt-out rules for your market before anything is sent." },
+      { q: "How often do messages go out?", a: "Rarely. Reactivation works because it’s timely and relevant, not frequent. Most customers hear from you a few times a year at most." },
+      { q: "What data do you need?", a: "A customer list with contact details and, ideally, the date of their last visit or service. An export from your CRM or booking system is enough to start." },
+    ],
+    sample: {
+      kind: "chat",
+      header: "Service reminder",
+      caption: "Example: an annual service comes due",
+      messages: [
+        { from: "ai", text: "Hi Priya, it’s been about a year since your boiler service with us. Would you like to book this year’s check before winter?" },
+        { from: "customer", text: "Yes, good idea. Anything next week?" },
+        { from: "ai", text: "Tuesday at 10 am or Wednesday at 2 pm are free. Which suits you?" },
+        { from: "customer", text: "Tuesday" },
+        { from: "ai", text: "Booked for Tuesday at 10 am. You’ll get a reminder the day before." },
+      ],
+      outcome: "Annual service booked from a reactivation message.",
+    },
+  },
+  reviews: {
+    headline: "More reviews, and a fast alert when something went wrong",
+    image: "/images/restaurant.jpg",
+    imageAlt: "A warmly lit restaurant dining room",
+    steps: [
+      { title: "A check-in after every job", body: "A short message asks how it went, sent while the experience is still fresh." },
+      { title: "Everyone gets a review link", body: "Every customer is invited to leave a review. Nobody is filtered out, because Google and other platforms don’t allow it." },
+      { title: "Problems reach a manager", body: "If someone replies that something went wrong, a manager is alerted within minutes, with the details, so it can be put right." },
+    ],
+    fit: ["consumer-services", "dental-medspa", "home-services"],
+    faqs: [
+      { q: "Do you only ask happy customers?", a: "No. Every customer gets the same invitation. Asking only happy customers breaks the rules of Google and other platforms and can put your profile at risk. What we add is a fast alert to a manager when someone reports a problem." },
+      { q: "Which review sites can it use?", a: "Whichever matter in your market: Google, Facebook, Trustpilot, Yelp or an industry directory. You choose." },
+      { q: "Can it ask for referrals too?", a: "Yes. Customers can be offered a referral link or code you already use, alongside the review invitation." },
+    ],
+    sample: {
+      kind: "chat",
+      header: "Post-visit check-in",
+      caption: "Example: the message after a job",
+      messages: [
+        { from: "ai", text: "Hi Jordan, thanks for choosing us today. How did everything go?" },
+        { from: "customer", text: "Really good, Marcus was great." },
+        { from: "ai", text: "Glad to hear it, I’ll pass that on to Marcus. If you have a minute, a Google review helps other people find us: (review link)" },
+        { from: "customer", text: "Will do!" },
+      ],
+      outcome: "Review invitation sent. Feedback shared with Marcus.",
+    },
+  },
+  integrations: {
+    headline: "Your CRM, calendar and job tools, kept in sync",
+    image: "/images/team-desks.jpg",
+    imageAlt: "Two people working at desks with large monitors in a bright office",
+    steps: [
+      { title: "Map what you use", body: "We list every system involved and decide where each piece of customer information should live." },
+      { title: "Connect and test", body: "Two-way connections with clear rules for which system owns which record, tested with real examples before launch." },
+      { title: "Watch for errors", body: "Failed syncs alert us, not your customers. We fix them before they turn into a missed booking." },
+    ],
+    fit: ["professional-services", "real-estate", "home-services"],
+    faqs: [
+      { q: "Do you use Zapier?", a: "Sometimes. We use whatever suits the job: direct API connections, Make, Zapier or n8n. Either way, the accounts are in your name." },
+      { q: "What if my software has no API?", a: "We’ll tell you during the audit. Sometimes reading notification emails or using a booking link works. Sometimes the honest answer is that it can’t be connected reliably." },
+      { q: "Who maintains the connections?", a: "We do, as part of your plan. Software providers change things, and we keep watching so you don’t have to." },
+    ],
+    sample: {
+      kind: "log",
+      title: "Example sync log",
+      items: [
+        { label: "Website form submitted", value: "Contact created in CRM" },
+        { label: "AI receptionist booked a visit", value: "Event added to Google Calendar" },
+        { label: "Job marked complete", value: "Review invitation queued" },
+        { label: "Invoice paid", value: "CRM deal marked won" },
+      ],
+      note: "Each step happens within seconds of the one before it.",
+    },
+  },
+  "back-office": {
+    headline: "Less data entry, and no more chasing paperwork",
+    image: "/images/pro-tax.jpg",
+    imageAlt: "Tax forms, a calculator and a phone on a desk",
+    steps: [
+      { title: "Intake that fills your systems", body: "Forms feed straight into your CRM or job system, so nothing gets typed in twice." },
+      { title: "Documents collected automatically", body: "Secure upload links and polite reminders until everything is in." },
+      { title: "Status updates without the calls", body: "Customers get an update at each stage, so they don’t need to ring and ask." },
+    ],
+    fit: ["professional-services", "real-estate", "automotive"],
+    faqs: [
+      { q: "Is document upload secure?", a: "We use established tools with encrypted upload and access controls, chosen with you based on how sensitive the documents are and the rules in your industry." },
+      { q: "Can it send invoices?", a: "It can send reminders for invoices raised in your accounting software, with a payment link where your system supports one." },
+      { q: "What reports do we get?", a: "A weekly email summary: new enquiries, bookings, documents still outstanding and anything that needs a person." },
+    ],
+    sample: {
+      kind: "chat",
+      header: "Document request",
+      caption: "Example: collecting paperwork before an appointment",
+      messages: [
+        { from: "ai", text: "Hi Alex, we still need two documents before Friday’s appointment: photo ID and last year’s bank statement. You can upload them here: (secure link)" },
+        { from: "customer", text: "Sent the ID, will find the statement tonight" },
+        { from: "ai", text: "Thanks, your ID has arrived. I’ll check in tomorrow morning about the statement." },
+      ],
+      outcome: "1 of 2 documents received. Reminder scheduled for 9 am.",
+    },
+  },
+  optimisation: {
+    headline: "Automation that gets better after launch, not worse",
+    image: "/images/team-workshop.jpg",
+    imageAlt: "A team gathered around a conference table during a workshop",
+    steps: [
+      { title: "We read the conversations", body: "Regular reviews of transcripts and exceptions to find where the system was unsure or got it wrong." },
+      { title: "We tune scripts and rules", body: "Small changes, tested before they go live, as your services, prices and hours change." },
+      { title: "We report what changed", body: "A monthly report on response times, bookings, handoffs and every adjustment we made." },
+    ],
+    fit: ["home-services", "dental-medspa", "consumer-services"],
+    faqs: [
+      { q: "Is this included in every plan?", a: "Yes. Ongoing care is part of every plan. How often we review conversations increases with the plan." },
+      { q: "What if something breaks at night?", a: "Failures alert us automatically. Anything that can’t wait goes to your team, using the handoff rules you approved." },
+      { q: "Can we change the scripts ourselves?", a: "Yes. Send us the change or ask for edit access. We test new wording against edge cases before it goes live." },
+    ],
+    sample: {
+      kind: "log",
+      title: "Example monthly report",
+      items: [
+        { label: "Enquiries answered", value: "412" },
+        { label: "Median time to first reply", value: "34 seconds" },
+        { label: "Bookings made", value: "96" },
+        { label: "Handed to your team", value: "31" },
+        { label: "Changes we made", value: "4 script updates, 1 new handoff rule" },
+      ],
+      note: "Illustrative figures. Your report shows your own numbers.",
+    },
+  },
+};

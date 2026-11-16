@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { CheckIcon } from "@phosphor-icons/react/dist/ssr";
 import { services } from "@/lib/content";
 import { ServiceIcon } from "@/components/icons";
@@ -38,6 +39,9 @@ export default function ServicesPage() {
                   <span className="grid size-12 place-items-center rounded-full bg-crimson-soft text-crimson-ink"><ServiceIcon aria-hidden="true" name={s.icon} size={24} /></span>
                   <h2 className="display mt-6 text-[clamp(1.9rem,3vw,2.6rem)]">{s.name}</h2>
                   <p className="mt-3 text-lg text-muted">{s.short}</p>
+                  <Link href={`/services/${s.slug}`} className="group mt-6 inline-flex items-center gap-2 font-semibold text-crimson-ink">
+                    How it works <ArrowUpRightIcon aria-hidden="true" size={16} weight="bold" className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </Link>
                 </div>
                 <div className="lg:col-span-6 lg:col-start-7">
                   <p className="measure text-[17px]">{s.body}</p>

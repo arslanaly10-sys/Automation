@@ -44,7 +44,7 @@ export function ServicesList() {
         <ul className="lg:col-span-7 lg:col-start-6">
           {services.map((s) => (
             <li key={s.slug} className="border-t border-line last:border-b">
-              <Link href={`/services#${s.slug}`} className="group grid grid-cols-[44px_1fr] gap-5 py-7">
+              <Link href={`/services/${s.slug}`} className="group grid grid-cols-[44px_1fr] gap-5 py-7">
                 <span className="grid size-11 place-items-center rounded-full bg-crimson-soft text-crimson-ink transition-transform duration-200 group-hover:-translate-y-0.5">
                   <ServiceIcon aria-hidden="true" name={s.icon} />
                 </span>
