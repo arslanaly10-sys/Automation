@@ -34,4 +34,4 @@ npm run build
 npm run lint
 ```
 
-Skills for this project are in `.claude/skills/` (see its README).
+Skills for this project are in `.claude/skills/` (see its README). What is left before launch is tracked in `LAUNCH-CHECKLIST.md`.
