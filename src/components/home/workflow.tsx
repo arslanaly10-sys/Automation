@@ -16,7 +16,7 @@ export function Workflow() {
       whenPinnable(({ gsap, ScrollTrigger }) => {
       const st = ScrollTrigger.create({
         trigger: section.current,
-        start: "top top",
+        start: "center center",
         end: `+=${steps.length * 75}%`,
         pin: true,
         scrub: true,
@@ -36,9 +36,9 @@ export function Workflow() {
   );
 
   return (
-    <div>
-    <section ref={section} id="how-it-works" className="relative overflow-hidden bg-surface lg:h-screen">
-      <div className="wrap grid h-full items-center gap-14 py-24 lg:grid-cols-12 lg:py-0">
+    <div className="bg-surface">
+    <section ref={section} id="how-it-works" className="relative overflow-hidden bg-surface lg:h-[min(100svh,740px)]">
+      <div className="wrap grid h-full items-center gap-14 py-16 md:py-20 lg:grid-cols-12 lg:py-0">
         <div className="lg:col-span-5">
           <h2 className="display display-lg">From first hello to finished job, without anything slipping.</h2>
           <ol className="mt-10 hidden flex-col gap-2 lg:flex">

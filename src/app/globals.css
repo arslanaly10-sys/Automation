@@ -116,6 +116,10 @@ body {
   .section       { padding-block: 5.5rem; }
   .section-tight { padding-block: 4.5rem; }
 }
+/* Two neighbouring sections on the same ground read as one band: don't stack both paddings */
+:is(.section, .section-tight).bg-bg + :is(.section, .section-tight).bg-bg,
+:is(.section, .section-tight).bg-surface + :is(.section, .section-tight).bg-surface,
+:is(.section, .section-tight).bg-black + :is(.section, .section-tight).bg-black { padding-top: 0; }
 /* A slim booking strip already separates sections, so the next one needs less air */
 .strip + .section, .strip + .section-tight, .strip + div > .section { padding-top: 3rem; }
 

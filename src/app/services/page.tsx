@@ -36,7 +36,7 @@ export default function ServicesPage() {
           </nav>
           <div className="flex flex-col">
             {services.map((s, i) => (
-              <article key={s.slug} id={s.slug} className="grid scroll-mt-28 gap-8 border-t border-line py-14 lg:grid-cols-12">
+              <article key={s.slug} id={s.slug} className="grid scroll-mt-28 gap-8 border-t border-line py-14 last:pb-0 lg:grid-cols-12">
                 <div className="lg:col-span-5">
                   <span className="grid size-12 place-items-center rounded-full bg-crimson-soft text-crimson-ink"><ServiceIcon aria-hidden="true" name={s.icon} size={24} /></span>
                   <h2 className="display mt-6 display-md">{s.name}</h2>
