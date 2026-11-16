@@ -53,7 +53,7 @@ export function IndustrySlider() {
               <p className="display text-3xl">{ind.name}</p>
               <p className="mt-2 text-sm text-white/70">{ind.examples}</p>
               <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold">
-                See workflows <ArrowUpRightIcon size={16} weight="bold" className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                See workflows <ArrowUpRightIcon aria-hidden="true" size={16} weight="bold" className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>
             </div>
           </Link>

@@ -43,6 +43,7 @@ export function HomeHero() {
         </div>
 
         <div className="msg-in lg:col-span-5 lg:col-start-8" style={{ animationDelay: "500ms" }}>
+          <p className="mb-3 text-sm text-white/60">Example: how an after-hours call is handled</p>
           <ChatPlayer messages={script} outcome="Booked: AC repair, tomorrow 8:30 am. Added to CRM." />
         </div>
       </div>

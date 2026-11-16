@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { ListIcon, XIcon } from "@phosphor-icons/react";
 import { Wordmark } from "./brand";
 import { ThemeToggle } from "./theme-toggle";
-import { nav, site } from "@/lib/site";
+import { bookHref, bookingReady, nav, site } from "@/lib/site";
 
 export function Header() {
   const pathname = usePathname();
@@ -51,7 +51,7 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <Link href="/contact" className="btn btn-primary hidden sm:inline-flex">
+          <Link href={bookHref} {...(bookingReady ? { target: "_blank", rel: "noopener" } : {})} className="btn btn-primary hidden sm:inline-flex">
             Book a strategy call
           </Link>
           <button
@@ -61,7 +61,7 @@ export function Header() {
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
           >
-            {open ? <XIcon size={20} weight="bold" /> : <ListIcon size={20} weight="bold" />}
+            {open ? <XIcon aria-hidden="true" size={20} weight="bold" /> : <ListIcon aria-hidden="true" size={20} weight="bold" />}
           </button>
         </div>
       </div>
@@ -77,7 +77,7 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Link href="/contact" className="btn btn-primary mt-auto w-full">
+          <Link href={bookHref} {...(bookingReady ? { target: "_blank", rel: "noopener" } : {})} className="btn btn-primary mt-auto w-full">
             Book a strategy call
           </Link>
         </nav>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { CalendarCheckIcon, EnvelopeSimpleIcon } from "@phosphor-icons/react/dist/ssr";
 import { PageHero } from "@/components/sections";
 import { ContactForm } from "@/components/contact-form";
-import { site } from "@/lib/site";
+import { bookingReady, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -20,11 +20,11 @@ export default function ContactPage() {
     <>
       <PageHero
         title="What would you like your team to stop doing by hand?"
-        intro="Book a 30-minute strategy call, or send a message and we’ll reply within one working day."
+        intro={bookingReady ? "Book a 30-minute strategy call, or send a message and we’ll reply within one working day." : "Send a message about the workflow you want to automate and we’ll reply within one working day."}
       >
         <div className="flex flex-wrap gap-3">
-          <a href={site.bookingUrl} target="_blank" rel="noopener" className="btn btn-primary"><CalendarCheckIcon size={18} weight="bold" />Book a strategy call</a>
-          <a href={`mailto:${site.email}`} className="btn btn-ghost text-white"><EnvelopeSimpleIcon size={18} />{site.email}</a>
+          {bookingReady && <a href={site.bookingUrl} target="_blank" rel="noopener" className="btn btn-primary"><CalendarCheckIcon aria-hidden="true" size={18} weight="bold" />Book a strategy call</a>}
+          <a href={`mailto:${site.email}`} className="btn btn-ghost text-white"><EnvelopeSimpleIcon aria-hidden="true" size={18} />{site.email}</a>
         </div>
       </PageHero>
       <section className="bg-bg py-20 md:py-28">

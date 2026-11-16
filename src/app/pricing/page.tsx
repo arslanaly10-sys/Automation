@@ -3,11 +3,14 @@ import { CtaCalendar, PageHero, PlanCards } from "@/components/sections";
 import { Faq } from "@/components/faq";
 import { faqs } from "@/lib/content";
 import { site } from "@/lib/site";
+import { JsonLd, faqLd, pricingLd } from "@/components/json-ld";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description: "Monthly plans from $497. Setup quoted after a workflow audit. Usage billed at cost. Month-to-month after launch.",
 };
+
+const pricingFaqs = faqs.filter((f) => /cost|own|long|start|replace/i.test(f.q));
 
 export default function PricingPage() {
   return (
@@ -34,7 +37,9 @@ export default function PricingPage() {
           <p className="mt-10 text-sm text-muted">Prices in US dollars. We quote in your local currency on request.</p>
         </div>
       </section>
-      <Faq items={faqs.filter((f) => /cost|own|long|start|replace/i.test(f.q))} title="Pricing questions" />
+      <Faq items={pricingFaqs} title="Pricing questions" />
+      <JsonLd data={pricingLd} />
+      <JsonLd data={faqLd(pricingFaqs)} />
       <CtaCalendar title="Not sure which plan fits?" body="Tell us what’s slipping through the cracks and we’ll recommend the smallest plan that fixes it. Sometimes that’s Starter." />
     </>
   );

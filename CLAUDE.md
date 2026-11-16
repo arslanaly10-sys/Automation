@@ -9,6 +9,11 @@ Next.js 15 (App Router) + Tailwind CSS v4 marketing site for INFOTECH, an AI aut
 - `src/components/brand.tsx`: wordmark (traced from the logo) and the diamond mark.
 - `public/images/`: Unsplash photos (Unsplash License; credit line is in the footer).
 
+- Booking buttons use `bookHref` from `site.ts`: the contact page until `bookingUrl` is real, then the booking page.
+- `src/components/analytics.tsx`: Vercel Web Analytics plus "Booking click", "CTA click" and "Contact form sent" events.
+- `src/components/json-ld.tsx`: schema.org data (Organization, WebSite, FAQPage, Service list, pricing offers).
+- `src/app/opengraph-image.tsx`, `apple-icon.tsx`: generated share image and app icon.
+
 ## Brand rules
 - Crimson `#CB3A51` (logo), `--crimson-ink` for crimson text on light grounds. Black `#000` matches the logo ground.
 - Newsreader for display, Hanken Grotesk for body. Sentence case, no all-caps eyebrows.
@@ -22,6 +27,7 @@ GSAP ScrollTrigger + Lenis. Pinned "How it works", horizontal industry slider an
 ```bash
 npm run dev
 npm run build
+npm run lint
 ```
 
 Skills for this project are in `.claude/skills/` (see its README).

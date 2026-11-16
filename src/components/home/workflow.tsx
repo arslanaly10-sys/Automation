@@ -98,9 +98,9 @@ function StepUI({ kind }: { kind: (typeof steps)[number]["ui"] }) {
     return (
       <Card title="New enquiries">
         {[
-          { icon: <PhoneXIcon size={18} />, t: "Missed call", d: "9:12 pm", r: "Text-back sent in 8 s" },
-          { icon: <ChatCircleTextIcon size={18} />, t: "Web form: quote request", d: "12:40 pm", r: "Replied in 41 s" },
-          { icon: <WhatsappLogoIcon size={18} />, t: "“Do you work Sundays?”", d: "Sun 10:05", r: "Answered instantly" },
+          { icon: <PhoneXIcon aria-hidden="true" size={18} />, t: "Missed call", d: "9:12 pm", r: "Text-back sent in 8 s" },
+          { icon: <ChatCircleTextIcon aria-hidden="true" size={18} />, t: "Web form: quote request", d: "12:40 pm", r: "Replied in 41 s" },
+          { icon: <WhatsappLogoIcon aria-hidden="true" size={18} />, t: "“Do you work Sundays?”", d: "Sun 10:05", r: "Answered instantly" },
         ].map((x) => (
           <div key={x.t} className="flex items-start gap-3 border-t border-line py-3 first:border-0 first:pt-0">
             <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-full bg-crimson-soft text-crimson-ink">{x.icon}</span>
@@ -158,12 +158,12 @@ function StepUI({ kind }: { kind: (typeof steps)[number]["ui"] }) {
           ["CRM updated, job marked won", false],
         ].map(([t, d]) => (
           <li key={t as string} className="flex items-center gap-3">
-            <CheckCircleIcon size={20} weight={d ? "fill" : "regular"} className={d ? "text-crimson" : "text-muted"} />
+            <CheckCircleIcon aria-hidden="true" size={20} weight={d ? "fill" : "regular"} className={d ? "text-crimson" : "text-muted"} />
             <span className={d ? "" : "text-muted"}>{t as string}</span>
           </li>
         ))}
       </ul>
-      <p className="mt-4 flex items-center gap-2 rounded-xl bg-surface px-3 py-2.5 text-xs text-muted"><EnvelopeSimpleIcon size={14} /> Weekly summary goes to the owner every Monday.</p>
+      <p className="mt-4 flex items-center gap-2 rounded-xl bg-surface px-3 py-2.5 text-xs text-muted"><EnvelopeSimpleIcon aria-hidden="true" size={14} /> Weekly summary goes to the owner every Monday.</p>
     </Card>
   );
 }

@@ -5,6 +5,7 @@ import { services } from "@/lib/content";
 import { ServiceIcon } from "@/components/icons";
 import { CtaBanner, PageHero, ToolsMarquee } from "@/components/sections";
 import { Workflow } from "@/components/home/workflow";
+import { JsonLd, servicesLd } from "@/components/json-ld";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -34,7 +35,7 @@ export default function ServicesPage() {
             {services.map((s, i) => (
               <article key={s.slug} id={s.slug} className="grid scroll-mt-28 gap-8 border-t border-line py-14 lg:grid-cols-12">
                 <div className="lg:col-span-5">
-                  <span className="grid size-12 place-items-center rounded-full bg-crimson-soft text-crimson-ink"><ServiceIcon name={s.icon} size={24} /></span>
+                  <span className="grid size-12 place-items-center rounded-full bg-crimson-soft text-crimson-ink"><ServiceIcon aria-hidden="true" name={s.icon} size={24} /></span>
                   <h2 className="display mt-6 text-[clamp(1.9rem,3vw,2.6rem)]">{s.name}</h2>
                   <p className="mt-3 text-lg text-muted">{s.short}</p>
                 </div>
@@ -42,7 +43,7 @@ export default function ServicesPage() {
                   <p className="measure text-[17px]">{s.body}</p>
                   <ul className="mt-8 grid gap-3 sm:grid-cols-2">
                     {s.includes.map((x) => (
-                      <li key={x} className="flex gap-3 rounded-2xl bg-surface p-4 text-[15px]"><CheckIcon size={18} weight="bold" className="mt-0.5 shrink-0 text-crimson" />{x}</li>
+                      <li key={x} className="flex gap-3 rounded-2xl bg-surface p-4 text-[15px]"><CheckIcon aria-hidden="true" size={18} weight="bold" className="mt-0.5 shrink-0 text-crimson" />{x}</li>
                     ))}
                   </ul>
                   {i === 0 && <p className="mt-6 text-sm text-muted">Callers are always told they’re speaking with a virtual assistant.</p>}
@@ -55,6 +56,7 @@ export default function ServicesPage() {
       <Workflow />
       <ToolsMarquee />
       <CtaBanner />
+      <JsonLd data={servicesLd} />
     </>
   );
 }

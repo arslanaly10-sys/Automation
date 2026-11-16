@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import { site } from "@/lib/site";
+import { track } from "@vercel/analytics";
+import { bookingReady, site } from "@/lib/site";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -36,6 +37,7 @@ export function ContactForm() {
       });
       if (res.ok) {
         form.reset();
+        track("Contact form sent", { industry: String(data.get("industry") || "") });
         setStatus("sent");
         return;
       }
@@ -52,9 +54,9 @@ export function ContactForm() {
     return (
       <div className="rounded-[26px] border border-line bg-surface p-8 md:p-12" role="status">
         <p className="display text-4xl">Thanks, we’ve got it.</p>
-        <p className="mt-4 text-muted">We’ll reply within one working day. If it’s urgent, book a time directly.</p>
+        <p className="mt-4 text-muted">We’ll reply within one working day.{bookingReady && " If it’s urgent, book a time directly."}</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href={site.bookingUrl} target="_blank" rel="noopener" className="btn btn-primary">Book a strategy call</a>
+          {bookingReady && <a href={site.bookingUrl} target="_blank" rel="noopener" className="btn btn-primary">Book a strategy call</a>}
           <button type="button" className="btn btn-ghost" onClick={() => setStatus("idle")}>Send another message</button>
         </div>
       </div>

@@ -374,7 +374,7 @@ export const commitments = [
 
 export const tools = [
   "Google Calendar", "Microsoft Outlook", "HubSpot", "Salesforce", "Pipedrive", "Zoho",
-  "Calendly", "Jobber", "ServiceTitan", "Housecall Pro", "Twilio", "WhatsApp Business",
+  "Calendly", "Jobber", "Housecall Pro", "Twilio", "WhatsApp Business",
   "Stripe", "QuickBooks", "Xero", "Slack", "Zapier", "Make",
 ];
 

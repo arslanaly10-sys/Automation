@@ -10,5 +10,5 @@ const map = {
 
 export function ServiceIcon({ name, size = 22 }: { name: Service["icon"]; size?: number }) {
   const Icon = map[name];
-  return <Icon size={size} weight="duotone" />;
+  return <Icon aria-hidden="true" size={size} weight="duotone" />;
 }

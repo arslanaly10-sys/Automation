@@ -1,0 +1,3 @@
+# Agent skills and notes are for development only; keep them out of builds.
+.claude
+CLAUDE.md

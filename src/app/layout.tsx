@@ -5,6 +5,8 @@ import { Providers } from "@/components/providers";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { site } from "@/lib/site";
+import { Analytics } from "@/components/analytics";
+import { JsonLd, organizationLd } from "@/components/json-ld";
 
 const newsreader = Newsreader({ subsets: ["latin"], variable: "--font-newsreader", style: ["normal", "italic"], axes: ["opsz"] });
 const hanken = Hanken_Grotesk({ subsets: ["latin"], variable: "--font-hanken" });
@@ -13,7 +15,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.siteUrl),
   title: { default: `${site.name}: ${site.tagline}`, template: `%s | ${site.name}` },
   description: site.description,
-  openGraph: { title: site.name, description: site.description, images: ["/images/hero-electrician.jpg"], type: "website" },
+  openGraph: { title: site.name, description: site.description, type: "website", siteName: site.name },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = {
@@ -35,6 +38,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main id="main">{children}</main>
           <Footer />
         </Providers>
+        <Analytics />
+        <JsonLd data={organizationLd} />
       </body>
     </html>
   );

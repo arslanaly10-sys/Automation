@@ -29,7 +29,7 @@ export default function IndustriesPage() {
                 <h2 className="display mt-3 text-[clamp(1.8rem,2.8vw,2.5rem)]">{ind.name}</h2>
                 <p className="mt-3 text-muted">{ind.headline}</p>
                 <span className="mt-auto inline-flex items-center gap-2 pt-8 font-semibold">
-                  See workflows <ArrowUpRightIcon size={16} weight="bold" className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  See workflows <ArrowUpRightIcon aria-hidden="true" size={16} weight="bold" className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
               </div>
             </Link>

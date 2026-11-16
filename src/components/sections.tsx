@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CalendarCheckIcon, CheckIcon } from "@phosphor-icons/react/dist/ssr";
 import { commitments, pilot, plans, services, tools } from "@/lib/content";
-import { site } from "@/lib/site";
+import { bookHref, bookingReady, site } from "@/lib/site";
 import { ServiceIcon } from "./icons";
 import { Mark } from "./brand";
 
@@ -46,7 +46,7 @@ export function ServicesList() {
             <li key={s.slug} className="border-t border-line last:border-b">
               <Link href={`/services#${s.slug}`} className="group grid grid-cols-[44px_1fr] gap-5 py-7">
                 <span className="grid size-11 place-items-center rounded-full bg-crimson-soft text-crimson-ink transition-transform duration-200 group-hover:-translate-y-0.5">
-                  <ServiceIcon name={s.icon} />
+                  <ServiceIcon aria-hidden="true" name={s.icon} />
                 </span>
                 <span>
                   <span className="block text-xl font-semibold group-hover:text-crimson-ink">{s.name}</span>
@@ -101,8 +101,8 @@ export function ToolsMarquee() {
   return (
     <section className="border-y border-line bg-bg py-10">
       <div className="wrap mb-6 flex flex-col justify-between gap-2 md:flex-row">
-        <p className="font-semibold">Tools we commonly connect</p>
-        <p className="text-sm text-muted">If your software has an API or a booking link, we can usually work with it.</p>
+        <p className="font-semibold">Tools we can connect to</p>
+        <p className="text-sm text-muted">If your software has an API or a booking link, we can usually work with it. We confirm what connects during the audit.</p>
       </div>
       <div className="marquee overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
         <ul className="marquee-track flex w-max gap-3">
@@ -124,7 +124,7 @@ export function PlanCards() {
           key={p.name}
           className={`relative flex flex-col rounded-[26px] border p-8 ${p.featured ? "border-crimson bg-black text-white" : "border-line bg-bg"}`}
         >
-          {p.featured && <span className="absolute -top-3 left-8 rounded-full bg-crimson px-3 py-1 text-xs font-semibold text-white">Most chosen</span>}
+          {p.featured && <span className="absolute -top-3 left-8 rounded-full bg-crimson px-3 py-1 text-xs font-semibold text-white">Recommended</span>}
           <p className="text-lg font-semibold">{p.name}</p>
           <p className={`mt-2 text-[15px] ${p.featured ? "text-white/65" : "text-muted"}`}>{p.for}</p>
           <p className="mt-8 flex items-baseline gap-2">
@@ -134,7 +134,7 @@ export function PlanCards() {
           </p>
           <ul className="mt-8 flex flex-1 flex-col gap-3 text-[15px]">
             {p.features.map((f) => (
-              <li key={f} className="flex gap-3"><CheckIcon size={18} weight="bold" className="mt-1 shrink-0 text-crimson" />{f}</li>
+              <li key={f} className="flex gap-3"><CheckIcon aria-hidden="true" size={18} weight="bold" className="mt-1 shrink-0 text-crimson" />{f}</li>
             ))}
           </ul>
           <Link href="/contact" className={`btn mt-10 ${p.featured ? "btn-primary" : "btn-ink"}`}>Book a strategy call</Link>
@@ -173,11 +173,11 @@ export function CtaCalendar({ title = "Book a 30-minute strategy call", body = "
             <h2 className="display text-[clamp(2.2rem,4vw,3.4rem)]">{title}</h2>
             <p className="mt-5 max-w-[46ch] text-white/70">{body}</p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <a href={site.bookingUrl} target="_blank" rel="noopener" className="btn btn-primary"><CalendarCheckIcon size={18} weight="bold" />Pick a time</a>
+              <a href={bookHref} {...(bookingReady ? { target: "_blank", rel: "noopener" } : {})} className="btn btn-primary"><CalendarCheckIcon aria-hidden="true" size={18} weight="bold" />Pick a time</a>
               <Link href="/contact" className="btn btn-ghost text-white">Send a message instead</Link>
             </div>
           </div>
-          <a href={site.bookingUrl} target="_blank" rel="noopener" className="lift grid grid-cols-5 gap-2 rounded-[22px] border border-white/12 bg-white/[.04] p-5" aria-label="Open the booking calendar">
+          <a href={bookHref} {...(bookingReady ? { target: "_blank", rel: "noopener" } : {})} className="lift grid grid-cols-5 gap-2 rounded-[22px] border border-white/12 bg-white/[.04] p-5" aria-label="Open the booking calendar">
             {days.map((d, di) => (
               <div key={d} className="flex flex-col gap-2">
                 <p className="pb-1 text-center text-xs text-white/55">{d}</p>

@@ -9,14 +9,9 @@ export function Footer() {
     <footer className="relative overflow-hidden bg-black text-white">
       <div className="wrap grid gap-12 pt-20 pb-12 md:grid-cols-12">
         <div className="md:col-span-4">
-          <p className="display text-4xl leading-tight md:text-5xl">Ready when you are.</p>
-          <p className="mt-4 max-w-sm text-white/65">
-            Tell us which part of your customer journey takes the most time. We’ll show you what it would look like automated.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/contact" className="btn btn-primary">Book a strategy call</Link>
-            <a href={`mailto:${site.email}`} className="btn btn-ghost text-white">Email us</a>
-          </div>
+          <p className="display text-3xl leading-tight">AI automation for service businesses.</p>
+          <p className="mt-4 max-w-sm text-white/65">{site.description}</p>
+          <a href={`mailto:${site.email}`} className="link-draw mt-6 inline-block text-white/85">{site.email}</a>
         </div>
 
         <FooterCol title="Services" className="md:col-span-3 md:col-start-6">

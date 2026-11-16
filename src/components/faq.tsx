@@ -13,7 +13,7 @@ export function Faq({ items, title = "Questions we get asked", intro }: { items:
             <details key={f.q} className="group border-t border-line py-6 last:border-b">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-semibold [&::-webkit-details-marker]:hidden">
                 {f.q}
-                <PlusIcon size={20} className="shrink-0 text-crimson transition-transform duration-200 group-open:rotate-45" />
+                <PlusIcon aria-hidden="true" size={20} className="shrink-0 text-crimson transition-transform duration-200 group-open:rotate-45" />
               </summary>
               <p className="measure mt-4 text-muted">{f.a}</p>
             </details>

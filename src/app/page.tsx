@@ -6,6 +6,7 @@ import { TextReveal } from "@/components/text-reveal";
 import { CtaCalendar, Pilot, PricingTeaser, ServicesList, ToolsMarquee } from "@/components/sections";
 import { Faq } from "@/components/faq";
 import { faqs } from "@/lib/content";
+import { JsonLd, faqLd } from "@/components/json-ld";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
       <PricingTeaser />
       <Faq items={faqs.slice(0, 5)} intro="Short, direct answers. If yours isn’t here, ask us on a call." />
       <CtaCalendar />
+      <JsonLd data={faqLd(faqs.slice(0, 5))} />
     </>
   );
 }

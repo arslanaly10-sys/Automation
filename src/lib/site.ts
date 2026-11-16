@@ -30,6 +30,12 @@ export const site = {
   },
 } as const;
 
+/** True once bookingUrl has been replaced with a real link. */
+export const bookingReady = !site.bookingUrl.includes("your-infotech-link");
+
+/** Where "Book a strategy call" buttons go: the booking page when it is set, the contact page until then. */
+export const bookHref = bookingReady ? site.bookingUrl : "/contact";
+
 export const nav = [
   { href: "/services", label: "Services" },
   { href: "/industries", label: "Industries" },

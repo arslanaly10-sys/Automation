@@ -62,7 +62,7 @@ export function ChatPlayer({
       <div className={`flex items-center justify-between gap-3 border-b px-5 py-4 ${dark ? "border-white/10" : "border-line"}`}>
         <div className="flex items-center gap-3">
           <span className="grid size-9 place-items-center rounded-full bg-crimson text-white">
-            <PhoneIncomingIcon size={18} weight="fill" />
+            <PhoneIncomingIcon aria-hidden="true" size={18} weight="fill" />
           </span>
           <div className="leading-tight">
             <p className="text-sm font-semibold">{header}</p>
@@ -75,7 +75,7 @@ export function ChatPlayer({
             className={`grid size-8 place-items-center rounded-full ${dark ? "hover:bg-white/10" : "hover:bg-surface"}`}
             aria-label="Replay conversation"
           >
-            <ArrowCounterClockwiseIcon size={16} />
+            <ArrowCounterClockwiseIcon aria-hidden="true" size={16} />
           </button>
         )}
       </div>
@@ -103,7 +103,7 @@ export function ChatPlayer({
       <div
         className={`flex items-center gap-3 border-t px-5 py-4 text-sm transition-opacity duration-300 ${dark ? "border-white/10" : "border-line"} ${done ? "opacity-100" : "opacity-0"}`}
       >
-        <CalendarCheckIcon size={20} weight="duotone" className="shrink-0 text-crimson" />
+        <CalendarCheckIcon aria-hidden="true" size={20} weight="duotone" className="shrink-0 text-crimson" />
         <span>{outcome}</span>
       </div>
     </div>
