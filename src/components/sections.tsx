@@ -177,7 +177,7 @@ export function CtaCalendar({ title = "Book a 30-minute strategy call", body = "
               <Link href="/contact" className="btn btn-ghost text-white">Send a message instead</Link>
             </div>
           </div>
-          <a href={bookHref} {...(bookingReady ? { target: "_blank", rel: "noopener" } : {})} className="lift grid grid-cols-5 gap-2 rounded-[22px] border border-white/12 bg-white/[.04] p-5" aria-label="Open the booking calendar">
+          <a href={bookHref} {...(bookingReady ? { target: "_blank", rel: "noopener" } : {})} className="lift grid grid-cols-5 gap-2 rounded-[22px] border border-white/12 bg-white/[.04] p-5" aria-hidden="true" tabIndex={-1}>
             {days.map((d, di) => (
               <div key={d} className="flex flex-col gap-2">
                 <p className="pb-1 text-center text-xs text-white/55">{d}</p>

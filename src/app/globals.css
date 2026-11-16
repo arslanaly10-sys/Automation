@@ -13,6 +13,7 @@
   --crimson: #cb3a51;          /* logo crimson */
   --crimson-ink: #a62a40;      /* crimson for text on light grounds (AA) */
   --crimson-soft: #fbeaed;
+  --reveal-dim: #8a8a94;       /* unrevealed words: 3.4:1 on white (large text needs 3:1) */
   --black: #000000;
   --scrim: rgba(0, 0, 0, 0.62);
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -30,6 +31,7 @@
   --crimson: #d9475e;
   --crimson-ink: #f08294;
   --crimson-soft: #2a0f15;
+  --reveal-dim: #62626b;       /* 3.5:1 on black */
   color-scheme: dark;
 }
 
@@ -129,8 +131,8 @@ body {
 }
 
 /* Word reveal */
-.reveal-word { opacity: 0.16; transition: opacity 120ms linear; }
-.reveal-word.on { opacity: 1; }
+.reveal-word { color: var(--reveal-dim); transition: color 120ms linear; }
+.reveal-word.on { color: inherit; }
 
 /* Chat typing dots */
 @keyframes dot { 0%, 80%, 100% { opacity: .25 } 40% { opacity: 1 } }
@@ -149,6 +151,6 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-  .reveal-word { opacity: 1; }
+  .reveal-word { color: inherit; }
   .marquee-track { animation: none; }
 }
