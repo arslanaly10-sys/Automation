@@ -45,7 +45,7 @@ export function IndustrySlider() {
           <Link
             key={ind.slug}
             href={`/industries/${ind.slug}`}
-            className="group relative block w-[82vw] shrink-0 snap-start overflow-hidden rounded-card sm:w-[420px] lg:w-[460px]"
+            className="group relative block w-[82vw] shrink-0 snap-start overflow-hidden rounded-card sm:w-[420px] lg:w-[clamp(280px,calc((100svh-300px)*0.8),460px)]"
           >
             <div className="photo-frame relative aspect-[4/5]">
               <Image src={ind.image} alt={ind.imageAlt} fill sizes="(min-width:1024px) 460px, 82vw" className="object-cover" />

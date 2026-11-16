@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <>
       <HomeHero />
-      <section className="bg-bg py-28 md:py-40">
+      <section className="bg-bg section">
         <div className="wrap">
           <TextReveal
             className="display max-w-[24ch] display-xl leading-[1.12]"

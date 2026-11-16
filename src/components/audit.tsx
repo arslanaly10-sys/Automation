@@ -24,7 +24,7 @@ export function AuditPromise({ className = "", tone = "dark" }: { className?: st
 /** A slim band used to break up long pages with a way to book. */
 export function InlineAuditCta({ title, ctx }: { title: string; ctx?: AuditContext }) {
   return (
-    <section className="border-y border-line bg-bg py-10">
+    <section className="strip border-y border-line bg-bg py-10">
       <div className="wrap flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div>
           <p className="display display-sm">{title}</p>

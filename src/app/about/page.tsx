@@ -25,7 +25,7 @@ export default function AboutPage() {
         image="/images/about-office.jpg"
         imageAlt="An empty, light-filled modern office with a long table"
       />
-      <section className="bg-bg py-28 md:py-40">
+      <section className="bg-bg section">
         <div className="wrap">
           <TextReveal
             className="display max-w-[26ch] display-xl leading-[1.14]"

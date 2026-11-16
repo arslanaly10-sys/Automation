@@ -110,12 +110,14 @@ body {
 .display-sm   { font-size: clamp(1.7rem, 2.6vw, 2.3rem); letter-spacing: -0.02em; }
 
 /* Section rhythm: two steps */
-.section       { padding-block: 6rem; }
-.section-tight { padding-block: 5rem; }
+.section       { padding-block: 4rem; }
+.section-tight { padding-block: 3.5rem; }
 @media (min-width: 768px) {
-  .section       { padding-block: 8rem; }
-  .section-tight { padding-block: 7rem; }
+  .section       { padding-block: 5.5rem; }
+  .section-tight { padding-block: 4.5rem; }
 }
+/* A slim booking strip already separates sections, so the next one needs less air */
+.strip + .section, .strip + .section-tight, .strip + div > .section { padding-top: 3rem; }
 
 .wrap { width: min(1240px, calc(100% - 32px)); margin-inline: auto; }
 @media (min-width: 768px) { .wrap { width: min(1240px, calc(100% - 64px)); } }
