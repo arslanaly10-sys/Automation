@@ -140,6 +140,9 @@ export type Industry = {
   conversation: { from: "customer" | "ai"; text: string }[];
   outcome: string;
   note?: string;
+  firstWorkflow: string;
+  faqs: { q: string; a: string }[];
+  tools: string[]; // shown as "tools businesses like yours often use"; we confirm what connects during the audit
 };
 
 export const industries: Industry[] = [
@@ -173,6 +176,13 @@ export const industries: Industry[] = [
       { from: "ai", text: "Thanks. I can book a technician for tomorrow between 8 and 10 am. Shall I use the address on file, 22 Harbour Road?" },
     ],
     outcome: "Booked: boiler repair, tomorrow 8–10 am. Technician notified.",
+    firstWorkflow: "Most trades start with missed-call text-back plus estimate booking. It catches callers while your team is on site and puts estimate visits straight into the calendar, respecting your service area and travel time.",
+    faqs: [
+      { q: "Can it tell an emergency from a routine job?", a: "Yes, using rules you set, such as no heating in winter, an active leak, no power or a gas smell. Emergencies alert your on-call technician straight away. Routine jobs get booked." },
+      { q: "Will it quote prices over the phone?", a: "Only if you want it to. Many trades share a call-out fee or a price range and leave exact quotes to the estimate visit. You choose." },
+      { q: "Does it work with our job management software?", a: "Often, yes. Tools such as Jobber and Housecall Pro offer ways to connect, and Google Calendar works with almost everything. We confirm what’s possible for your setup during the audit." },
+    ],
+    tools: ["Jobber", "Housecall Pro", "Google Calendar", "QuickBooks", "Stripe"],
   },
   {
     slug: "dental-medspa",
@@ -204,6 +214,13 @@ export const industries: Industry[] = [
       { from: "ai", text: "Booked for Thursday at 4:30 pm. I’ll send your intake form now so check-in is quick." },
     ],
     outcome: "Booked: hygiene visit, Thursday 4:30 pm. Intake form sent.",
+    firstWorkflow: "Most clinics start with confirmations and reminders, then add new-patient booking. Fewer empty chairs pays for the system quickly, and the front desk gets time back straight away.",
+    faqs: [
+      { q: "Does the AI give medical advice?", a: "No. It handles admin only: booking, reminders, forms and opening hours. Anything clinical, or anything it’s unsure about, goes to your staff." },
+      { q: "Can it work with our practice management software?", a: "Many practice systems allow online booking or other connections, and some don’t. We check yours during the audit and tell you plainly what’s possible before you commit." },
+      { q: "What about patient privacy?", a: "We follow the privacy rules where you operate. For regulated health information, we only go ahead with providers that will sign the agreements those rules require." },
+    ],
+    tools: ["Google Calendar", "Calendly", "WhatsApp Business", "Stripe", "Zapier"],
     note:
       "The system handles admin only and never gives clinical advice. Anything medical goes to your staff. During the audit we work through the privacy rules that apply where you operate.",
   },
@@ -237,6 +254,13 @@ export const industries: Industry[] = [
       { from: "ai", text: "Great. I can show you Saturday at 11 am or Monday at 6 pm. Which works better?" },
     ],
     outcome: "Viewing booked: Saturday 11 am. Agent notified with lead details.",
+    firstWorkflow: "Most agencies start with instant replies to portal and website leads, plus viewing booking. A useful reply within a minute is what wins the viewing.",
+    faqs: [
+      { q: "Can it qualify buyers and tenants?", a: "Yes. It asks your questions, such as budget, move date, financing and must-haves, and records the answers in your CRM before an agent calls." },
+      { q: "Can tenants report maintenance issues through it?", a: "Yes. It collects the address, photos and urgency, and routes the job to the right contractor or property manager under your rules." },
+      { q: "Which CRMs can it work with?", a: "Common choices like HubSpot, Pipedrive and Salesforce can usually be connected, as can many property-specific systems. We confirm yours during the audit." },
+    ],
+    tools: ["HubSpot", "Pipedrive", "Salesforce", "Google Calendar", "WhatsApp Business"],
   },
   {
     slug: "automotive",
@@ -268,6 +292,13 @@ export const industries: Industry[] = [
       { from: "ai", text: "Booked for Wednesday at 8 am. You’ll get a text when the inspection is done." },
     ],
     outcome: "Booked: brake inspection, Wednesday 8 am. Bay 2 reserved.",
+    firstWorkflow: "Most shops start with service booking and status texts. Fewer “is my car ready?” calls frees up your advisors, and booking by text fills the bays without phone tag.",
+    faqs: [
+      { q: "Can it give repair quotes?", a: "It can share standard prices you approve, such as an oil change or an inspection. Repair estimates still come from your technicians, and it follows up until the customer approves." },
+      { q: "Can customers approve work by text?", a: "Yes. Estimates go out with a clear approve or call-me option, and your advisor sees the reply straight away." },
+      { q: "Does it work with our shop management system?", a: "Many shop systems can connect or share a calendar, and some can’t. We check yours during the audit." },
+    ],
+    tools: ["Google Calendar", "QuickBooks", "Stripe", "Twilio", "Zapier"],
   },
   {
     slug: "consumer-services",
@@ -299,6 +330,13 @@ export const industries: Industry[] = [
       { from: "ai", text: "You’re booked with Sophie at 10:30 am Saturday. I’ll send a reminder the day before." },
     ],
     outcome: "Booked: cut and colour with Sophie, Saturday 10:30 am.",
+    firstWorkflow: "Most salons, studios and restaurants start with booking and reminders, plus filling cancellations from a waitlist. Last-minute gaps become bookings instead of lost revenue.",
+    faqs: [
+      { q: "Will it work with our booking system?", a: "Often. Many salon, fitness and restaurant booking tools can connect, and those that can’t usually accept bookings through a link. We confirm yours during the audit." },
+      { q: "Can it take deposits?", a: "Where your booking or payment tool supports deposits, the booking flow can include a payment link." },
+      { q: "Can it answer questions about classes, menus or prices?", a: "Yes, from answers you approve. If a question isn’t covered, it passes it to your team rather than guessing." },
+    ],
+    tools: ["Google Calendar", "Calendly", "Stripe", "WhatsApp Business", "Make"],
   },
   {
     slug: "professional-services",
@@ -330,6 +368,13 @@ export const industries: Industry[] = [
       { from: "ai", text: "Thanks. I’ve booked a 30-minute consultation with Priya on Tuesday at 2 pm, and sent a checklist of what to bring." },
     ],
     outcome: "Consultation booked: Tuesday 2 pm. Document checklist sent.",
+    firstWorkflow: "Most firms start with structured intake and consultation booking. Every enquiry arrives with the facts you need, and the right person gets the meeting.",
+    faqs: [
+      { q: "Does it give legal, tax or financial advice?", a: "No. It collects information and books meetings. Anything that needs professional judgement goes to your team." },
+      { q: "Can it help with conflict checks?", a: "It can collect the names and details your conflict check needs and pass them to your team. The check itself stays with you." },
+      { q: "How are client documents handled?", a: "Through secure upload links from established tools chosen with you, with reminders until everything arrives." },
+    ],
+    tools: ["HubSpot", "Xero", "QuickBooks", "Calendly", "Zapier"],
     note:
       "The system collects information and books meetings. It never gives legal, tax or financial advice. Anything that needs professional judgement goes to your team.",
   },
@@ -436,6 +481,18 @@ export const planComparison: { feature: string; values: [boolean | string, boole
   { feature: "Optimisation", values: ["Ongoing tuning", "Fortnightly review", "Fortnightly review and monthly strategy session"] },
   { feature: "Support", values: ["Email", "Priority", "Dedicated automation lead"] },
   { feature: "30-day go-live guarantee", values: [true, true, true] },
+];
+
+/* ---------- Example usage figures ---------- */
+/* Illustrative only, labelled as examples wherever shown. Replace ratePerMinute with your real rate when known. */
+export const exampleUsage = { calls: 300, minutesPerCall: 3, ratePerMinute: 0.15, setup: 1200 };
+
+/* ---------- What changes your price (pricing page) ---------- */
+export const priceDrivers = [
+  { title: "How many workflows", body: "Starter covers one and Growth up to three. Beyond that, workflows are scoped and priced on Scale." },
+  { title: "Locations, lines and teams", body: "Starter and Growth cover one location and one phone line. More locations, lines or teams move you to Scale." },
+  { title: "The systems we connect", body: "Popular tools with ready-made connections are quicker to set up than older or custom software. This mainly moves the one-time setup fee within its $500 to $2,000 range." },
+  { title: "How busy you are", body: "Phone minutes, texts and AI usage are billed at cost on top of your plan, so a busier month costs a little more. Usage appears as its own line, so you can see exactly what it is." },
 ];
 
 /* ---------- What counts as a workflow ---------- */

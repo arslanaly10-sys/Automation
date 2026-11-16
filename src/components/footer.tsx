@@ -28,6 +28,7 @@ export function Footer() {
         <FooterCol title="Company" className="md:col-span-2">
           <Link href="/about" className="link-draw">About</Link>
           <Link href="/pricing" className="link-draw">Pricing</Link>
+          <Link href="/resources" className="link-draw">Resources</Link>
           <Link href="/ai-receptionist-vs-hiring" className="link-draw">AI vs hiring</Link>
           <Link href="/security" className="link-draw">Security</Link>
           <Link href="/contact" className="link-draw">Contact</Link>

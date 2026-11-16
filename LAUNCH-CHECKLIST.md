@@ -58,9 +58,12 @@ Each of these is already built and stays hidden until it's filled in. Never fill
 - [ ] **Speed Insights** (you): enable it once in Vercel, Project → Speed Insights → Enable. The code is already on the site.
 - [ ] **Require checks before going live** (you, optional): in Vercel, Project → Settings → Git, turn on deployment
   checks so production only updates after the GitHub "Checks" workflow passes.
+- [ ] **Guides** (you, then lawyer for the consent guide): read the three guides in `src/lib/guides.ts`.
+  The text message consent guide summarises rules in the US, UK, EU, Canada and Australia; have it checked.
+- [ ] **Example figures** (you): the worked example on Pricing and the cost comparison share `exampleUsage` in
+  `src/lib/content.ts` (300 calls, 3 minutes, $0.15/min, $1,200 setup). All are labelled examples; set your real usage rate when known.
 - [ ] **Cost comparison defaults** (you): the starting numbers on `/ai-receptionist-vs-hiring` (salary $3,200,
-  answering service $1.50/min, AI usage $0.15/min) are labelled examples. Replace the usage rate with your real one
-  once you know it (`src/components/cost-compare.tsx`).
+  answering service $1.50/min) are labelled examples you can change in `src/components/cost-compare.tsx`.
 
 ## Already done
 

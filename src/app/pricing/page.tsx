@@ -5,7 +5,7 @@ import { faqs } from "@/lib/content";
 import { site } from "@/lib/site";
 import { GuaranteeBand } from "@/components/trust";
 import { JsonLd, faqLd, pricingLd } from "@/components/json-ld";
-import { PlanComparison, WorkflowExplainer } from "@/components/pricing-extras";
+import { PlanComparison, PriceDrivers, WorkflowExplainer } from "@/components/pricing-extras";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -46,6 +46,7 @@ export default function PricingPage() {
       </section>
       <PlanComparison />
       <WorkflowExplainer />
+      <PriceDrivers />
       <Faq items={pricingFaqs} title="Pricing questions" />
       <JsonLd data={pricingLd} />
       <JsonLd data={faqLd(pricingFaqs)} />

@@ -6,6 +6,9 @@ import { InfoIcon } from "@phosphor-icons/react/dist/ssr";
 import { industries } from "@/lib/content";
 import { ChatPlayer } from "@/components/chat";
 import { CtaSplit, PageHero } from "@/components/sections";
+import { Faq } from "@/components/faq";
+import { ToolChip } from "@/components/tool-logo";
+import { JsonLd, faqLd } from "@/components/json-ld";
 
 export function generateStaticParams() {
   return industries.map((i) => ({ slug: i.slug }));
@@ -74,6 +77,25 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
           </div>
         </div>
       </section>
+
+      <section className="bg-bg py-20 md:py-28">
+        <div className="wrap grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-6">
+            <h2 className="display text-[clamp(2.1rem,4vw,3.4rem)]">Where most businesses like yours start</h2>
+            <p className="mt-6 text-lg text-muted">{ind.firstWorkflow}</p>
+          </div>
+          <div className="lg:col-span-5 lg:col-start-8">
+            <p className="font-semibold">Tools businesses like yours often use</p>
+            <ul className="mt-4 flex flex-wrap gap-2.5">
+              {ind.tools.map((t) => <li key={t}><ToolChip name={t} /></li>)}
+            </ul>
+            <p className="mt-4 text-sm text-muted">We confirm what connects to your setup during the audit.</p>
+          </div>
+        </div>
+      </section>
+
+      <Faq items={ind.faqs} title="Common questions" intro="The questions we hear most often in this industry." />
+      <JsonLd data={faqLd(ind.faqs)} />
 
       <CtaSplit
         image={ind.secondImage}

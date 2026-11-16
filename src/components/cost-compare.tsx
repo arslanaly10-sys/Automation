@@ -1,16 +1,16 @@
 "use client";
 import { useId, useMemo, useState } from "react";
-import { plans } from "@/lib/content";
+import { exampleUsage, plans } from "@/lib/content";
 
 /** Side-by-side monthly cost from the visitor's own numbers. Every default is an editable example. */
 export function CostCompare() {
   const growth = plans.find((p) => p.name === "Growth")!.price;
   const [salary, setSalary] = useState(3200);
   const [overhead, setOverhead] = useState(25);
-  const [calls, setCalls] = useState(300);
-  const [minutes, setMinutes] = useState(3);
+  const [calls, setCalls] = useState(exampleUsage.calls);
+  const [minutes, setMinutes] = useState(exampleUsage.minutesPerCall);
   const [perMinute, setPerMinute] = useState(1.5);
-  const [aiUsage, setAiUsage] = useState(0.15);
+  const [aiUsage, setAiUsage] = useState(exampleUsage.ratePerMinute);
 
   const r = useMemo(() => {
     const person = salary * (1 + overhead / 100);
