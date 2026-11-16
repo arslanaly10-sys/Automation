@@ -1,8 +1,9 @@
 import { expect, test } from "@playwright/test";
 
 // Every page listed in the sitemap must load, render one h1, log no errors and fit the screen.
-test("every sitemap page loads cleanly", async ({ page, request, baseURL }) => {
-  const xml = await (await request.get("/sitemap.xml")).text();
+test("every sitemap page loads cleanly", async ({ page, baseURL }) => {
+  // Fetched through the browser so it follows the same network path as the pages.
+  const xml = (await (await page.goto("/sitemap.xml"))?.text()) ?? "";
   const paths = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
   expect(paths.length).toBeGreaterThan(20);
 
