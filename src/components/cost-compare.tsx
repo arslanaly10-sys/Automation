@@ -38,24 +38,24 @@ export function CostCompare() {
       </div>
       <div className="lg:col-span-6" aria-live="polite">
         <p className="font-semibold">Estimated monthly cost</p>
-        <dl className="mt-6 flex flex-col gap-6">
+        <ul className="mt-6 flex flex-col gap-6">
           {[
             ["Hiring a receptionist", r.person, "About 40 hours a week of cover"],
             ["Answering service", r.service, `${r.totalMin.toLocaleString("en-US")} minutes a month`],
             [`AI receptionist (Growth plan)`, r.ai, `$${growth} plan plus usage, 24/7 cover`],
           ].map(([label, value, note], i) => (
-            <div key={label as string}>
+            <li key={label as string}>
               <div className="flex items-baseline justify-between gap-4">
-                <dt className="text-[15px]">{label}</dt>
-                <dd className={`display text-3xl tabular-nums ${i === 2 ? "text-crimson-ink" : ""}`}>{fmt(value as number)}</dd>
+                <span className="text-[15px]">{label}</span>
+                <span className={`display text-3xl tabular-nums ${i === 2 ? "text-crimson-ink" : ""}`}>{fmt(value as number)}</span>
               </div>
               <div className="mt-2 h-3 overflow-hidden rounded-full bg-surface-2" aria-hidden="true">
                 <div className={`h-full rounded-full ${i === 2 ? "bg-crimson" : "bg-muted"}`} style={{ width: `${Math.max(3, ((value as number) / max) * 100)}%` }} />
               </div>
               <p className="mt-1.5 text-xs text-muted">{note}</p>
-            </div>
+            </li>
           ))}
-        </dl>
+        </ul>
         <p className="mt-8 text-sm text-muted">One-time setup of $500 to $2,000 applies to the AI receptionist. Hiring has its own one-off costs: recruiting, training and equipment.</p>
       </div>
     </div>
