@@ -5,13 +5,14 @@ import { faqs } from "@/lib/content";
 import { site } from "@/lib/site";
 import { GuaranteeBand } from "@/components/trust";
 import { JsonLd, faqLd, pricingLd } from "@/components/json-ld";
+import { PlanComparison, WorkflowExplainer } from "@/components/pricing-extras";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description: "Monthly plans from $497. One-time setup from $500 to $2,000. Usage billed at cost. Month-to-month after launch.",
 };
 
-const pricingFaqs = faqs.filter((f) => /cost|own|long|start|replace/i.test(f.q));
+const pricingFaqs = faqs.filter((f) => /cost|own|long|workflow|replace/i.test(f.q));
 
 export default function PricingPage() {
   return (
@@ -36,9 +37,15 @@ export default function PricingPage() {
               </div>
             ))}
           </div>
-          <p className="mt-10 text-sm text-muted">Prices in US dollars. We quote in your local currency on request.</p>
+          <p className="mt-10 text-sm text-muted">
+            Prices in US dollars. We quote in your local currency on request.{" "}
+            <a href="#compare" className="font-semibold text-ink underline underline-offset-4">Compare every feature</a>{" "}or{" "}
+            <a href="/ai-receptionist-vs-hiring" className="font-semibold text-ink underline underline-offset-4">compare with hiring a receptionist</a>.
+          </p>
         </div>
       </section>
+      <PlanComparison />
+      <WorkflowExplainer />
       <Faq items={pricingFaqs} title="Pricing questions" />
       <JsonLd data={pricingLd} />
       <JsonLd data={faqLd(pricingFaqs)} />

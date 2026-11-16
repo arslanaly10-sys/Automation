@@ -6,6 +6,7 @@ import { bookHref, bookingReady, site } from "@/lib/site";
 import { ServiceIcon } from "./icons";
 import { Mark } from "./brand";
 import { GuaranteeBand } from "./trust";
+import { ToolChip } from "./tool-logo";
 
 /* ---------- Page hero used on inner pages ---------- */
 export function PageHero({ title, intro, image, imageAlt, children }: {
@@ -108,7 +109,9 @@ export function ToolsMarquee() {
       <div className="marquee overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
         <ul className="marquee-track flex w-max gap-3">
           {row.map((t, i) => (
-            <li key={i} aria-hidden={i >= tools.length} className="rounded-full border border-line px-5 py-2.5 text-[15px] whitespace-nowrap text-muted">{t}</li>
+            <li key={i} aria-hidden={i >= tools.length}>
+              <ToolChip name={t} />
+            </li>
           ))}
         </ul>
       </div>

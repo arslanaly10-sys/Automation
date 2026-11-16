@@ -20,6 +20,8 @@ export default function ContactPage() {
     <>
       <PageHero
         title="What would you like your team to stop doing by hand?"
+        image="/images/contact-phone.jpg"
+        imageAlt="A classic black telephone on a dark blue wall"
         intro={bookingReady ? "Book a 30-minute strategy call, or send a message and we’ll reply within one working day." : "Send a message about the workflow you want to automate and we’ll reply within one working day."}
       >
         <div className="flex flex-wrap gap-3">

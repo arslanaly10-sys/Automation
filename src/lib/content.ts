@@ -422,6 +422,39 @@ export const plans = [
   },
 ];
 
+/* ---------- Plan comparison (pricing page) ---------- */
+/* true = included, false = not included, string = what you get. Keep in line with `plans` above. */
+export const planComparison: { feature: string; values: [boolean | string, boolean | string, boolean | string] }[] = [
+  { feature: "Automated workflows", values: ["1", "Up to 3", "Scoped to your operation"] },
+  { feature: "AI reception for calls, chat and text", values: [false, true, true] },
+  { feature: "Missed-call text-back and lead follow-up", values: ["If it’s your workflow", true, true] },
+  { feature: "Booking, reminders and rescheduling", values: ["If it’s your workflow", true, true] },
+  { feature: "Calendar and CRM connections", values: ["One", "Two-way sync", "Custom integrations"] },
+  { feature: "Locations, phone lines and teams", values: ["One", "One", "Multiple"] },
+  { feature: "Scripts written and approved with you", values: [true, true, true] },
+  { feature: "Reporting", values: ["Monthly report", "Monthly report", "Reporting dashboard"] },
+  { feature: "Optimisation", values: ["Ongoing tuning", "Fortnightly review", "Fortnightly review and monthly strategy session"] },
+  { feature: "Support", values: ["Email", "Priority", "Dedicated automation lead"] },
+  { feature: "30-day go-live guarantee", values: [true, true, true] },
+];
+
+/* ---------- What counts as a workflow ---------- */
+export const workflowExplainer = {
+  definition:
+    "A workflow is one job the system does from start to finish: one thing that starts it, the steps in between, and one outcome. Your plan sets how many of these we build and run.",
+  examples: [
+    { steps: ["Missed call", "Text back within seconds", "Collect the details", "Book, or alert your team"] },
+    { steps: ["New website or ad lead", "Reply within a minute", "Follow up until they book or say no"] },
+    { steps: ["Job marked complete", "Check-in message", "Review invitation, or alert a manager"] },
+  ],
+  included: [
+    "Script edits, new questions and tuning as your business changes",
+    "Connecting the calendar or CRM that a workflow needs",
+    "Every channel the AI receptionist answers on (calls, chat and text count as one service on Growth and Scale)",
+  ],
+  extra: "A new workflow is a new starting event with a new outcome, such as adding reactivation campaigns to a booking setup.",
+};
+
 export const faqs = [
   {
     q: "Will it sound like a robot?",
@@ -452,6 +485,10 @@ export const faqs = [
     a: "We work with businesses worldwide. Conversations can run in most major languages, and we set up local phone numbers where carriers allow. Regulations differ by country, so we review messaging and privacy rules for your market during setup.",
   },
   {
+    q: "What counts as a workflow?",
+    a: "One job done from start to finish: one thing that starts it, the steps in between, and one outcome. For example, a missed call that gets a text back, a few questions and a booking is one workflow. Script edits, tuning and the connections a workflow needs are included, not counted separately.",
+  },
+  {
     q: "Can we start with just one workflow?",
     a: "Yes, and we recommend it. Starting with one workflow makes it easy to measure, easy to trust, and easy to expand once you can see it working.",
   },
@@ -477,8 +514,8 @@ export type ServiceDetail = {
 export const serviceDetails: Record<string, ServiceDetail> = {
   "ai-reception": {
     headline: "An AI receptionist that answers every call, chat and text",
-    image: "/images/front-desk-pos.jpg",
-    imageAlt: "A customer paying at a front-desk card terminal",
+    image: "/images/svc-phone-call.jpg",
+    imageAlt: "A man taking a phone call at his office desk",
     steps: [
       { title: "It answers in seconds", body: "Calls, website chat, SMS and WhatsApp are picked up straight away, day or night, with a greeting in your business’s name." },
       { title: "It asks your questions", body: "What they need, where they are, how urgent it is. The script is written with you and approved before launch." },
@@ -507,8 +544,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
   "lead-follow-up": {
     headline: "Every lead gets a reply within a minute, and follow-up until it’s settled",
-    image: "/images/realestate-keys.jpg",
-    imageAlt: "House keys resting beside a small model home",
+    image: "/images/svc-roofer.jpg",
+    imageAlt: "A roofer working on top of a house, away from the phone",
     steps: [
       { title: "Every source in one place", body: "Web forms, ad leads, directory enquiries and missed calls land in one pipeline, each with its source attached." },
       { title: "A fast first reply", body: "The lead hears back within a minute by text or email, with a useful question rather than a generic “thanks for your enquiry”." },
@@ -536,8 +573,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
   scheduling: {
     headline: "Booking, reminders and rescheduling, without the phone calls",
-    image: "/images/dental-clinic.jpg",
-    imageAlt: "A bright, modern dental treatment room",
+    image: "/images/svc-front-desk-checkin.jpg",
+    imageAlt: "A client checking in at a salon front desk on a tablet",
     steps: [
       { title: "Real availability, your rules", body: "Customers see slots that respect job length, travel time, staff skills and the gaps you need between appointments." },
       { title: "Confirmations and reminders", body: "Sent at the times that suit your business, with a simple way to confirm or change." },
@@ -594,8 +631,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
   reviews: {
     headline: "More reviews, and a fast alert when something went wrong",
-    image: "/images/restaurant.jpg",
-    imageAlt: "A warmly lit restaurant dining room",
+    image: "/images/svc-phone-notification.jpg",
+    imageAlt: "A smartphone showing a new message on its lock screen",
     steps: [
       { title: "A check-in after every job", body: "A short message asks how it went, sent while the experience is still fresh." },
       { title: "Everyone gets a review link", body: "Every customer is invited to leave a review. Nobody is filtered out, because Google and other platforms don’t allow it." },
@@ -622,8 +659,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
   integrations: {
     headline: "Your CRM, calendar and job tools, kept in sync",
-    image: "/images/team-desks.jpg",
-    imageAlt: "Two people working at desks with large monitors in a bright office",
+    image: "/images/svc-dashboard-laptop.jpg",
+    imageAlt: "A laptop showing a dashboard of charts and figures",
     steps: [
       { title: "Map what you use", body: "We list every system involved and decide where each piece of customer information should live." },
       { title: "Connect and test", body: "Two-way connections with clear rules for which system owns which record, tested with real examples before launch." },
@@ -649,8 +686,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
   "back-office": {
     headline: "Less data entry, and no more chasing paperwork",
-    image: "/images/pro-tax.jpg",
-    imageAlt: "Tax forms, a calculator and a phone on a desk",
+    image: "/images/svc-paperwork.jpg",
+    imageAlt: "Paperwork and a laptop on a desk, with someone taking notes",
     steps: [
       { title: "Intake that fills your systems", body: "Forms feed straight into your CRM or job system, so nothing gets typed in twice." },
       { title: "Documents collected automatically", body: "Secure upload links and polite reminders until everything is in." },
@@ -676,8 +713,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
   optimisation: {
     headline: "Automation that gets better after launch, not worse",
-    image: "/images/team-workshop.jpg",
-    imageAlt: "A team gathered around a conference table during a workshop",
+    image: "/images/svc-analytics.jpg",
+    imageAlt: "A screen showing usage charts over the last seven days",
     steps: [
       { title: "We read the conversations", body: "Regular reviews of transcripts and exceptions to find where the system was unsure or got it wrong." },
       { title: "We tune scripts and rules", body: "Small changes, tested before they go live, as your services, prices and hours change." },
@@ -723,3 +760,66 @@ export type CaseStudy = {
 };
 
 export const caseStudies: CaseStudy[] = [];
+
+/* ---------- AI receptionist vs hiring (/ai-receptionist-vs-hiring) ---------- */
+export const hiringComparison = {
+  rows: [
+    { label: "Hours covered", person: "Working hours, about 40 a week per person", service: "Usually 24/7", ai: "24/7, including holidays" },
+    { label: "Calls at the same time", person: "One", service: "Several, depending on staffing", ai: "As many as come in" },
+    { label: "Books appointments in your calendar", person: "Yes", service: "Often takes a message only", ai: "Yes, following your rules" },
+    { label: "Knows your business", person: "Best, after training", service: "Works from a script", ai: "Works from your approved script and answers" },
+    { label: "Judgement, empathy, tricky situations", person: "Best", service: "Varies", ai: "Hands these to a person by design" },
+    { label: "Follows up afterwards", person: "When there’s time", service: "Rarely", ai: "Every time, automatically" },
+    { label: "How cost grows", person: "Another hire for more hours", service: "Per minute or per call", ai: "Fixed plan plus usage at cost" },
+    { label: "Time to start", person: "Weeks to hire and train", service: "Days", ai: "About four weeks, guaranteed within 30 days" },
+  ],
+  personBetter: [
+    "Most of your calls need judgement, negotiation or a long conversation.",
+    "Callers expect to speak to the same familiar person every time.",
+    "The role also covers in-person work, such as greeting visitors or handling payments at the desk.",
+  ],
+};
+
+/* ---------- Security and data (/security) ---------- */
+export const securityPage = {
+  summary: [
+    "Your data stays in accounts you own: your CRM, phone provider and calendar.",
+    "Only named people working on your account can access it, with two-factor sign-in.",
+    "We use AI providers whose business terms don’t allow training on your data.",
+    "If you leave, you keep everything and we remove our access.",
+  ],
+  sections: [
+    {
+      h: "Where your data lives",
+      p: "We build on accounts in your name wherever possible: your CRM, your phone and messaging provider, your calendar and your inbox. We are given access to them; we don’t own them. Call recordings, transcripts and contact records stay in those systems.",
+    },
+    {
+      h: "Who can see it",
+      p: "Only the people at INFOTECH working on your account, each named to you. Every account we use is protected with two-factor sign-in, and we give each person the least access their job needs. Access is reviewed regularly and removed the day an engagement ends.",
+    },
+    {
+      h: "Encryption",
+      p: "Data travels over encrypted connections (HTTPS and TLS). The providers we build on encrypt stored data. We don’t keep copies of your customer data on personal devices.",
+    },
+    {
+      h: "AI models and your data",
+      p: "We only use AI providers whose business terms don’t allow your conversations to be used to train their models, and we choose short or zero data retention where a provider offers it. The AI only sees the information it needs to handle a conversation.",
+    },
+    {
+      h: "Call recordings and transcripts",
+      p: "Recording is your choice. If you turn it on, recordings and transcripts are stored in your own phone or CRM account, for the period you set. You’re responsible for telling callers where the law requires it, and we set up the announcement for you.",
+    },
+    {
+      h: "Healthcare, legal and financial businesses",
+      p: "Our systems handle admin only. They never give medical, legal or financial advice, and anything that needs professional judgement goes to your team. If you handle regulated health information, such as protected health information in the US, we confirm during the audit that every provider involved will sign the agreements the rules require before we build anything.",
+    },
+    {
+      h: "If something goes wrong",
+      p: "If we find a security incident affecting your data, we tell you without undue delay, with what happened, what was affected and what we’re doing about it.",
+    },
+    {
+      h: "When you leave",
+      p: "Your accounts, numbers, scripts and records are already yours. We hand over anything we built, remove our access and delete any copies we hold.",
+    },
+  ],
+};

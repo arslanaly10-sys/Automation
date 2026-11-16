@@ -28,6 +28,9 @@ Tick items off as they're done.
   - [ ] **Guarantee wording**: "Live in 30 days, or your setup fee back". The Terms add that it covers the
         first workflow and refunds the setup fee only, not monthly or usage fees. Put the same terms in
         your client contract.
+  - [ ] **Security page promises** (`securityPage` in `src/lib/content.ts`): two-factor sign-in on every account,
+        named staff only, AI providers whose terms don't allow training on client data, incident notification
+        "without undue delay", and deleting copies and removing access when a client leaves. Make sure you can keep each one.
   - [ ] **Consumer law**: whether any rules apply to how prices ("from $497", setup "$500 to $2,000") are shown.
 
 ## Optional, adds trust
@@ -51,6 +54,13 @@ Each of these is already built and stays hidden until it's filled in. Never fill
 - [ ] **Vercel Pro** (you, only if you want it)
   Needed to see the custom events: Booking click, CTA click, Contact form sent and Estimate requested.
   Page views work on the free plan.
+
+- [ ] **Speed Insights** (you): enable it once in Vercel, Project → Speed Insights → Enable. The code is already on the site.
+- [ ] **Require checks before going live** (you, optional): in Vercel, Project → Settings → Git, turn on deployment
+  checks so production only updates after the GitHub "Checks" workflow passes.
+- [ ] **Cost comparison defaults** (you): the starting numbers on `/ai-receptionist-vs-hiring` (salary $3,200,
+  answering service $1.50/min, AI usage $0.15/min) are labelled examples. Replace the usage rate with your real one
+  once you know it (`src/components/cost-compare.tsx`).
 
 ## Already done
 

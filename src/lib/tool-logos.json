@@ -1,0 +1,72 @@
+{
+  "Google Calendar": {
+    "file": "/logos/google-calendar.svg",
+    "ratio": 0.93,
+    "source": "gilbarbara/logos (CC0)"
+  },
+  "HubSpot": {
+    "file": "/logos/hubspot.svg",
+    "ratio": 3.44,
+    "source": "gilbarbara/logos (CC0)"
+  },
+  "Salesforce": {
+    "file": "/logos/salesforce.svg",
+    "ratio": 1.42,
+    "source": "gilbarbara/logos (CC0)"
+  },
+  "Pipedrive": {
+    "file": "/logos/pipedrive.svg",
+    "ratio": 4.38,
+    "source": "gilbarbara/logos (CC0)"
+  },
+  "Zoho": {
+    "file": "/logos/zoho.svg",
+    "ratio": 2.33,
+    "source": "gilbarbara/logos (CC0)"
+  },
+  "Twilio": {
+    "file": "/logos/twilio.svg",
+    "ratio": 1,
+    "source": "gilbarbara/logos (CC0)"
+  },
+  "WhatsApp Business": {
+    "file": "/logos/whatsapp-business.svg",
+    "ratio": 0.99,
+    "source": "gilbarbara/logos (CC0)"
+  },
+  "Stripe": {
+    "file": "/logos/stripe.svg",
+    "ratio": 2.39,
+    "source": "gilbarbara/logos (CC0)"
+  },
+  "Xero": {
+    "file": "/logos/xero.svg",
+    "ratio": 1,
+    "source": "gilbarbara/logos (CC0)"
+  },
+  "Slack": {
+    "file": "/logos/slack.svg",
+    "ratio": 1,
+    "source": "gilbarbara/logos (CC0)"
+  },
+  "Zapier": {
+    "file": "/logos/zapier.svg",
+    "ratio": 1,
+    "source": "gilbarbara/logos (CC0)"
+  },
+  "Calendly": {
+    "file": "/logos/calendly.svg",
+    "ratio": 1,
+    "source": "Simple Icons (CC0), brand colour"
+  },
+  "QuickBooks": {
+    "file": "/logos/quickbooks.svg",
+    "ratio": 1,
+    "source": "Simple Icons (CC0), brand colour"
+  },
+  "Make": {
+    "file": "/logos/make.svg",
+    "ratio": 1,
+    "source": "Simple Icons (CC0), brand colour"
+  }
+}

@@ -22,8 +22,8 @@ export default function AboutPage() {
       <PageHero
         title="We build the systems that keep service businesses responsive."
         intro="INFOTECH is an automation studio. We design, build and run AI workflows for businesses that depend on answering customers quickly and following up properly."
-        image="/images/team-workshop.jpg"
-        imageAlt="A team gathered around a conference table during a workshop"
+        image="/images/about-office.jpg"
+        imageAlt="An empty, light-filled modern office with a long table"
       />
       <section className="bg-bg py-28 md:py-36">
         <div className="wrap">
@@ -38,7 +38,7 @@ export default function AboutPage() {
           <div className="lg:col-span-5">
             <h2 className="display text-[clamp(2.1rem,4vw,3.4rem)]">How we think</h2>
             <div className="photo-frame relative mt-10 aspect-[4/3] overflow-hidden rounded-[22px]">
-              <Image src="/images/pro-office.jpg" alt="Two colleagues celebrating with a high five at a desk" fill sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" />
+              <Image src="/images/about-notebook.jpg" alt="A hand writing a checklist of goals in a notebook" fill sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" />
             </div>
           </div>
           <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:col-span-6 lg:col-start-7 lg:self-center">
@@ -54,8 +54,8 @@ export default function AboutPage() {
       <Pilot />
       <CompanyDetails />
       <CtaSplit
-        image="/images/spa-massage.jpg"
-        alt="A therapist pouring massage oil in a calm treatment room"
+        image="/images/about-video-call.jpg"
+        alt="A laptop on a video call with many participants, beside a mug"
         title="Working with businesses worldwide"
         body="We work remotely with service businesses across time zones. Calls are scheduled in your local time, and everything we build runs on accounts you own."
       />

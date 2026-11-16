@@ -62,7 +62,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
             </ol>
             {ind.note && (
               <p className="mt-6 flex gap-3 rounded-2xl border border-line bg-bg p-5 text-[15px] text-muted">
-                <InfoIcon aria-hidden="true" size={20} className="mt-0.5 shrink-0 text-crimson" />{ind.note}
+                <InfoIcon aria-hidden="true" size={20} className="mt-0.5 shrink-0 text-crimson" /><span>{ind.note} <Link href="/security" className="font-semibold text-ink underline underline-offset-4">How we handle data</Link></span>
               </p>
             )}
           </div>

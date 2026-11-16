@@ -28,6 +28,8 @@ export function Footer() {
         <FooterCol title="Company" className="md:col-span-2">
           <Link href="/about" className="link-draw">About</Link>
           <Link href="/pricing" className="link-draw">Pricing</Link>
+          <Link href="/ai-receptionist-vs-hiring" className="link-draw">AI vs hiring</Link>
+          <Link href="/security" className="link-draw">Security</Link>
           <Link href="/contact" className="link-draw">Contact</Link>
           <Link href="/privacy" className="link-draw">Privacy</Link>
           <Link href="/terms" className="link-draw">Terms</Link>
@@ -39,7 +41,7 @@ export function Footer() {
           <p>© {year} {site.name}. Serving businesses worldwide.</p>
           <CompanyLine />
         </div>
-        <p>Photography from Unsplash, used under the Unsplash License.</p>
+        <p>Photography from Unsplash, used under the Unsplash License. Product names and logos are trademarks of their owners.</p>
       </div>
 
       <div className="wrap pb-6 text-crimson" aria-hidden="true">

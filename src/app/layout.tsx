@@ -6,6 +6,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { site } from "@/lib/site";
 import { Analytics } from "@/components/analytics";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { JsonLd, organizationLd } from "@/components/json-ld";
 
 // Display face: one static weight (400, upright). The site uses no italics or other Newsreader weights.
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </Providers>
         <Analytics />
+        <SpeedInsights />
         <JsonLd data={organizationLd} />
       </body>
     </html>

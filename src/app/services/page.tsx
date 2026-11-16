@@ -7,6 +7,7 @@ import { ServiceIcon } from "@/components/icons";
 import { CtaBanner, PageHero, ToolsMarquee } from "@/components/sections";
 import { Workflow } from "@/components/home/workflow";
 import { JsonLd, servicesLd } from "@/components/json-ld";
+import { ProductMockups } from "@/components/product-mockups";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -57,6 +58,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+      <ProductMockups />
       <Workflow />
       <ToolsMarquee />
       <CtaBanner />

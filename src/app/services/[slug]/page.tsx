@@ -11,6 +11,14 @@ import { ServiceIcon } from "@/components/icons";
 import { Faq } from "@/components/faq";
 import { CtaBanner, PageHero } from "@/components/sections";
 import { JsonLd, faqLd } from "@/components/json-ld";
+import { CallTranscript, EnquiryInbox, WeeklyReport } from "@/components/product-mockups";
+
+/* The mockup that best shows each service’s output, where one fits. */
+const mockupFor: Record<string, () => React.ReactNode> = {
+  "ai-reception": () => <CallTranscript />,
+  "lead-follow-up": () => <EnquiryInbox />,
+  optimisation: () => <WeeklyReport />,
+};
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -29,6 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: found.service.name,
     description: found.service.short,
     alternates: { canonical: `/services/${found.service.slug}` },
+    openGraph: { images: [found.detail.image] },
   };
 }
 
@@ -114,8 +123,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
       <section className="bg-surface py-24 md:py-32">
         <div className="wrap grid gap-12 lg:grid-cols-12">
-          <h2 className="display text-[clamp(2.1rem,4vw,3.4rem)] lg:col-span-4">What’s included</h2>
-          <ul className="grid gap-3 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
+          <div className="lg:col-span-4">
+            <h2 className="display text-[clamp(2.1rem,4vw,3.4rem)]">What’s included</h2>
+            {mockupFor[service.slug] && <div className="mt-10 max-w-md">{mockupFor[service.slug]()}</div>}
+          </div>
+          <ul className="grid content-start gap-3 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
             {service.includes.map((x) => (
               <li key={x} className="flex gap-3 rounded-2xl bg-bg p-5 text-[15px]">
                 <CheckIcon aria-hidden="true" size={18} weight="bold" className="mt-0.5 shrink-0 text-crimson" />{x}
