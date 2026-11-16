@@ -78,9 +78,8 @@ body {
 .display {
   font-family: var(--font-display);
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em; /* static text cut of Newsreader sets loose at display sizes */
   line-height: 1.04;
-  font-optical-sizing: auto;
 }
 
 .wrap { width: min(1240px, calc(100% - 32px)); margin-inline: auto; }

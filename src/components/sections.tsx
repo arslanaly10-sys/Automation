@@ -14,12 +14,12 @@ export function PageHero({ title, intro, image, imageAlt, children }: {
     <section className="relative isolate overflow-hidden bg-black text-white">
       {image && (
         <>
-          <Image src={image} alt={imageAlt ?? ""} fill priority sizes="100vw" className="-z-20 object-cover" />
+          <Image src={image} alt={imageAlt ?? ""} fill priority quality={55} sizes="100vw" className="-z-20 object-cover" />
           <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,.9)_0%,rgba(0,0,0,.65)_55%,rgba(0,0,0,.35)_100%)]" />
         </>
       )}
       <div className={`wrap pt-40 pb-20 ${image ? "md:pt-48 md:pb-28" : "md:pt-44"}`}>
-        <h1 className="display msg-in max-w-[20ch] text-[clamp(2.6rem,5.6vw,4.8rem)]">{title}</h1>
+        <h1 className="display max-w-[20ch] text-[clamp(2.6rem,5.6vw,4.8rem)]">{title}</h1>
         {intro && <p className="msg-in mt-6 max-w-[58ch] text-lg text-white/75" style={{ animationDelay: "120ms" }}>{intro}</p>}
         {children && <div className="msg-in mt-9" style={{ animationDelay: "220ms" }}>{children}</div>}
       </div>
@@ -184,7 +184,7 @@ export function CtaCalendar({ title = "Book a 30-minute strategy call", body = "
                 {times.map((t, ti) => {
                   const open = slots[di].includes(ti);
                   return (
-                    <span key={t} className={`rounded-lg py-2 text-center text-xs tabular-nums ${open ? "bg-crimson text-white" : "bg-white/[.05] text-white/25"}`}>{t}</span>
+                    <span key={t} className={`rounded-lg py-2 text-center text-xs tabular-nums ${open ? "bg-crimson text-white" : "bg-white/[.05] text-white/55"}`}>{t}</span>
                   );
                 })}
               </div>

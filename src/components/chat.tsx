@@ -107,8 +107,9 @@ export function ChatPlayer({
           </p>
         ))}
         {typing && (
-          <p className={`typing flex gap-1 rounded-2xl px-4 py-3 ${nextFrom === "ai" ? "self-end bg-crimson/80" : dark ? "self-start bg-white/10" : "self-start bg-surface"}`} aria-label="Typing">
-            <span className="size-1.5 rounded-full bg-current" /><span className="size-1.5 rounded-full bg-current" /><span className="size-1.5 rounded-full bg-current" />
+          <p className={`typing flex gap-1 rounded-2xl px-4 py-3 ${nextFrom === "ai" ? "self-end bg-crimson/80" : dark ? "self-start bg-white/10" : "self-start bg-surface"}`} >
+            <span className="sr-only">Typing…</span>
+            <span aria-hidden="true" className="size-1.5 rounded-full bg-current" /><span aria-hidden="true" className="size-1.5 rounded-full bg-current" /><span aria-hidden="true" className="size-1.5 rounded-full bg-current" />
           </p>
         )}
       </div>

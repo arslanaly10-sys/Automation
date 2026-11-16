@@ -8,7 +8,8 @@ import { site } from "@/lib/site";
 import { Analytics } from "@/components/analytics";
 import { JsonLd, organizationLd } from "@/components/json-ld";
 
-const newsreader = Newsreader({ subsets: ["latin"], variable: "--font-newsreader", style: ["normal", "italic"], axes: ["opsz"] });
+// Display face: one static weight (400, upright). The site uses no italics or other Newsreader weights.
+const newsreader = Newsreader({ subsets: ["latin"], weight: "400", variable: "--font-newsreader" });
 const hanken = Hanken_Grotesk({ subsets: ["latin"], variable: "--font-hanken" });
 
 export const metadata: Metadata = {

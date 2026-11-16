@@ -42,9 +42,9 @@ export function Workflow() {
           <h2 className="display text-[clamp(2.2rem,4.2vw,3.6rem)]">From first hello to finished job, without anything slipping.</h2>
           <ol className="mt-10 hidden flex-col gap-1 lg:flex">
             {steps.map((s, i) => (
-              <li key={s.title} className={`border-l-2 py-3 pl-5 transition-[border-color,opacity] duration-200 ${i === active ? "border-crimson opacity-100" : "border-line opacity-45"}`}>
+              <li key={s.title} className={`border-l-2 py-3 pl-5 transition-[border-color,color] duration-200 ${i === active ? "border-crimson text-ink" : "border-line text-muted"}`}>
                 <p className="text-sm text-muted">Step {i + 1}</p>
-                <p className="text-lg font-semibold">{s.title}</p>
+                <p className={`text-lg ${i === active ? "font-semibold" : "font-medium"}`}>{s.title}</p>
                 <p className={`mt-1 max-w-[46ch] text-muted ${i === active ? "block" : "hidden"}`}>{s.body}</p>
               </li>
             ))}
@@ -135,7 +135,7 @@ function StepUI({ kind }: { kind: (typeof steps)[number]["ui"] }) {
               {t === "8:30" ? (
                 <div className="rounded-lg bg-crimson px-3 py-2.5 text-white">
                   <p className="font-medium">AC repair, Dana Okafor</p>
-                  <p className="text-xs text-white/80">Marcus, van 2, 90 min</p>
+                  <p className="text-xs text-white">Marcus, van 2, 90 min</p>
                 </div>
               ) : t === "11:30" ? (
                 <div className="rounded-lg bg-surface px-3 py-2.5"><p className="text-muted">Boiler service</p></div>

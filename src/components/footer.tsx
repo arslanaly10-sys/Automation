@@ -48,7 +48,7 @@ export function Footer() {
 function FooterCol({ title, children, className = "" }: { title: string; children: React.ReactNode; className?: string }) {
   return (
     <div className={className}>
-      <p className="mb-4 text-sm text-white/45">{title}</p>
+      <p className="mb-4 text-sm text-white/60">{title}</p>
       <div className="flex flex-col items-start gap-2.5 text-[15px] text-white/85">{children}</div>
     </div>
   );
