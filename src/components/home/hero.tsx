@@ -29,7 +29,7 @@ export function HomeHero() {
 
       <div className="wrap grid items-end gap-12 pt-32 pb-14 lg:grid-cols-12 lg:pb-20">
         <div className="lg:col-span-7">
-          <h1 className="display text-[clamp(2.75rem,6.4vw,5.6rem)]">
+          <h1 className="display text-[clamp(2.6rem,5.6vw,4.75rem)]">
             Your team is on the job. Your front office never goes quiet.
           </h1>
           <p className="msg-in mt-7 max-w-[52ch] text-lg text-white/78 md:text-xl" style={{ animationDelay: "180ms" }}>

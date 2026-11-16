@@ -36,7 +36,7 @@ export function Header() {
       }`}
     >
       <div className="wrap flex h-18 items-center justify-between gap-6">
-        <Link href="/" className="text-crimson" aria-label={`${site.name} home`}>
+        <Link href="/" className="-my-3 py-3 text-crimson" aria-label={`${site.name} home`}>
           <Wordmark className="h-[18px] w-auto md:h-5" />
         </Link>
 

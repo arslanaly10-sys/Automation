@@ -4,9 +4,10 @@ import {
 
 /* Coded mockups of what a client sees. Every figure and name here is an illustration and is labelled "Example". */
 
-function Frame({ title, children, className = "" }: { title: string; children: React.ReactNode; className?: string }) {
+/** Cards in a row get a defined edge; a single card shown on its own (floating) gets soft elevation instead. */
+function Frame({ title, children, className = "", floating = false }: { title: string; children: React.ReactNode; className?: string; floating?: boolean }) {
   return (
-    <figure className={`overflow-hidden rounded-[22px] border border-line bg-bg shadow-[0_30px_80px_-34px_rgba(0,0,0,.35)] ${className}`}>
+    <figure className={`overflow-hidden rounded-[22px] bg-bg ${floating ? "shadow-[0_30px_80px_-34px_rgba(0,0,0,.35)] ring-1 ring-line" : "border border-line"} ${className}`}>
       <figcaption className="flex items-center justify-between gap-3 border-b border-line px-5 py-3.5">
         <span className="text-sm font-semibold">{title}</span>
         <span className="rounded-full bg-surface px-2.5 py-1 text-xs text-muted">Example</span>
@@ -30,7 +31,7 @@ const channelIcon = {
   facebook: <FacebookLogoIcon aria-hidden="true" size={14} />,
 };
 
-export function EnquiryInbox({ className = "" }: { className?: string }) {
+export function EnquiryInbox({ className = "", floating = false }: { className?: string; floating?: boolean }) {
   const rows: { name: string; channel: keyof typeof channelIcon; source: string; summary: string; state: keyof typeof status; label: string; time: string }[] = [
     { name: "Dana Okafor", channel: "phone", source: "Phone, after hours", summary: "AC not cooling, unit off", state: "booked", label: "Booked Thu 8:30", time: "9:12 pm" },
     { name: "Priya Shah", channel: "phone", source: "Phone", summary: "Unhappy with last visit", state: "person", label: "Needs a person", time: "8:47 am" },
@@ -39,7 +40,7 @@ export function EnquiryInbox({ className = "" }: { className?: string }) {
     { name: "Tom Reed", channel: "facebook", source: "Facebook lead ad", summary: "Boiler service quote", state: "booked", label: "Booked Fri 10:00", time: "Yesterday" },
   ];
   return (
-    <Frame title="Enquiries" className={className}>
+    <Frame title="Enquiries" className={className} floating={floating}>
       <div className="flex gap-2 border-b border-line px-5 py-3 text-xs">
         <span className="rounded-full bg-ink px-2.5 py-1 text-bg">All 47</span>
         <span className="rounded-full bg-surface px-2.5 py-1 text-muted">Booked 19</span>
@@ -66,11 +67,11 @@ export function EnquiryInbox({ className = "" }: { className?: string }) {
   );
 }
 
-export function WeeklyReport({ className = "" }: { className?: string }) {
+export function WeeklyReport({ className = "", floating = false }: { className?: string; floating?: boolean }) {
   const days = [["M", 6], ["T", 9], ["W", 7], ["T", 8], ["F", 11], ["S", 4], ["S", 2]] as const;
   const max = 11;
   return (
-    <Frame title="Weekly report email" className={className}>
+    <Frame title="Weekly report email" className={className} floating={floating}>
       <div className="border-b border-line px-5 py-3 text-xs text-muted">
         <p className="flex items-center gap-2"><EnvelopeSimpleIcon aria-hidden="true" size={14} />From INFOTECH reports, every Monday at 8 am</p>
         <p className="mt-1 text-sm font-semibold text-ink">Your week: 47 enquiries, 19 booked</p>
@@ -103,9 +104,9 @@ export function WeeklyReport({ className = "" }: { className?: string }) {
   );
 }
 
-export function CallTranscript({ className = "" }: { className?: string }) {
+export function CallTranscript({ className = "", floating = false }: { className?: string; floating?: boolean }) {
   return (
-    <Frame title="Call record in your CRM" className={className}>
+    <Frame title="Call record in your CRM" className={className} floating={floating}>
       <div className="flex items-center gap-3 border-b border-line px-5 py-3.5">
         <span className="grid size-9 place-items-center rounded-full bg-crimson text-white"><WaveformIcon aria-hidden="true" size={18} weight="bold" /></span>
         <div className="leading-tight">

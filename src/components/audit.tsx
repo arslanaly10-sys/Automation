@@ -8,12 +8,13 @@ export function AuditButton({ ctx, className = "btn btn-primary", label = audit.
 }
 
 /** Reassurance shown next to booking buttons. */
-export function AuditPromise({ className = "", tone = "dark" }: { className?: string; tone?: "dark" | "light" }) {
+/** tone: "dark" on black or photo grounds, "light" on white, "onColor" on crimson (solid white for contrast). */
+export function AuditPromise({ className = "", tone = "dark" }: { className?: string; tone?: "dark" | "light" | "onColor" }) {
   return (
-    <ul className={`flex flex-wrap gap-x-5 gap-y-1.5 text-sm ${tone === "dark" ? "text-white/70" : "text-muted"} ${className}`}>
+    <ul className={`flex flex-wrap gap-x-5 gap-y-1.5 text-sm ${tone === "dark" ? "text-white/75" : tone === "onColor" ? "text-white" : "text-muted"} ${className}`}>
       {audit.promise.map((p) => (
         <li key={p} className="flex items-center gap-1.5">
-          <CheckIcon aria-hidden="true" size={14} weight="bold" className="text-crimson" />{p}
+          <CheckIcon aria-hidden="true" size={14} weight="bold" className={tone === "onColor" ? "text-white" : "text-crimson"} />{p}
         </li>
       ))}
     </ul>

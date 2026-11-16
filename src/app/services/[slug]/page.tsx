@@ -16,9 +16,9 @@ import { CallTranscript, EnquiryInbox, WeeklyReport } from "@/components/product
 
 /* The mockup that best shows each service’s output, where one fits. */
 const mockupFor: Record<string, () => React.ReactNode> = {
-  "ai-reception": () => <CallTranscript />,
-  "lead-follow-up": () => <EnquiryInbox />,
-  optimisation: () => <WeeklyReport />,
+  "ai-reception": () => <CallTranscript floating />,
+  "lead-follow-up": () => <EnquiryInbox floating />,
+  optimisation: () => <WeeklyReport floating />,
 };
 
 export function generateStaticParams() {

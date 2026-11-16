@@ -214,12 +214,12 @@ export function CtaBanner({ title = "Find the first workflow worth automating.",
       <div className="wrap relative grid gap-10 py-20 md:grid-cols-12 md:py-28">
         <h2 className="display text-[clamp(2.4rem,4.6vw,4rem)] md:col-span-7">{title}</h2>
         <div className="md:col-span-4 md:col-start-9 md:self-end">
-          <p className="text-white/85">{body}</p>
+          <p className="text-white">{body}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <AuditButton ctx={{ from: "banner" }} className="btn btn-light" />
             <Link href="/pricing" className="btn btn-ghost text-white">See pricing</Link>
           </div>
-          <AuditPromise className="mt-5 [&_svg]:!text-white" />
+          <AuditPromise tone="onColor" className="mt-5" />
         </div>
       </div>
     </section>

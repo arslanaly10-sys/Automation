@@ -28,7 +28,7 @@
   --ink: #f3f3f5;
   --muted: #a3a3ad;
   --line: #26262d;
-  --crimson: #d9475e;
+  --crimson: #cb3a51;          /* logo crimson in dark mode too: white text 4.9:1, 4.3:1 against black */
   --crimson-ink: #f08294;
   --crimson-soft: #2a0f15;
   --reveal-dim: #62626b;       /* 3.5:1 on black */
@@ -53,7 +53,7 @@
 html { -webkit-text-size-adjust: 100%; scroll-padding-top: 96px; }
 a, button, input, select, textarea, summary { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 h1, h2, h3 { text-wrap: balance; }
-p { text-wrap: pretty; }
+p, li, dd, figcaption { text-wrap: pretty; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-stopped { overflow: hidden; }
@@ -69,6 +69,8 @@ body {
 }
 
 ::selection { background: var(--crimson); color: #fff; }
+:root { accent-color: var(--crimson); caret-color: var(--crimson); scrollbar-color: var(--surface-2) var(--bg); }
+::placeholder { color: var(--muted); opacity: 1; }
 
 :focus-visible {
   outline: 2px solid var(--crimson);
@@ -122,13 +124,24 @@ body {
 .lift { transition: transform 200ms var(--ease-out); }
 .lift:hover { transform: translateY(-2px); }
 
-/* Diamond line pattern used on the crimson CTA */
+/* Diamond line pattern used on the crimson CTA: the logo's diamond lattice, a brand motif, not a generic grid. */
+/* impeccable-disable-next-line codex-grid-background */
 .diamond-pattern {
   background-image:
     linear-gradient(45deg, rgba(255,255,255,.09) 1px, transparent 1px),
     linear-gradient(-45deg, rgba(255,255,255,.09) 1px, transparent 1px);
   background-size: 44px 44px;
 }
+
+/* Range sliders: 44px touch area, 8px track, 28px thumb. touch-action keeps vertical page scroll and gives sideways drags to the slider. */
+.range { appearance: none; -webkit-appearance: none; height: 44px; background: transparent; touch-action: pan-y; }
+.range::-webkit-slider-runnable-track { height: 8px; border-radius: 999px; background: linear-gradient(to right, var(--crimson) var(--pct), var(--surface-2) var(--pct)); }
+.range::-moz-range-track { height: 8px; border-radius: 999px; background: linear-gradient(to right, var(--crimson) var(--pct), var(--surface-2) var(--pct)); }
+.range::-webkit-slider-thumb { -webkit-appearance: none; width: 28px; height: 28px; margin-top: -10px; border-radius: 999px; background: var(--bg); border: 3px solid var(--crimson); box-shadow: 0 2px 6px rgba(0,0,0,.25); }
+.range::-moz-range-thumb { width: 22px; height: 22px; border-radius: 999px; background: var(--bg); border: 3px solid var(--crimson); box-shadow: 0 2px 6px rgba(0,0,0,.25); }
+.range:focus-visible { outline: none; }
+.range:focus-visible::-webkit-slider-thumb { outline: 2px solid var(--crimson); outline-offset: 3px; }
+.range:focus-visible::-moz-range-thumb { outline: 2px solid var(--crimson); outline-offset: 3px; }
 
 /* Word reveal */
 .reveal-word { color: var(--reveal-dim); transition: color 120ms linear; }
@@ -149,11 +162,21 @@ body {
 
 }
 
+@keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
+
+/* Reduced motion: no movement (slides, scaling, zoom, scroll effects, loops). Short fades stay so state changes remain visible. */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-  .reveal-word { color: inherit; }
+  html { scroll-behavior: auto; }
+  .msg-in { animation-name: fade-in; animation-duration: 200ms; }
+  .lift:hover, .btn:active, .group:hover .photo-frame img { transform: none; }
+  [class*="group-hover:translate"], [class*="group-hover:-translate"], [class*="group-open:rotate"] { transform: none !important; }
   .marquee-track { animation: none; }
+  .typing span { animation: none; opacity: .7; }
+  .reveal-word { color: inherit; }
+  [data-mobile-audit-bar] { transform: none !important; transition: opacity 200ms linear; }
+  [data-mobile-audit-bar][aria-hidden="true"] { opacity: 0; }
 }
+
 
 /* Print: guides print as clean documents */
 @media print {

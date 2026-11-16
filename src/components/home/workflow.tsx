@@ -41,12 +41,14 @@ export function Workflow() {
       <div className="wrap grid h-full items-center gap-14 py-24 lg:grid-cols-12 lg:py-0">
         <div className="lg:col-span-5">
           <h2 className="display text-[clamp(2.2rem,4.2vw,3.6rem)]">From first hello to finished job, without anything slipping.</h2>
-          <ol className="mt-10 hidden flex-col gap-1 lg:flex">
+          <ol className="mt-10 hidden flex-col gap-2 lg:flex">
             {steps.map((s, i) => (
-              <li key={s.title} className={`border-l-2 py-3 pl-5 transition-[border-color,color] duration-200 ${i === active ? "border-crimson text-ink" : "border-line text-muted"}`}>
-                <p className="text-sm text-muted">Step {i + 1}</p>
-                <p className={`text-lg ${i === active ? "font-semibold" : "font-medium"}`}>{s.title}</p>
-                <p className={`mt-1 max-w-[46ch] text-muted ${i === active ? "block" : "hidden"}`}>{s.body}</p>
+              <li key={s.title} aria-current={i === active ? "step" : undefined} className={`grid grid-cols-[32px_1fr] gap-4 py-2.5 transition-colors duration-200 ${i === active ? "text-ink" : "text-muted"}`}>
+                <span className={`grid size-8 place-items-center rounded-full text-sm font-semibold tabular-nums transition-colors duration-200 ${i === active ? "bg-crimson text-white" : "bg-surface-2 text-muted"}`}>{i + 1}</span>
+                <div>
+                  <p className={`pt-0.5 text-lg ${i === active ? "font-semibold" : "font-medium"}`}>{s.title}</p>
+                  <p className={`mt-1 max-w-[46ch] text-muted ${i === active ? "block" : "hidden"}`}>{s.body}</p>
+                </div>
               </li>
             ))}
           </ol>
@@ -72,11 +74,13 @@ export function Workflow() {
         {/* Mobile and reduced motion: stacked */}
         <ol className="flex flex-col gap-14 lg:hidden">
           {steps.map((s, i) => (
-            <li key={s.title}>
-              <p className="text-sm text-muted">Step {i + 1}</p>
-              <p className="mt-1 text-xl font-semibold">{s.title}</p>
-              <p className="mt-2 text-muted">{s.body}</p>
-              <div className="mt-6 max-w-[360px]"><StepUI kind={s.ui} /></div>
+            <li key={s.title} className="grid grid-cols-[32px_1fr] gap-4">
+              <span className="grid size-8 place-items-center rounded-full bg-crimson text-sm font-semibold text-white tabular-nums">{i + 1}</span>
+              <div>
+                <p className="pt-0.5 text-xl font-semibold">{s.title}</p>
+                <p className="mt-2 text-muted">{s.body}</p>
+                <div className="mt-6 max-w-[360px]"><StepUI kind={s.ui} flat /></div>
+              </div>
             </li>
           ))}
         </ol>
@@ -86,19 +90,19 @@ export function Workflow() {
   );
 }
 
-function Card({ title, children }: { title: string; children: React.ReactNode }) {
+function Card({ title, children, flat = false }: { title: string; children: React.ReactNode; flat?: boolean }) {
   return (
-    <div className="rounded-[22px] border border-line bg-bg p-5 shadow-[0_24px_60px_-28px_rgba(0,0,0,.35)]">
+    <div className={`rounded-[22px] bg-bg p-5 ${flat ? "border border-line" : "shadow-[0_24px_60px_-28px_rgba(0,0,0,.35)] ring-1 ring-line"}`}>
       <p className="mb-4 text-sm font-semibold">{title}</p>
       {children}
     </div>
   );
 }
 
-function StepUI({ kind }: { kind: (typeof steps)[number]["ui"] }) {
+function StepUI({ kind, flat = false }: { kind: (typeof steps)[number]["ui"]; flat?: boolean }) {
   if (kind === "inbound")
     return (
-      <Card title="New enquiries">
+      <Card flat={flat} title="New enquiries">
         {[
           { icon: <PhoneXIcon aria-hidden="true" size={18} />, t: "Missed call", d: "9:12 pm", r: "Text-back sent in 8 s" },
           { icon: <ChatCircleTextIcon aria-hidden="true" size={18} />, t: "Web form: quote request", d: "12:40 pm", r: "Replied in 41 s" },
@@ -116,7 +120,7 @@ function StepUI({ kind }: { kind: (typeof steps)[number]["ui"] }) {
     );
   if (kind === "qualify")
     return (
-      <Card title="Enquiry summary">
+      <Card flat={flat} title="Enquiry summary">
         <dl className="grid grid-cols-[96px_1fr] gap-y-2.5 text-sm">
           <dt className="text-muted">Name</dt><dd>Dana Okafor</dd>
           <dt className="text-muted">Needs</dt><dd>AC not cooling, unit off</dd>
@@ -129,7 +133,7 @@ function StepUI({ kind }: { kind: (typeof steps)[number]["ui"] }) {
     );
   if (kind === "booked")
     return (
-      <Card title="Thursday">
+      <Card flat={flat} title="Thursday">
         <div className="flex flex-col gap-1.5 text-sm">
           {["7:30", "8:30", "10:00", "11:30", "1:00"].map((t) => (
             <div key={t} className="grid grid-cols-[48px_1fr] items-center gap-3">
@@ -150,7 +154,7 @@ function StepUI({ kind }: { kind: (typeof steps)[number]["ui"] }) {
       </Card>
     );
   return (
-    <Card title="After the booking">
+    <Card flat={flat} title="After the booking">
       <ul className="flex flex-col gap-3 text-sm">
         {[
           ["Confirmation text sent", true],

@@ -95,8 +95,8 @@ function Slider({ label, value, min, max, step = 1, onChange, display }: {
       <input
         id={id} type="range" min={min} max={max} step={step} value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="h-2 w-full cursor-pointer appearance-none rounded-full accent-[var(--crimson)]"
-        style={{ background: `linear-gradient(to right, var(--crimson) ${pct}%, var(--surface-2) ${pct}%)` }}
+        className="range w-full cursor-pointer"
+        style={{ "--pct": `${pct}%` } as React.CSSProperties}
       />
     </div>
   );
