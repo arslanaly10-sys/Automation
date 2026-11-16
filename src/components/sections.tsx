@@ -5,6 +5,7 @@ import { commitments, pilot, plans, services, tools } from "@/lib/content";
 import { bookHref, bookingReady, site } from "@/lib/site";
 import { ServiceIcon } from "./icons";
 import { Mark } from "./brand";
+import { GuaranteeBand } from "./trust";
 
 /* ---------- Page hero used on inner pages ---------- */
 export function PageHero({ title, intro, image, imageAlt, children }: {
@@ -153,6 +154,7 @@ export function PricingTeaser() {
           <p className="max-w-[44ch] text-muted">{site.terms.setup} <Link href="/pricing" className="font-semibold text-ink underline underline-offset-4">Full pricing details</Link></p>
         </div>
         <PlanCards />
+        <GuaranteeBand className="mt-8" />
       </div>
     </section>
   );

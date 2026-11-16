@@ -30,6 +30,43 @@ export const site = {
   },
 } as const;
 
+/**
+ * Trust sections. Each one stays hidden on the site until its fields are filled in,
+ * so nothing placeholder-looking is ever shown to visitors.
+ */
+export type Trust = {
+  demo: {
+    /** Phone number visitors can call to talk to the AI receptionist, as it should be displayed, e.g. "+1 (415) 555-0134". */
+    phone: string;
+    /** A recording of a real call, e.g. "/audio/demo-call.mp3" (put the file in public/audio). */
+    recording: string;
+    /** Transcript of the recording, shown under the player for people who can't listen. */
+    transcript: { speaker: "Caller" | "AI receptionist"; text: string }[];
+  };
+  guarantee: {
+    /** Short promise, e.g. "Live in 30 days, or your setup fee back". */
+    title: string;
+    /** The exact terms, in one or two sentences. */
+    body: string;
+  };
+  company: {
+    legalName: string;
+    registration: string; // e.g. "Company no. 12345678"
+    address: string; // street, city
+    country: string;
+  };
+};
+
+export const trust: Trust = {
+  demo: { phone: "", recording: "", transcript: [] },
+  guarantee: { title: "", body: "" },
+  company: { legalName: "", registration: "", address: "", country: "" },
+};
+
+export const demoReady = Boolean(trust.demo.phone || trust.demo.recording);
+export const guaranteeReady = Boolean(trust.guarantee.title && trust.guarantee.body);
+export const companyReady = Boolean(trust.company.legalName);
+
 /** True once bookingUrl has been replaced with a real link. */
 export const bookingReady = !site.bookingUrl.includes("your-infotech-link");
 

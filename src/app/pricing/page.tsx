@@ -3,6 +3,7 @@ import { CtaCalendar, PageHero, PlanCards } from "@/components/sections";
 import { Faq } from "@/components/faq";
 import { faqs } from "@/lib/content";
 import { site } from "@/lib/site";
+import { GuaranteeBand } from "@/components/trust";
 import { JsonLd, faqLd, pricingLd } from "@/components/json-ld";
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function PricingPage() {
       <section className="bg-bg py-20 md:py-28">
         <div className="wrap">
           <PlanCards />
+          <GuaranteeBand className="mt-8" />
           <div className="mt-14 grid gap-8 border-t border-line pt-10 md:grid-cols-3">
             {[
               ["Setup", site.terms.setup],

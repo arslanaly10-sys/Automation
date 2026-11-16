@@ -7,6 +7,7 @@ import { CtaCalendar, Pilot, PricingTeaser, ServicesList, ToolsMarquee } from "@
 import { Faq } from "@/components/faq";
 import { faqs } from "@/lib/content";
 import { JsonLd, faqLd } from "@/components/json-ld";
+import { CaseStudyTeaser, DemoSection } from "@/components/trust";
 
 export default function Home() {
   return (
@@ -20,10 +21,12 @@ export default function Home() {
           />
         </div>
       </section>
+      <DemoSection />
       <ServicesList />
       <Workflow />
       <IndustrySlider />
       <RoiCalculator />
+      <CaseStudyTeaser />
       <Pilot />
       <ToolsMarquee />
       <PricingTeaser />

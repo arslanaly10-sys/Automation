@@ -703,3 +703,23 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     },
   },
 };
+
+
+/* ---------- Case studies (/case-studies) ---------- */
+/* Add only real projects. The section, the nav link and the pages stay hidden while this list is empty. */
+
+export type CaseStudy = {
+  slug: string;
+  client: string; // a business name, or a description such as "A three-van plumbing firm in Leeds" if the client prefers not to be named
+  industry: string; // slug from `industries`
+  image: string; // a photo of the client's business, ideally their own
+  imageAlt: string;
+  summary: string; // one sentence: what changed
+  challenge: string;
+  solution: string[];
+  results: { label: string; before: string; after: string }[];
+  timeline: string; // e.g. "Live in 3 weeks"
+  quote?: { text: string; name: string; role: string }; // only with the client's written permission
+};
+
+export const caseStudies: CaseStudy[] = [];

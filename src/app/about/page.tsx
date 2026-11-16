@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { CtaSplit, PageHero, Pilot } from "@/components/sections";
 import { TextReveal } from "@/components/text-reveal";
+import { CompanyDetails } from "@/components/trust";
 
 export const metadata: Metadata = {
   title: "About",
@@ -51,6 +52,7 @@ export default function AboutPage() {
         </div>
       </section>
       <Pilot />
+      <CompanyDetails />
       <CtaSplit
         image="/images/spa-massage.jpg"
         alt="A therapist pouring massage oil in a calm treatment room"

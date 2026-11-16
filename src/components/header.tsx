@@ -5,7 +5,10 @@ import { useEffect, useState } from "react";
 import { ListIcon, XIcon } from "@phosphor-icons/react";
 import { Wordmark } from "./brand";
 import { ThemeToggle } from "./theme-toggle";
-import { bookHref, bookingReady, nav, site } from "@/lib/site";
+import { bookHref, bookingReady, nav as baseNav, site } from "@/lib/site";
+import { caseStudies } from "@/lib/content";
+
+const nav = caseStudies.length ? [...baseNav, { href: "/case-studies", label: "Case studies" }] : baseNav;
 
 export function Header() {
   const pathname = usePathname();

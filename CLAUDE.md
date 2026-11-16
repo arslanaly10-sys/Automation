@@ -16,6 +16,8 @@ Next.js 15 (App Router) + Tailwind CSS v4 marketing site for INFOTECH, an AI aut
 - `src/components/json-ld.tsx`: schema.org data (Organization, WebSite, FAQPage, Service list, pricing offers).
 - `src/app/opengraph-image.tsx`, `apple-icon.tsx`: generated share image and app icon.
 
+- Trust sections (`src/components/trust.tsx`): AI demo (call number and/or recording with transcript), guarantee, company details and case studies. Each is driven by `trust` in `site.ts` or `caseStudies` in `content.ts` and stays hidden while empty. Never fill them with invented data.
+
 ## Brand rules
 - Crimson `#CB3A51` (logo), `--crimson-ink` for crimson text on light grounds. Black `#000` matches the logo ground.
 - Newsreader for display, Hanken Grotesk for body. Sentence case, no all-caps eyebrows.

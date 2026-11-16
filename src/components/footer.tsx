@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Wordmark } from "./brand";
 import { industries, services } from "@/lib/content";
 import { site } from "@/lib/site";
+import { CompanyLine } from "./trust";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -34,7 +35,10 @@ export function Footer() {
       </div>
 
       <div className="wrap flex flex-col gap-2 border-t border-white/12 py-6 text-[13px] text-white/50 sm:flex-row sm:justify-between">
-        <p>© {year} {site.name}. Serving businesses worldwide.</p>
+        <div className="flex flex-col gap-1">
+          <p>© {year} {site.name}. Serving businesses worldwide.</p>
+          <CompanyLine />
+        </div>
         <p>Photography from Unsplash, used under the Unsplash License.</p>
       </div>
 

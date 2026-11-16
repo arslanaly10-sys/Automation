@@ -1,5 +1,5 @@
 import { faqs, plans, services } from "@/lib/content";
-import { site } from "@/lib/site";
+import { companyReady, site, trust } from "@/lib/site";
 
 /** Renders schema.org structured data. Content is our own static data, never user input. */
 export function JsonLd({ data }: { data: Record<string, unknown> }) {
@@ -18,6 +18,7 @@ export const organizationLd = {
       email: site.email,
       description: site.description,
       areaServed: "Worldwide",
+      ...(companyReady ? { legalName: trust.company.legalName, address: { "@type": "PostalAddress", streetAddress: trust.company.address, addressCountry: trust.company.country } } : {}),
     },
     { "@type": "WebSite", "@id": `${site.siteUrl}/#site`, url: site.siteUrl, name: site.name, publisher: { "@id": `${site.siteUrl}/#org` } },
   ],
