@@ -16,6 +16,7 @@ Installed for the INFOTECH website build. Each folder is a Claude Code skill.
 | 11 | ui-ux-pro-max | `ui-ux-pro-max/`, `design-system/`, `ui-styling/`, `brand/`, `design/`, `banner-design/`, `slides/` | github.com/nextlevelbuilder/ui-ux-pro-max-skill |
 | 12 | impeccable | `impeccable/` (skill), `.claude/agents/impeccable-*.md`, hooks in `.claude/settings.json` | github.com/pbakaus/impeccable (Apache 2.0), installed with `npx impeccable install --project --providers=claude` |
 | 13 | ppt-master | `ppt-master/` | github.com/hugohe3/ppt-master (MIT, v6.9.0, commit 3af3e8e) |
+| 14 | archify | `archify/` | github.com/tt-a1i/archify (Apache 2.0, v3.2, commit a7ed6fd); LICENSE, NOTICE and third-party notices kept in the folder |
 
 Notes
 - The `12-principles-of-animation` skill no longer exists in raphaelsalaja's repo. Its current `motion` skill (installed as `rs-motion`) covers the same ground.
@@ -24,3 +25,4 @@ Notes
 - Licences: MIT, except playwright-cli (Apache 2.0). Each upstream LICENSE is kept alongside its skill.
 - Impeccable adds three hooks (in `.claude/settings.json`, shared with everyone who clones the repo): a quick design check after each Edit/Write on UI files, a deeper pass when a turn ends, and a session-start step. Each does nothing if the skill's script is missing. Its engine is downloaded to `~/.impeccable` on first use, which needs network access to impeccable.style. Update with `npx impeccable update`.
 - ppt-master generates editable PPTX decks with Python. Before first use, install its dependencies: `pip install -r .claude/skills/ppt-master/requirements.txt` (Python 3.10–3.14; some routes also need pandoc). Update it by re-copying `skills/ppt-master` from the upstream repo.
+- archify turns requirements, Mermaid or repository evidence into explorable standalone HTML diagrams and one-page explainers. It needs Node 18+ and has no npm dependencies. It may make an occasional request to its own release manifest to show an optional update reminder (it never auto-updates); set `ARCHIFY_UPDATE_CHECK_DISABLED=1` to turn that off. Output goes to `.archify/` in the working directory.
