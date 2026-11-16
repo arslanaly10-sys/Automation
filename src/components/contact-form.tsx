@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { track } from "@vercel/analytics";
 import { bookingReady, site } from "@/lib/site";
+import { formspreeReady, openMailto, submitToFormspree } from "@/lib/formspree";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -20,37 +21,27 @@ export function ContactForm() {
     const business = String(data.get("business") || data.get("name") || "");
     data.set("_subject", `Workflow enquiry from ${business}`);
 
-    if (!site.formspreeId) {
+    if (!formspreeReady) {
       const body = ["name", "business", "industry", "country"].map((k) => `${k}: ${data.get(k) ?? ""}`).join("\n") + `\n\n${data.get("message")}`;
-      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(String(data.get("_subject")))}&body=${encodeURIComponent(body)}`;
+      openMailto(String(data.get("_subject")), body);
       setStatus("sent");
       return;
     }
 
     setStatus("sending");
     setError("");
-    try {
-      const res = await fetch(`https://formspree.io/f/${site.formspreeId}`, {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
-      });
-      if (res.ok) {
-        form.reset();
-        track("Contact form sent", { industry: String(data.get("industry") || "") });
-        setStatus("sent");
-        return;
-      }
-      const json = (await res.json().catch(() => null)) as { errors?: { message: string }[] } | null;
-      setError(json?.errors?.map((x) => x.message).join(" ") || "The message didn’t go through.");
-      setStatus("error");
-    } catch {
-      setError("We couldn’t reach the server. Check your connection.");
-      setStatus("error");
+    const result = await submitToFormspree(data);
+    if (result.ok) {
+      form.reset();
+      track("Contact form sent", { industry: String(data.get("industry") || "") });
+      setStatus("sent");
+      return;
     }
+    setError(result.error);
+    setStatus("error");
   }
 
-  if (status === "sent" && site.formspreeId) {
+  if (status === "sent" && formspreeReady) {
     return (
       <div className="rounded-[26px] border border-line bg-surface p-8 md:p-12" role="status">
         <p className="display text-4xl">Thanks, we’ve got it.</p>

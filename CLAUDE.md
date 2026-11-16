@@ -11,7 +11,8 @@ Next.js 15 (App Router) + Tailwind CSS v4 marketing site for INFOTECH, an AI aut
 - `public/images/`: Unsplash photos (Unsplash License; credit line is in the footer).
 
 - Booking buttons use `bookHref` from `site.ts`: the contact page until `bookingUrl` is real, then the booking page.
-- `src/components/analytics.tsx`: Vercel Web Analytics plus "Booking click", "CTA click" and "Contact form sent" events.
+- `src/lib/formspree.ts`: shared Formspree submit + mailto fallback, used by the contact form and the calculator's estimate capture.
+- `src/components/analytics.tsx`: Vercel Web Analytics plus "Booking click", "CTA click", "Contact form sent" and "Estimate requested" events.
 - `src/components/json-ld.tsx`: schema.org data (Organization, WebSite, FAQPage, Service list, pricing offers).
 - `src/app/opengraph-image.tsx`, `apple-icon.tsx`: generated share image and app icon.
 
