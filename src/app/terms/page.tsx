@@ -69,11 +69,6 @@ export default function Terms() {
           p: "The site is provided “as is”. To the extent the law allows, we are not liable for any loss arising from use of this website or reliance on its content. Nothing in these terms limits liability that cannot be limited by law.",
         },
         {
-          id: "law",
-          h: "Governing law",
-          p: `These terms are governed by the laws of the country where ${site.name} is established. Mandatory consumer protections where you live are not affected.`,
-        },
-        {
           id: "changes",
           h: "Changes",
           p: "We may update these terms from time to time. The date at the top shows when they last changed.",

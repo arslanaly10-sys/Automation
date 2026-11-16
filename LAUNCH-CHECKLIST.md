@@ -18,7 +18,7 @@ Tick items off as they're done.
   Pages: `src/app/privacy/page.tsx`, `src/app/terms/page.tsx`. They are drafts. When the review is done,
   remove the "Draft prepared for review" note in `src/components/legal.tsx`.
   Ask the lawyer to confirm or change:
-  - [ ] **Governing law**: the Terms say "the country where INFOTECH is established". Name it.
+  - [ ] **Governing law**: removed from the Terms for now. Ask whether to add one, and for which country.
   - [ ] **Data processing agreement**: the Privacy policy says you sign one with every client on request.
         Have a DPA template ready.
   - [ ] **Retention**: enquiries are kept for up to 24 months. Confirm that period suits you.
