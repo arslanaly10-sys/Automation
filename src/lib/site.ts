@@ -16,6 +16,9 @@ export const site = {
   bookingUrl: "https://calendly.com/your-infotech-link/strategy-call",
   // PLACEHOLDER: replace with your real inbox
   email: "hello@infotech.example",
+  // Formspree form ID (the part after formspree.io/f/). Set NEXT_PUBLIC_FORMSPREE_ID in Vercel,
+  // or paste the ID here. While empty, the contact form falls back to opening the visitor's email app.
+  formspreeId: process.env.NEXT_PUBLIC_FORMSPREE_ID ?? "",
   // PLACEHOLDER: replace with your production domain
   siteUrl: "https://infotech-website-arslan-b69a.vercel.app",
 
