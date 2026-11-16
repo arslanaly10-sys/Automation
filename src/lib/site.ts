@@ -59,7 +59,10 @@ export type Trust = {
 
 export const trust: Trust = {
   demo: { phone: "", recording: "", transcript: [] },
-  guarantee: { title: "", body: "" },
+  guarantee: {
+    title: "Live in 30 days, or your setup fee back",
+    body: "If your first workflow isn’t live within 30 days of you approving the plan from your workflow audit, we refund your setup fee in full. The clock pauses only while we’re waiting on access or approvals from your side.",
+  },
   company: { legalName: "", registration: "", address: "", country: "" },
 };
 
