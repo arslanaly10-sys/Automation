@@ -67,10 +67,10 @@ export function ContactForm() {
     setStatus("error");
   }
 
-  const field = "w-full rounded-xl border border-line bg-bg px-4 py-3 text-ink outline-none focus:border-crimson";
+  const field = "w-full rounded-xl border border-line-strong bg-bg px-4 py-3 text-ink outline-none focus:border-crimson";
   const sending = status === "sending";
   return (
-    <form onSubmit={onSubmit} className="grid gap-5 rounded-[26px] border border-line bg-surface p-6 md:grid-cols-2 md:p-9">
+    <form onSubmit={onSubmit} className="grid gap-5 rounded-panel border border-line bg-surface p-6 md:grid-cols-2 md:p-9">
       {(plan || loss) && (
         <p className="rounded-2xl bg-crimson-soft p-4 text-[15px] md:col-span-2">
           {plan && <>You’re asking about the <strong>{plan}</strong> plan. </>}
@@ -83,7 +83,7 @@ export function ContactForm() {
           {needs.map((n) => (
             <label key={n} className="cursor-pointer">
               <input type="checkbox" name="needs" value={n} className="peer sr-only" />
-              <span className="inline-flex min-h-11 items-center rounded-full border border-line bg-bg px-4 text-[15px] transition-colors duration-150 peer-checked:border-crimson peer-checked:bg-crimson peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-crimson">
+              <span className="inline-flex min-h-11 items-center rounded-full border border-line-strong bg-bg px-4 text-[15px] transition-colors duration-150 peer-checked:border-crimson peer-checked:bg-crimson peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-crimson">
                 {n}
               </span>
             </label>

@@ -28,7 +28,7 @@ export function GuideTools({ title }: { title: string }) {
   }
 
   return (
-    <aside className="no-print mt-14 grid gap-6 rounded-[22px] border border-line bg-surface p-6 md:grid-cols-[auto_1fr] md:items-center md:p-8">
+    <aside className="no-print mt-14 grid gap-6 rounded-card border border-line bg-surface p-6 md:grid-cols-[auto_1fr] md:items-center md:p-8">
       <button type="button" onClick={() => { track("Guide saved as PDF", { guide: title }); window.print(); }} className="btn btn-ghost justify-self-start">
         <FilePdfIcon aria-hidden="true" size={18} />Save as PDF
       </button>
@@ -39,7 +39,7 @@ export function GuideTools({ title }: { title: string }) {
           <label className="grid flex-1 gap-1.5 text-sm">
             Get the next guide by email
             <input name="email" type="email" required autoComplete="email" spellCheck={false} placeholder="you@business.com"
-              className="w-full rounded-xl border border-line bg-bg px-4 py-3 text-ink outline-none focus:border-crimson" />
+              className="w-full rounded-xl border border-line-strong bg-bg px-4 py-3 text-ink outline-none focus:border-crimson" />
           </label>
           <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
           <button type="submit" disabled={status === "sending"} className="btn btn-ink disabled:opacity-60">{status === "sending" ? "Sending…" : "Send me new guides"}</button>

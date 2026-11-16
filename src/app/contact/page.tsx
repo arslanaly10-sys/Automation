@@ -34,11 +34,11 @@ export default function ContactPage() {
       {bookingReady && (
         <section className="bg-bg pt-16 md:pt-20" aria-labelledby="pick-a-time">
           <div className="wrap">
-            <h2 id="pick-a-time" className="display text-[clamp(2rem,3.4vw,2.8rem)]">Pick a time</h2>
+            <h2 id="pick-a-time" className="display display-md">Pick a time</h2>
             <iframe
               title="Book your free audit"
               src={`${site.bookingUrl}?hide_gdpr_banner=1&primary_color=cb3a51`}
-              className="mt-8 h-[720px] w-full rounded-[22px] border border-line bg-bg"
+              className="mt-8 h-[720px] w-full rounded-card border border-line bg-bg"
               loading="lazy"
             />
             <p className="mt-6 text-muted">Prefer to send a request instead? Use the form below.</p>
@@ -46,15 +46,15 @@ export default function ContactPage() {
         </section>
       )}
 
-      <section className="bg-bg py-16 md:py-24">
+      <section className="bg-bg section-tight">
         <div className="wrap grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7 lg:order-2 lg:col-start-6">
-            <Suspense fallback={<div className="h-[640px] rounded-[26px] border border-line bg-surface" />}>
+            <Suspense fallback={<div className="h-[640px] rounded-panel border border-line bg-surface" />}>
               <ContactForm />
             </Suspense>
           </div>
           <div className="lg:order-1 lg:col-span-4">
-            <h2 className="display text-[clamp(2rem,3.4vw,2.8rem)]">What happens on the call</h2>
+            <h2 className="display display-md">What happens on the call</h2>
             <ol className="mt-8 flex flex-col gap-7">
               {steps.map((n, i) => (
                 <li key={n.t} className="grid grid-cols-[36px_1fr] gap-4">

@@ -38,9 +38,9 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
         <p className="mt-6 text-sm text-white/60">{ind.examples}</p>
       </PageHero>
 
-      <section className="bg-bg py-24 md:py-32">
+      <section className="bg-bg section">
         <div className="wrap">
-          <h2 className="display max-w-[22ch] text-[clamp(2.1rem,4vw,3.4rem)]">Where the time and money go</h2>
+          <h2 className="display max-w-[22ch] display-lg">Where the time and money go</h2>
           <div className="mt-14 grid gap-10 md:grid-cols-3">
             {ind.problems.map((p) => (
               <div key={p.title} className="border-t-2 border-crimson pt-6">
@@ -52,10 +52,10 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
         </div>
       </section>
 
-      <section id="workflows" className="scroll-mt-20 bg-surface py-24 md:py-32">
+      <section id="workflows" className="scroll-mt-20 bg-surface section">
         <div className="wrap grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-6">
-            <h2 className="display text-[clamp(2.1rem,4vw,3.4rem)]">What we set up for you</h2>
+            <h2 className="display display-lg">What we set up for you</h2>
             <ol className="mt-10 flex flex-col">
               {ind.workflows.map((w) => (
                 <li key={w.title} className="border-t border-line py-6 first:border-0 first:pt-0">
@@ -79,10 +79,10 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
         </div>
       </section>
 
-      <section className="bg-bg py-20 md:py-28">
+      <section className="bg-bg section-tight">
         <div className="wrap grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-6">
-            <h2 className="display text-[clamp(2.1rem,4vw,3.4rem)]">Where most businesses like yours start</h2>
+            <h2 className="display display-lg">Where most businesses like yours start</h2>
             <p className="mt-6 text-lg text-muted">{ind.firstWorkflow}</p>
           </div>
           <div className="lg:col-span-5 lg:col-start-8">

@@ -25,19 +25,19 @@ export default function AboutPage() {
         image="/images/about-office.jpg"
         imageAlt="An empty, light-filled modern office with a long table"
       />
-      <section className="bg-bg py-28 md:py-36">
+      <section className="bg-bg py-28 md:py-40">
         <div className="wrap">
           <TextReveal
-            className="display max-w-[26ch] text-[clamp(1.9rem,4.2vw,3.8rem)] leading-[1.14]"
+            className="display max-w-[26ch] display-xl leading-[1.14]"
             text="We started INFOTECH because good businesses kept losing customers for one simple reason: nobody got back to them in time. The work was never the problem. The follow-up was."
           />
         </div>
       </section>
-      <section className="bg-surface py-24 md:py-32">
+      <section className="bg-surface section">
         <div className="wrap grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <h2 className="display text-[clamp(2.1rem,4vw,3.4rem)]">How we think</h2>
-            <div className="photo-frame relative mt-10 aspect-[4/3] overflow-hidden rounded-[22px]">
+            <h2 className="display display-lg">How we think</h2>
+            <div className="photo-frame relative mt-10 aspect-[4/3] overflow-hidden rounded-card">
               <Image src="/images/about-notebook.jpg" alt="A hand writing a checklist of goals in a notebook" fill sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" />
             </div>
           </div>

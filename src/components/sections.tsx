@@ -22,7 +22,7 @@ export function PageHero({ title, intro, image, imageAlt, children }: {
         </>
       )}
       <div className={`wrap pt-40 pb-20 ${image ? "md:pt-48 md:pb-28" : "md:pt-44"}`}>
-        <h1 className="display max-w-[20ch] text-[clamp(2.6rem,5.6vw,4.8rem)]">{title}</h1>
+        <h1 className="display max-w-[20ch] display-hero">{title}</h1>
         {intro && <p className="msg-in mt-6 max-w-[58ch] text-lg text-white/75" style={{ animationDelay: "120ms" }}>{intro}</p>}
         {children && <div className="msg-in mt-9" style={{ animationDelay: "220ms" }}>{children}</div>}
       </div>
@@ -33,13 +33,13 @@ export function PageHero({ title, intro, image, imageAlt, children }: {
 /* ---------- Services list (home) ---------- */
 export function ServicesList() {
   return (
-    <section className="bg-bg py-24 md:py-32">
+    <section className="bg-bg section">
       <div className="wrap grid gap-14 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-28">
-            <h2 className="display text-[clamp(2.2rem,4.2vw,3.6rem)]">What we automate</h2>
+            <h2 className="display display-lg">What we automate</h2>
             <p className="mt-5 text-muted">Eight services that cover the routine work between a customer’s first message and a finished job. Most clients start with one or two.</p>
-            <div className="photo-frame relative mt-10 hidden aspect-[4/3] overflow-hidden rounded-[22px] lg:block">
+            <div className="photo-frame relative mt-10 hidden aspect-[4/3] overflow-hidden rounded-card lg:block">
               <Image src="/images/front-desk-pos.jpg" alt="A customer paying at a front-desk card terminal" fill sizes="33vw" className="object-cover" />
             </div>
           </div>
@@ -71,15 +71,15 @@ export function ServicesList() {
 /* ---------- Pilot timeline + commitments ---------- */
 export function Pilot() {
   return (
-    <section className="bg-surface py-24 md:py-32">
+    <section className="bg-surface section">
       <div className="wrap">
         <div className="grid gap-6 md:grid-cols-12">
-          <h2 className="display text-[clamp(2.2rem,4.2vw,3.6rem)] md:col-span-6">What your first month looks like</h2>
+          <h2 className="display display-lg md:col-span-6">What your first month looks like</h2>
           <p className="text-muted md:col-span-5 md:col-start-8 md:self-end">
             We’re a new studio, so instead of logos we’ll show you exactly how we work. Every engagement starts with one workflow, done properly.
           </p>
         </div>
-        <ol className="mt-16 grid gap-px overflow-hidden rounded-[22px] border border-line bg-line md:grid-cols-4">
+        <ol className="mt-16 grid gap-px overflow-hidden rounded-card border border-line bg-line md:grid-cols-4">
           {pilot.map((p) => (
             <li key={p.title} className="bg-bg p-7">
               <p className="text-sm text-crimson-ink">{p.when}</p>
@@ -131,7 +131,7 @@ export function PlanCards() {
       {plans.map((p) => (
         <div
           key={p.name}
-          className={`relative flex flex-col rounded-[26px] border p-8 ${p.featured ? "border-crimson bg-black text-white" : "border-line bg-bg"}`}
+          className={`relative flex flex-col rounded-panel border p-8 ${p.featured ? "border-crimson bg-black text-white" : "border-line bg-bg shadow-card"}`}
         >
           {p.featured && <span className="absolute -top-3 left-8 rounded-full bg-crimson px-3 py-1 text-xs font-semibold text-white">Recommended</span>}
           <p className="text-lg font-semibold">{p.name}</p>
@@ -155,10 +155,10 @@ export function PlanCards() {
 
 export function PricingTeaser() {
   return (
-    <section className="bg-bg py-24 md:py-32">
+    <section className="bg-bg section">
       <div className="wrap">
         <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <h2 className="display max-w-[16ch] text-[clamp(2.2rem,4.2vw,3.6rem)]">Simple monthly plans</h2>
+          <h2 className="display max-w-[16ch] display-lg">Simple monthly plans</h2>
           <p className="max-w-[44ch] text-muted">{site.terms.setup} <Link href="/pricing" className="font-semibold text-ink underline underline-offset-4">Full pricing details</Link></p>
         </div>
         <PlanCards />
@@ -176,18 +176,18 @@ export function CtaCalendar({ title = "Get your free 30-minute audit", body = "W
   const slots = [[1, 3], [0, 2, 4], [1], [0, 3, 4], [2]];
   const times = ["9:00", "10:30", "1:00", "2:30", "4:00"];
   return (
-    <section className="bg-bg py-24">
+    <section className="bg-bg section">
       <div className="wrap">
-        <div className="grid items-center gap-12 overflow-hidden rounded-[30px] bg-black p-8 text-white md:p-14 lg:grid-cols-2">
+        <div className="grid items-center gap-12 overflow-hidden rounded-panel bg-black p-8 text-white md:p-14 lg:grid-cols-2">
           <div>
-            <h2 className="display text-[clamp(2.2rem,4vw,3.4rem)]">{title}</h2>
+            <h2 className="display display-lg">{title}</h2>
             <p className="mt-5 max-w-[46ch] text-white/70">{body}</p>
             <div className="mt-9 flex flex-wrap gap-3">
               <AuditButton ctx={{ from: "calendar-card" }} />
             </div>
             <AuditPromise className="mt-6" />
           </div>
-          <a href={auditHref({ from: "calendar-card" })} className="lift grid grid-cols-5 gap-2 rounded-[22px] border border-white/12 bg-white/[.04] p-5" aria-hidden="true" tabIndex={-1}>
+          <a href={auditHref({ from: "calendar-card" })} className="lift grid grid-cols-5 gap-2 rounded-card border border-white/12 bg-white/[.04] p-5" aria-hidden="true" tabIndex={-1}>
             {days.map((d, di) => (
               <div key={d} className="flex flex-col gap-2">
                 <p className="pb-1 text-center text-xs text-white/55">{d}</p>
@@ -212,7 +212,7 @@ export function CtaBanner({ title = "Find the first workflow worth automating.",
     <section className="diamond-pattern relative overflow-hidden bg-crimson text-white">
       <Mark className="pointer-events-none absolute -right-20 top-1/2 h-[140%] w-auto -translate-y-1/2 text-white/10" strokeWidth={1.2} />
       <div className="wrap relative grid gap-10 py-20 md:grid-cols-12 md:py-28">
-        <h2 className="display text-[clamp(2.4rem,4.6vw,4rem)] md:col-span-7">{title}</h2>
+        <h2 className="display display-xl md:col-span-7">{title}</h2>
         <div className="md:col-span-4 md:col-start-9 md:self-end">
           <p className="text-white">{body}</p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -229,13 +229,13 @@ export function CtaBanner({ title = "Find the first workflow worth automating.",
 /** Photo beside a short pitch. */
 export function CtaSplit({ image, alt, title, body }: { image: string; alt: string; title: string; body: string }) {
   return (
-    <section className="bg-bg py-24">
-      <div className="wrap grid items-stretch overflow-hidden rounded-[30px] border border-line md:grid-cols-2">
+    <section className="bg-bg section">
+      <div className="wrap grid items-stretch overflow-hidden rounded-panel border border-line md:grid-cols-2">
         <div className="relative min-h-[280px]">
           <Image src={image} alt={alt} fill sizes="(min-width:768px) 50vw, 100vw" className="object-cover" />
         </div>
         <div className="flex flex-col justify-center bg-surface p-8 md:p-14">
-          <h2 className="display text-[clamp(2rem,3.6vw,3rem)]">{title}</h2>
+          <h2 className="display display-md">{title}</h2>
           <p className="mt-4 text-muted">{body}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <AuditButton ctx={{ from: "split" }} />

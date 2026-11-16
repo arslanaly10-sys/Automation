@@ -6,7 +6,7 @@ export function Legal({ title, updated, intro, sections }: { title: string; upda
   return (
     <>
       <PageHero title={title} intro={`${intro} Last updated ${updated}.`} />
-      <section className="bg-bg py-20">
+      <section className="bg-bg section-tight">
         <div className="wrap grid gap-12 lg:grid-cols-12">
           <nav aria-label="On this page" className="lg:col-span-3">
             <div className="lg:sticky lg:top-28">

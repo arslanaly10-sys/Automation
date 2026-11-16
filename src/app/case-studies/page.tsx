@@ -12,10 +12,10 @@ export default function CaseStudiesPage() {
   return (
     <>
       <PageHero title="What changed for real businesses" intro="Each project started with one workflow. Here is what it was, what we built and what the numbers did." />
-      <section className="bg-bg py-20 md:py-28">
+      <section className="bg-bg section-tight">
         <div className="wrap grid gap-6 md:grid-cols-2">
           {caseStudies.map((cs) => (
-            <Link key={cs.slug} href={`/case-studies/${cs.slug}`} className="group lift overflow-hidden rounded-[26px] border border-line">
+            <Link key={cs.slug} href={`/case-studies/${cs.slug}`} className="group lift overflow-hidden rounded-panel border border-line">
               <div className="photo-frame relative aspect-[16/10]">
                 <Image src={cs.image} alt={cs.imageAlt} fill sizes="(min-width:768px) 50vw, 100vw" className="object-cover" />
               </div>

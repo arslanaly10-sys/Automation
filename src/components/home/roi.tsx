@@ -27,23 +27,23 @@ export function RoiCalculator() {
   const fmt = (n: number) => symbol + Math.round(n).toLocaleString("en-US");
 
   return (
-    <section className="bg-bg py-24 md:py-32">
+    <section className="bg-bg section">
       <div className="wrap grid gap-14 lg:grid-cols-12">
         <div className="lg:col-span-5 lg:row-start-1">
-          <h2 className="display text-[clamp(2.2rem,4.2vw,3.6rem)]">What are unanswered enquiries costing you?</h2>
+          <h2 className="display display-lg">What are unanswered enquiries costing you?</h2>
           <p className="measure mt-5 text-muted">
             Move the sliders to match your business. This is an estimate from your own numbers, not a promise, but it’s usually the number that starts the conversation.
           </p>
         </div>
 
-        <div className="rounded-[28px] border border-line bg-surface p-6 md:p-10 lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1">
+        <div className="rounded-panel border border-line bg-surface p-6 md:p-10 lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1">
           <div className="grid gap-8">
             <Slider label="Calls and messages that go unanswered each week" value={missed} min={1} max={80} onChange={setMissed} display={`${missed}`} />
             <Slider label="Share that would have booked if someone replied quickly" value={rate} min={5} max={80} onChange={setRate} display={`${rate}%`} />
             <Slider label="Average value of a job or booking" value={value} min={25} max={5000} step={25} onChange={setValue} display={fmt(value)} />
             <label className="flex items-center justify-between gap-4 text-sm">
               <span className="text-muted">Currency</span>
-              <select value={cur} onChange={(e) => setCur(e.target.value)} className="rounded-full border border-line bg-bg px-4 py-2 text-ink">
+              <select value={cur} onChange={(e) => setCur(e.target.value)} className="rounded-full border border-line-strong bg-bg px-4 py-2 text-ink">
                 {currencies.map((c) => <option key={c.code} value={c.code}>{c.code}</option>)}
               </select>
             </label>
@@ -153,11 +153,11 @@ function EstimateCapture({ className, inputs, results }: {
     }
   }
 
-  const field = "w-full rounded-xl border border-line bg-bg px-4 py-3 text-ink outline-none focus:border-crimson";
+  const field = "w-full rounded-xl border border-line-strong bg-bg px-4 py-3 text-ink outline-none focus:border-crimson";
 
   if (status === "sent") {
     return (
-      <div className={`rounded-[22px] border border-line p-6 ${className}`} role="status">
+      <div className={`rounded-card border border-line p-6 ${className}`} role="status">
         <p className="text-lg font-semibold">{formspreeReady ? "Thanks, your estimate is on its way." : "Your email app should have opened."}</p>
         <p className="mt-2 text-[15px] text-muted">
           {formspreeReady
@@ -172,7 +172,7 @@ function EstimateCapture({ className, inputs, results }: {
   }
 
   return (
-    <form onSubmit={onSubmit} className={`rounded-[22px] border border-line p-6 ${className}`} aria-labelledby={`${id}-title`}>
+    <form onSubmit={onSubmit} className={`rounded-card border border-line p-6 ${className}`} aria-labelledby={`${id}-title`}>
       <p id={`${id}-title`} className="text-lg font-semibold">Get this estimate by email</p>
       <p className="mt-2 text-[15px] text-muted">We’ll send a copy with a short breakdown of where the missed revenue comes from.</p>
       <div className="mt-5 grid gap-3">

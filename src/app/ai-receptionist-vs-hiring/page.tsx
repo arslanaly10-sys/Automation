@@ -19,10 +19,10 @@ export default function HiringComparisonPage() {
         image="/images/compare-phone-desk.jpg"
         imageAlt="A man on a phone call while a colleague works on a laptop beside him"
       />
-      <section className="bg-bg py-20 md:py-28">
+      <section className="bg-bg section-tight">
         <div className="wrap">
-          <h2 className="display text-[clamp(2.1rem,4vw,3.4rem)]">What each option does</h2>
-          <div className="relative mt-10 overflow-x-auto rounded-[22px] border border-line">
+          <h2 className="display display-lg">What each option does</h2>
+          <div className="relative mt-10 overflow-x-auto rounded-card border border-line">
             <table className="w-full min-w-[760px] border-collapse text-left text-[15px]">
               <caption className="sr-only">Comparison of a receptionist, an answering service and an AI receptionist</caption>
               <thead>
@@ -47,16 +47,16 @@ export default function HiringComparisonPage() {
           </div>
         </div>
       </section>
-      <section className="bg-surface py-20 md:py-28">
+      <section className="bg-surface section-tight">
         <div className="wrap">
-          <h2 className="display max-w-[22ch] text-[clamp(2.1rem,4vw,3.4rem)]">What would each cost you?</h2>
+          <h2 className="display max-w-[22ch] display-lg">What would each cost you?</h2>
           <p className="measure mt-4 text-muted">Put in your own figures. Everything recalculates as you type.</p>
           <div className="mt-10"><CostCompare /></div>
         </div>
       </section>
-      <section className="bg-bg py-20 md:py-28">
+      <section className="bg-bg section-tight">
         <div className="wrap grid gap-10 lg:grid-cols-12">
-          <h2 className="display text-[clamp(2.1rem,4vw,3.4rem)] lg:col-span-5">When hiring a person is the better choice</h2>
+          <h2 className="display display-lg lg:col-span-5">When hiring a person is the better choice</h2>
           <div className="lg:col-span-6 lg:col-start-7">
             <ul className="flex flex-col gap-4">
               {c.personBetter.map((x) => (

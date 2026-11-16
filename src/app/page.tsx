@@ -23,7 +23,7 @@ export default function Home() {
       <section className="bg-bg py-28 md:py-40">
         <div className="wrap">
           <TextReveal
-            className="display max-w-[24ch] text-[clamp(2rem,4.6vw,4.2rem)] leading-[1.12]"
+            className="display max-w-[24ch] display-xl leading-[1.12]"
             text="Most businesses don’t have a lead problem. They have a response problem. The call comes in at 7:40 pm, goes to voicemail, and by morning the customer has booked someone else."
           />
         </div>

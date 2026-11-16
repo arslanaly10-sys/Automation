@@ -32,9 +32,9 @@ export function IndustrySlider() {
 
   return (
     <div>
-    <section ref={section} className="overflow-hidden bg-black py-24 text-white lg:flex lg:h-screen lg:flex-col lg:justify-center lg:pt-16 lg:pb-0">
+    <section ref={section} className="overflow-hidden bg-black section text-white lg:flex lg:h-screen lg:flex-col lg:justify-center lg:pt-16 lg:pb-0">
       <div className="wrap mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-        <h2 className="display max-w-[18ch] text-[clamp(2.2rem,4.2vw,3.6rem)]">Built for businesses where every call counts.</h2>
+        <h2 className="display max-w-[18ch] display-lg">Built for businesses where every call counts.</h2>
         <p className="max-w-[40ch] text-white/65">The same building blocks, set up differently for each trade: its questions, its booking rules and its handoffs.</p>
       </div>
       <div
@@ -45,7 +45,7 @@ export function IndustrySlider() {
           <Link
             key={ind.slug}
             href={`/industries/${ind.slug}`}
-            className="group relative block w-[82vw] shrink-0 snap-start overflow-hidden rounded-[22px] sm:w-[420px] lg:w-[460px]"
+            className="group relative block w-[82vw] shrink-0 snap-start overflow-hidden rounded-card sm:w-[420px] lg:w-[460px]"
           >
             <div className="photo-frame relative aspect-[4/5]">
               <Image src={ind.image} alt={ind.imageAlt} fill sizes="(min-width:1024px) 460px, 82vw" className="object-cover" />

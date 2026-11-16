@@ -24,7 +24,7 @@ export function CostCompare() {
 
   return (
     <div className="grid gap-8 lg:grid-cols-12">
-      <div className="grid gap-6 rounded-[26px] border border-line bg-surface p-6 md:p-8 lg:col-span-6">
+      <div className="grid gap-6 rounded-panel border border-line bg-surface p-6 md:p-8 lg:col-span-6">
         <p className="font-semibold">Your numbers</p>
         <Num label="Receptionist salary per month" value={salary} onChange={setSalary} prefix="$" step={100} />
         <Num label="Extra cost of employing them (tax, benefits, cover), %" value={overhead} onChange={setOverhead} suffix="%" />

@@ -83,11 +83,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </nav>
       </PageHero>
 
-      <section id="how-it-works" className="scroll-mt-20 bg-bg py-24 md:py-32">
+      <section id="how-it-works" className="scroll-mt-20 bg-bg section">
         <div className="wrap grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <span className="grid size-12 place-items-center rounded-full bg-crimson-soft text-crimson-ink"><ServiceIcon name={service.icon} size={24} /></span>
-            <h2 className="display mt-6 text-[clamp(2.1rem,4vw,3.4rem)]">How it works</h2>
+            <h2 className="display mt-6 display-lg">How it works</h2>
             <ol className="mt-10 flex flex-col">
               {detail.steps.map((step, i) => (
                 <li key={step.title} className="grid grid-cols-[40px_1fr] gap-4 border-t border-line py-6 first:border-0 first:pt-0">
@@ -121,10 +121,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      <section className="bg-surface py-24 md:py-32">
+      <section className="bg-surface section">
         <div className="wrap grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <h2 className="display text-[clamp(2.1rem,4vw,3.4rem)]">What’s included</h2>
+            <h2 className="display display-lg">What’s included</h2>
             {mockupFor[service.slug] && <div className="mt-10 max-w-md">{mockupFor[service.slug]()}</div>}
           </div>
           <ul className="grid content-start gap-3 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
@@ -141,12 +141,12 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      <section className="bg-bg py-24 md:py-32">
+      <section className="bg-bg section">
         <div className="wrap">
-          <h2 className="display max-w-[22ch] text-[clamp(2.1rem,4vw,3.4rem)]">Especially useful for</h2>
+          <h2 className="display max-w-[22ch] display-lg">Especially useful for</h2>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {fits.map((ind) => (
-              <Link key={ind.slug} href={`/industries/${ind.slug}`} className="group lift overflow-hidden rounded-[22px] border border-line">
+              <Link key={ind.slug} href={`/industries/${ind.slug}`} className="group lift overflow-hidden rounded-card border border-line">
                 <div className="photo-frame relative aspect-[4/3]">
                   <Image src={ind.image} alt={ind.imageAlt} fill sizes="(min-width:768px) 33vw, 100vw" className="object-cover" />
                 </div>
@@ -164,7 +164,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
       <CtaBanner title="Start with the workflow that costs you most." />
 
-      <section className="bg-bg py-20">
+      <section className="bg-bg section-tight">
         <div className="wrap">
           <p className="mb-6 font-semibold">Related services</p>
           <div className="grid gap-4 md:grid-cols-3">

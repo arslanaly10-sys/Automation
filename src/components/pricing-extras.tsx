@@ -12,8 +12,8 @@ export function PlanComparison() {
   return (
     <section id="compare" className="scroll-mt-24 bg-bg pb-20 md:pb-28">
       <div className="wrap">
-        <h2 className="display text-[clamp(2.1rem,4vw,3.4rem)]">Compare plans</h2>
-        <div className="relative mt-10 overflow-x-auto rounded-[22px] border border-line">
+        <h2 className="display display-lg">Compare plans</h2>
+        <div className="relative mt-10 overflow-x-auto rounded-card border border-line">
           <table className="w-full min-w-[720px] border-collapse text-left text-[15px]">
             <caption className="sr-only">What each plan includes</caption>
             <thead>
@@ -51,10 +51,10 @@ export function PlanComparison() {
 export function WorkflowExplainer() {
   const w = workflowExplainer;
   return (
-    <section id="workflows" className="scroll-mt-24 bg-surface py-20 md:py-28">
+    <section id="workflows" className="scroll-mt-24 bg-surface section-tight">
       <div className="wrap grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-4">
-          <h2 className="display text-[clamp(2.1rem,4vw,3.4rem)]">What counts as a workflow?</h2>
+          <h2 className="display display-lg">What counts as a workflow?</h2>
           <p className="mt-5 text-muted">{w.definition}</p>
         </div>
         <div className="lg:col-span-7 lg:col-start-6">
@@ -92,10 +92,10 @@ export function PriceDrivers() {
   const monthly = growth + usage;
   const usd = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
   return (
-    <section id="price" className="scroll-mt-24 bg-bg py-20 md:py-28">
+    <section id="price" className="scroll-mt-24 bg-bg section-tight">
       <div className="wrap grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-6">
-          <h2 className="display text-[clamp(2.1rem,4vw,3.4rem)]">What changes your price</h2>
+          <h2 className="display display-lg">What changes your price</h2>
           <dl className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2">
             {priceDrivers.map((d) => (
               <div key={d.title}>
@@ -105,7 +105,7 @@ export function PriceDrivers() {
             ))}
           </dl>
         </div>
-        <figure className="self-start rounded-[26px] border border-line bg-surface p-7 md:p-9 lg:col-span-5 lg:col-start-8">
+        <figure className="self-start rounded-panel border border-line bg-surface p-7 md:p-9 lg:col-span-5 lg:col-start-8">
           <figcaption className="flex items-start justify-between gap-4">
             <span>
               <span className="block text-lg font-semibold">A worked example</span>

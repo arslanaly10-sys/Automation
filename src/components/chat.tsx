@@ -68,7 +68,7 @@ export function ChatPlayer({
   return (
     <div
       ref={root}
-      className={`overflow-hidden rounded-[22px] border shadow-[0_30px_80px_-20px_rgba(0,0,0,.55)] ${
+      className={`overflow-hidden rounded-card border shadow-float ${
         dark ? "border-white/12 bg-[#0d0d10]/90 text-white backdrop-blur-xl" : "border-line bg-bg text-ink"
       }`}
     >

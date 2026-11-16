@@ -21,12 +21,12 @@ export default function ResourcesPage() {
   return (
     <>
       <PageHero title="Straight answers before you decide" intro="Guides, comparisons and the questions business owners ask us most. Useful whether or not you work with us." />
-      <section className="bg-bg py-20 md:py-28">
+      <section className="bg-bg section-tight">
         <div className="wrap">
-          <h2 className="display text-[clamp(2.1rem,4vw,3.4rem)]">Guides</h2>
+          <h2 className="display display-lg">Guides</h2>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {guides.map((g) => (
-              <Link key={g.slug} href={`/resources/${g.slug}`} className="group lift flex flex-col rounded-[22px] border border-line p-7">
+              <Link key={g.slug} href={`/resources/${g.slug}`} className="group lift flex flex-col rounded-card border border-line p-7">
                 <BookOpenTextIcon aria-hidden="true" size={28} weight="duotone" className="text-crimson" />
                 <h3 className="display mt-5 text-2xl group-hover:text-crimson-ink">{g.title}</h3>
                 <p className="mt-3 flex-1 text-[15px] text-muted">{g.description}</p>
@@ -34,10 +34,10 @@ export default function ResourcesPage() {
               </Link>
             ))}
           </div>
-          <h2 className="display mt-20 text-[clamp(2.1rem,4vw,3.4rem)]">Compare and check</h2>
+          <h2 className="display mt-20 display-lg">Compare and check</h2>
           <div className="mt-10 grid gap-5 md:grid-cols-2">
             {tools.map((t) => (
-              <Link key={t.href} href={t.href} className="group lift flex items-start gap-5 rounded-[22px] bg-surface p-7">
+              <Link key={t.href} href={t.href} className="group lift flex items-start gap-5 rounded-card bg-surface p-7">
                 <t.icon aria-hidden="true" size={32} weight="duotone" className="shrink-0 text-crimson" />
                 <span className="flex-1">
                   <span className="block text-xl font-semibold group-hover:text-crimson-ink">{t.title}</span>

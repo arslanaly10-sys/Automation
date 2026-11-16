@@ -2,10 +2,10 @@ import { PlusIcon } from "@phosphor-icons/react/dist/ssr";
 
 export function Faq({ items, title = "Questions we get asked", intro }: { items: { q: string; a: string }[]; title?: string; intro?: string }) {
   return (
-    <section className="bg-bg py-24 md:py-32">
+    <section className="bg-bg section">
       <div className="wrap grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-4">
-          <h2 className="display text-[clamp(2.2rem,4.2vw,3.4rem)]">{title}</h2>
+          <h2 className="display display-lg">{title}</h2>
           {intro && <p className="mt-5 text-muted">{intro}</p>}
         </div>
         <div className="lg:col-span-7 lg:col-start-6">

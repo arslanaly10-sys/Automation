@@ -40,7 +40,7 @@ export function Workflow() {
     <section ref={section} id="how-it-works" className="relative overflow-hidden bg-surface lg:h-screen">
       <div className="wrap grid h-full items-center gap-14 py-24 lg:grid-cols-12 lg:py-0">
         <div className="lg:col-span-5">
-          <h2 className="display text-[clamp(2.2rem,4.2vw,3.6rem)]">From first hello to finished job, without anything slipping.</h2>
+          <h2 className="display display-lg">From first hello to finished job, without anything slipping.</h2>
           <ol className="mt-10 hidden flex-col gap-2 lg:flex">
             {steps.map((s, i) => (
               <li key={s.title} aria-current={i === active ? "step" : undefined} className={`grid grid-cols-[32px_1fr] gap-4 py-2.5 transition-colors duration-200 ${i === active ? "text-ink" : "text-muted"}`}>
@@ -92,7 +92,7 @@ export function Workflow() {
 
 function Card({ title, children, flat = false }: { title: string; children: React.ReactNode; flat?: boolean }) {
   return (
-    <div className={`rounded-[22px] bg-bg p-5 ${flat ? "border border-line" : "shadow-[0_24px_60px_-28px_rgba(0,0,0,.35)] ring-1 ring-line"}`}>
+    <div className={`rounded-card bg-bg p-5 ${flat ? "border border-line shadow-card" : "shadow-float ring-1 ring-line"}`}>
       <p className="mb-4 text-sm font-semibold">{title}</p>
       {children}
     </div>

@@ -27,7 +27,7 @@ export default function ServicesPage() {
         <AuditButton ctx={{ from: "services" }} />
       </PageHero>
 
-      <section className="bg-bg py-20 md:py-28">
+      <section className="bg-bg section-tight">
         <div className="wrap">
           <nav aria-label="Services on this page" className="mb-16 flex flex-wrap gap-2">
             {services.map((s) => (
@@ -39,7 +39,7 @@ export default function ServicesPage() {
               <article key={s.slug} id={s.slug} className="grid scroll-mt-28 gap-8 border-t border-line py-14 lg:grid-cols-12">
                 <div className="lg:col-span-5">
                   <span className="grid size-12 place-items-center rounded-full bg-crimson-soft text-crimson-ink"><ServiceIcon aria-hidden="true" name={s.icon} size={24} /></span>
-                  <h2 className="display mt-6 text-[clamp(1.9rem,3vw,2.6rem)]">{s.name}</h2>
+                  <h2 className="display mt-6 display-md">{s.name}</h2>
                   <p className="mt-3 text-lg text-muted">{s.short}</p>
                   <Link href={`/services/${s.slug}`} className="group mt-6 inline-flex items-center gap-2 font-semibold text-crimson-ink">
                     How it works <ArrowUpRightIcon aria-hidden="true" size={16} weight="bold" className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

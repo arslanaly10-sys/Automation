@@ -18,11 +18,11 @@ export default function SecurityPage() {
         image="/images/security-desk.jpg"
         imageAlt="Hands typing on a keyboard at a clean white desk"
       />
-      <section className="bg-bg py-20 md:py-28">
+      <section className="bg-bg section-tight">
         <div className="wrap">
           <ul className="grid gap-4 md:grid-cols-2">
             {securityPage.summary.map((s) => (
-              <li key={s} className="flex gap-4 rounded-[22px] border border-line p-6 text-[17px]">
+              <li key={s} className="flex gap-4 rounded-card border border-line p-6 text-[17px]">
                 <ShieldCheckIcon aria-hidden="true" size={28} weight="duotone" className="shrink-0 text-crimson" />{s}
               </li>
             ))}

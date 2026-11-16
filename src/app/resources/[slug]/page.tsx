@@ -49,7 +49,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
             {g.blocks.map((b, i) => {
               switch (b.type) {
                 case "h2":
-                  return <h2 key={i} id={b.id} className="display mt-14 scroll-mt-28 text-[clamp(1.7rem,2.6vw,2.3rem)] first:mt-0">{b.text}</h2>;
+                  return <h2 key={i} id={b.id} className="display mt-14 scroll-mt-28 display-sm first:mt-0">{b.text}</h2>;
                 case "p":
                   return <p key={i} className="mt-5 text-muted">{b.text}</p>;
                 case "list":
@@ -77,7 +77,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           </div>
         </div>
       </article>
-      <section className="bg-surface py-16">
+      <section className="bg-surface section-tight">
         <div className="wrap">
           <p className="mb-6 font-semibold">More guides</p>
           <div className="grid gap-5 md:grid-cols-2">

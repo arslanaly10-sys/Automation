@@ -27,7 +27,7 @@ export function InlineAuditCta({ title, ctx }: { title: string; ctx?: AuditConte
     <section className="border-y border-line bg-bg py-10">
       <div className="wrap flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="display text-[clamp(1.6rem,2.6vw,2.2rem)]">{title}</p>
+          <p className="display display-sm">{title}</p>
           <AuditPromise tone="light" className="mt-3" />
         </div>
         <AuditButton ctx={ctx} className="btn btn-primary shrink-0" />

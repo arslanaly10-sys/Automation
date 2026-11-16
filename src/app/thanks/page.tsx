@@ -21,7 +21,7 @@ export default function ThanksPage() {
           <Link href="/contact#pick-a-time" className="btn btn-primary"><CalendarCheckIcon aria-hidden="true" size={18} weight="bold" />Skip the wait and pick a time</Link>
         )}
       </PageHero>
-      <section className="bg-bg py-20 md:py-28">
+      <section className="bg-bg section-tight">
         <div className="wrap grid gap-14 lg:grid-cols-12">
           <ol className="flex flex-col gap-8 lg:col-span-6">
             {next.map((s, i) => (

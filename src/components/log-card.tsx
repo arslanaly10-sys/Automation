@@ -3,7 +3,7 @@ import { CheckCircleIcon } from "@phosphor-icons/react/dist/ssr";
 /** A static card for samples that aren't conversations: a sync log or a report. */
 export function LogCard({ title, items, note }: { title: string; items: { label: string; value: string }[]; note: string }) {
   return (
-    <div className="overflow-hidden rounded-[22px] border border-line bg-bg shadow-[0_30px_80px_-30px_rgba(0,0,0,.35)]">
+    <div className="overflow-hidden rounded-card border border-line bg-bg shadow-float">
       <p className="border-b border-line px-5 py-4 text-sm font-semibold">{title}</p>
       <ul className="flex flex-col">
         {items.map((it) => (

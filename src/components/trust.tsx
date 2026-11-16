@@ -11,10 +11,10 @@ export function DemoSection() {
   if (!demoReady) return null;
   const { phone, recording, transcript } = trust.demo;
   return (
-    <section className="bg-black py-24 text-white md:py-32">
+    <section className="bg-black section text-white">
       <div className="wrap grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <h2 className="display text-[clamp(2.2rem,4.2vw,3.6rem)]">Hear it for yourself</h2>
+          <h2 className="display display-lg">Hear it for yourself</h2>
           <p className="mt-5 max-w-[46ch] text-white/70">
             {phone
               ? "Call our own AI receptionist. Ask it to book an appointment, ask about pricing, or try to catch it out. It’s set up the same way we set one up for you."
@@ -28,7 +28,7 @@ export function DemoSection() {
         </div>
         {recording && (
           <div className="lg:col-span-6 lg:col-start-7">
-            <div className="rounded-[22px] border border-white/12 bg-white/[.04] p-6">
+            <div className="rounded-card border border-white/12 bg-white/[.04] p-6">
               <p className="mb-4 text-sm text-white/60">Recording of a real call</p>
               <audio controls preload="none" src={recording} className="w-full">
                 Your browser can’t play this recording. <a href={recording}>Download it</a>.
@@ -58,10 +58,10 @@ export function DemoSection() {
 export function GuaranteeBand({ className = "" }: { className?: string }) {
   if (!guaranteeReady) return null;
   return (
-    <div className={`flex flex-col gap-5 rounded-[26px] border-2 border-crimson p-7 md:flex-row md:items-center md:gap-8 md:p-9 ${className}`}>
+    <div className={`flex flex-col gap-5 rounded-panel border-2 border-crimson p-7 md:flex-row md:items-center md:gap-8 md:p-9 ${className}`}>
       <SealCheckIcon aria-hidden="true" size={52} weight="duotone" className="shrink-0 text-crimson" />
       <div>
-        <p className="display text-[clamp(1.7rem,2.6vw,2.3rem)]">{trust.guarantee.title}</p>
+        <p className="display display-sm">{trust.guarantee.title}</p>
         <p className="mt-2 max-w-[70ch] text-muted">{trust.guarantee.body}</p>
       </div>
     </div>
@@ -81,9 +81,9 @@ export function CompanyDetails() {
   const c = trust.company;
   const rows = [["Registered name", c.legalName], ["Registration", c.registration], ["Address", c.address], ["Country", c.country]].filter(([, v]) => v);
   return (
-    <section className="bg-bg py-20">
+    <section className="bg-bg section-tight">
       <div className="wrap grid gap-10 lg:grid-cols-12">
-        <h2 className="display text-[clamp(2rem,3.4vw,2.8rem)] lg:col-span-4">Who you’re working with</h2>
+        <h2 className="display display-md lg:col-span-4">Who you’re working with</h2>
         <dl className="grid gap-x-10 gap-y-6 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
           {rows.map(([k, v]) => (
             <div key={k} className="border-t border-line pt-4">
@@ -103,19 +103,19 @@ export function CaseStudyTeaser() {
   if (!cs) return null;
   const ind = industries.find((i) => i.slug === cs.industry);
   return (
-    <section className="bg-surface py-24 md:py-32">
+    <section className="bg-surface section">
       <div className="wrap">
         <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-          <h2 className="display max-w-[20ch] text-[clamp(2.2rem,4.2vw,3.6rem)]">Results from a real project</h2>
+          <h2 className="display max-w-[20ch] display-lg">Results from a real project</h2>
           {caseStudies.length > 1 && <Link href="/case-studies" className="link-draw font-semibold">All case studies</Link>}
         </div>
-        <Link href={`/case-studies/${cs.slug}`} className="group grid overflow-hidden rounded-[28px] border border-line bg-bg lg:grid-cols-2">
+        <Link href={`/case-studies/${cs.slug}`} className="group grid overflow-hidden rounded-panel border border-line bg-bg lg:grid-cols-2">
           <div className="photo-frame relative min-h-[280px]">
             <Image src={cs.image} alt={cs.imageAlt} fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
           </div>
           <div className="flex flex-col p-8 md:p-12">
             <p className="text-sm text-muted">{ind?.name ?? ""}{ind && cs.timeline ? ". " : ""}{cs.timeline}</p>
-            <p className="display mt-3 text-[clamp(1.8rem,3vw,2.6rem)]">{cs.client}</p>
+            <p className="display mt-3 display-md">{cs.client}</p>
             <p className="mt-3 text-muted">{cs.summary}</p>
             <dl className="mt-8 grid gap-4 sm:grid-cols-2">
               {cs.results.slice(0, 2).map((r) => (

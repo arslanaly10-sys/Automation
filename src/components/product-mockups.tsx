@@ -7,7 +7,7 @@ import {
 /** Cards in a row get a defined edge; a single card shown on its own (floating) gets soft elevation instead. */
 function Frame({ title, children, className = "", floating = false }: { title: string; children: React.ReactNode; className?: string; floating?: boolean }) {
   return (
-    <figure className={`overflow-hidden rounded-[22px] bg-bg ${floating ? "shadow-[0_30px_80px_-34px_rgba(0,0,0,.35)] ring-1 ring-line" : "border border-line"} ${className}`}>
+    <figure className={`overflow-hidden rounded-card bg-bg ${floating ? "shadow-float ring-1 ring-line" : "border border-line shadow-card"} ${className}`}>
       <figcaption className="flex items-center justify-between gap-3 border-b border-line px-5 py-3.5">
         <span className="text-sm font-semibold">{title}</span>
         <span className="rounded-full bg-surface px-2.5 py-1 text-xs text-muted">Example</span>
@@ -19,7 +19,7 @@ function Frame({ title, children, className = "", floating = false }: { title: s
 
 const status = {
   booked: "bg-crimson text-white",
-  follow: "bg-surface-2 text-ink",
+  follow: "bg-surface-3 text-ink",
   answered: "bg-surface text-muted",
   person: "border border-crimson text-crimson-ink",
 };
@@ -150,10 +150,10 @@ export function CallTranscript({ className = "", floating = false }: { className
 /** Section showing all three, used on the Services page. */
 export function ProductMockups() {
   return (
-    <section className="bg-surface py-24 md:py-32">
+    <section className="bg-surface section">
       <div className="wrap">
         <div className="mb-12 grid gap-6 md:grid-cols-12">
-          <h2 className="display text-[clamp(2.2rem,4.2vw,3.6rem)] md:col-span-6">What you’ll actually see</h2>
+          <h2 className="display display-lg md:col-span-6">What you’ll actually see</h2>
           <p className="text-muted md:col-span-5 md:col-start-8 md:self-end">
             Every enquiry in one list, a short report every Monday, and a written summary of every call. These are examples with made-up names and numbers.
           </p>

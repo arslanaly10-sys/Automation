@@ -21,7 +21,7 @@ export default function PricingPage() {
         title="Clear plans. No surprises."
         intro="Every plan includes the build, the tuning and a real person to talk to. Pick the scope that fits today. You can move up or down later."
       />
-      <section className="bg-bg py-20 md:py-28">
+      <section className="bg-bg section-tight">
         <div className="wrap">
           <PlanCards />
           <GuaranteeBand className="mt-8" />

@@ -30,12 +30,12 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         </p>
       </PageHero>
 
-      <section className="bg-bg py-20 md:py-28">
+      <section className="bg-bg section-tight">
         <div className="wrap">
-          <h2 className="display text-[clamp(2.1rem,4vw,3.4rem)]">The numbers</h2>
+          <h2 className="display display-lg">The numbers</h2>
           <dl className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {cs.results.map((r) => (
-              <div key={r.label} className="rounded-[22px] bg-surface p-7">
+              <div key={r.label} className="rounded-card bg-surface p-7">
                 <dt className="text-muted">{r.label}</dt>
                 <dd className="mt-3 flex items-baseline gap-3">
                   <span className="text-lg text-muted line-through">{r.before}</span>
@@ -47,14 +47,14 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         </div>
       </section>
 
-      <section className="bg-surface py-20 md:py-28">
+      <section className="bg-surface section-tight">
         <div className="wrap grid gap-14 lg:grid-cols-2">
           <div>
-            <h2 className="display text-[clamp(2rem,3.4vw,2.8rem)]">The problem</h2>
+            <h2 className="display display-md">The problem</h2>
             <p className="measure mt-5 text-lg text-muted">{cs.challenge}</p>
           </div>
           <div>
-            <h2 className="display text-[clamp(2rem,3.4vw,2.8rem)]">What we built</h2>
+            <h2 className="display display-md">What we built</h2>
             <ul className="mt-5 flex flex-col gap-3">
               {cs.solution.map((s) => (
                 <li key={s} className="flex gap-3"><CheckIcon aria-hidden="true" size={18} weight="bold" className="mt-1 shrink-0 text-crimson" />{s}</li>
@@ -65,9 +65,9 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       </section>
 
       {cs.quote && (
-        <section className="bg-bg py-20 md:py-28">
+        <section className="bg-bg section-tight">
           <figure className="wrap max-w-4xl">
-            <blockquote className="display text-[clamp(1.8rem,3.4vw,3rem)] leading-tight">“{cs.quote.text}”</blockquote>
+            <blockquote className="display display-md leading-tight">“{cs.quote.text}”</blockquote>
             <figcaption className="mt-6 text-muted">{cs.quote.name}, {cs.quote.role}</figcaption>
           </figure>
         </section>
