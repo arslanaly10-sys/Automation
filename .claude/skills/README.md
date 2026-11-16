@@ -15,6 +15,7 @@ Installed for the INFOTECH website build. Each folder is a Claude Code skill.
 | 10 | frontend-design | `frontend-design/` | Anthropic frontend-design plugin |
 | 11 | ui-ux-pro-max | `ui-ux-pro-max/`, `design-system/`, `ui-styling/`, `brand/`, `design/`, `banner-design/`, `slides/` | github.com/nextlevelbuilder/ui-ux-pro-max-skill |
 | 12 | impeccable | `impeccable/` (skill), `.claude/agents/impeccable-*.md`, hooks in `.claude/settings.json` | github.com/pbakaus/impeccable (Apache 2.0), installed with `npx impeccable install --project --providers=claude` |
+| 13 | ppt-master | `ppt-master/` | github.com/hugohe3/ppt-master (MIT, v6.9.0, commit 3af3e8e) |
 
 Notes
 - The `12-principles-of-animation` skill no longer exists in raphaelsalaja's repo. Its current `motion` skill (installed as `rs-motion`) covers the same ground.
@@ -22,3 +23,4 @@ Notes
 - `design-taste-frontend` ships a Stop hook that runs its finish gate when a `.taste-skill/` build folder exists. It does nothing otherwise.
 - Licences: MIT, except playwright-cli (Apache 2.0). Each upstream LICENSE is kept alongside its skill.
 - Impeccable adds three hooks (in `.claude/settings.json`, shared with everyone who clones the repo): a quick design check after each Edit/Write on UI files, a deeper pass when a turn ends, and a session-start step. Each does nothing if the skill's script is missing. Its engine is downloaded to `~/.impeccable` on first use, which needs network access to impeccable.style. Update with `npx impeccable update`.
+- ppt-master generates editable PPTX decks with Python. Before first use, install its dependencies: `pip install -r .claude/skills/ppt-master/requirements.txt` (Python 3.10–3.14; some routes also need pandoc). Update it by re-copying `skills/ppt-master` from the upstream repo.
